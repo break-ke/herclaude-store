@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FDF2F4"/>
+      <stop offset="100%" stop-color="#F8F5F0"/>
+    </linearGradient>
+    <linearGradient id="hero" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#C41E3A"/>
+      <stop offset="100%" stop-color="#8B0000"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#C9A96E"/>
+      <stop offset="100%" stop-color="#B08D4B"/>
+    </linearGradient>
+  </defs>
+  
+    <rect width="400" height="500" fill="url(#bg)" rx="10"/>
+    <rect x="0" y="0" width="400" height="340" fill="#1A1A1A" rx="10"/>
+    <!-- Shield motif -->
+    <path d="M200,100 L260,140 L260,220 Q260,260 200,290 Q140,260 140,220 L140,140 Z" fill="none" stroke="#C9A96E" stroke-width="2.5" opacity="0.7"/>
+    <path d="M200,120 L245,150 L245,210 Q245,245 200,270 Q155,245 155,210 L155,150 Z" fill="none" stroke="#C9A96E" stroke-width="1" opacity="0.4"/>
+    <text x="200" y="210" font-family="serif" font-size="36" fill="#C9A96E" text-anchor="middle" opacity="0.8">☰</text>
+    <path d="M80,80 Q200,50 320,80" fill="none" stroke="#C9A96E" stroke-width="1" opacity="0.3"/>
+    <path d="M80,260 Q200,290 320,260" fill="none" stroke="#C9A96E" stroke-width="1" opacity="0.3"/>
+    <text x="200" y="400" font-family="'Playfair Display', serif" font-size="20" fill="#1A1A1A" text-anchor="middle" font-weight="600">Protection Talisman</text>
+    <text x="200" y="425" font-family="'Noto Serif SC', serif" font-size="14" fill="#C41E3A" text-anchor="middle">护身符</text>
+    <text x="200" y="450" font-family="Inter, sans-serif" font-size="12" fill="#6B6B6B" text-anchor="middle">Ward off negative energy</text>
+    <text x="200" y="478" font-family="Inter, sans-serif" font-size="16" fill="#C41E3A" text-anchor="middle" font-weight="600">$22.00</text>
+    
+</svg>

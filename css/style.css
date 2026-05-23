@@ -1,0 +1,93 @@
+/* ============================================
+   herclaude — Chinese Talisman E‑Commerce
+   Master Stylesheet
+   ============================================ */
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Georgia', 'Times New Roman', 'Noto Serif SC', serif;
+  color: var(--ink);
+  background-color: var(--warm-bg);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* --- CSS Custom Properties (Brand Colors) --- */
+:root {
+  --red: #C41E3A;
+  --gold: #C9A96E;
+  --ink: #1A1A1A;
+  --warm-bg: #F8F5F0;
+
+  /* Utility tokens (add as needed) */
+  --white: #FFFFFF;
+  --gray-100: #F0EDE8;
+  --gray-300: #C8C3BC;
+  --gray-500: #8A857E;
+  --gray-700: #4A4742;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+}
+
+/* --- Typography --- */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+h1 { font-size: 2.25rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.375rem; }
+
+p {
+  margin-bottom: 1rem;
+}
+
+/* --- Utility Classes --- */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* --- Placeholder styles (to be fleshed out in later tasks) --- */

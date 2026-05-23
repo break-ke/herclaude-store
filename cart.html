@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart — herclaude</title>
+  <meta name="description" content="Review your selected talismans and proceed to checkout.">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Scripts -->
+  <script src="js/data.js" defer></script>
+  <script src="js/utils.js" defer></script>
+  <script src="js/cart.js" defer></script>
+  <script src="js/router.js" defer></script>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="/" class="logo" aria-label="herclaude home">
+        <span class="logo-cn">herclaude</span>
+        <span class="logo-sub">符 · Daoist Talismans</span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="products.html">Talismans</a></li>
+          <li><a href="knowledge.html">Knowledge</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="cart.html" class="cart-link" aria-label="Shopping cart" aria-current="page">
+            <span class="cart-icon">🛒</span>
+            <span class="cart-count" id="cart-count">0</span>
+          </a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main id="main-content" role="main">
+
+    <!-- Page Header -->
+    <section class="page-header" aria-labelledby="page-title">
+      <div class="container">
+        <h1 id="page-title">Your Cart</h1>
+        <p class="page-subtitle">Review your selections before checking out.</p>
+      </div>
+    </section>
+
+    <!-- Cart Content -->
+    <!-- TODO: Render cart items from Cart module + data.js lookup -->
+    <section class="cart-section" aria-label="Shopping cart contents">
+      <div class="container cart-layout">
+
+        <!-- Cart Items -->
+        <div class="cart-items" id="cart-items">
+
+          <!-- Empty state (shown when cart has 0 items) -->
+          <div class="cart-empty" id="cart-empty">
+            <div class="empty-icon">🕊️</div>
+            <h2>Your cart is empty</h2>
+            <p>Browse our collection of authentic talismans to find the one that calls to you.</p>
+            <a href="products.html" class="btn btn-primary">Browse Talismans</a>
+          </div>
+
+          <!-- Cart item row template (injected by JS) -->
+          <!--
+          <div class="cart-item" data-product-id="...">
+            <img src="..." alt="..." class="cart-item-image">
+            <div class="cart-item-info">
+              <h3>Product Name</h3>
+              <p class="cart-item-sku">SKU: TAL-XXX-001</p>
+            </div>
+            <div class="cart-item-qty">
+              <button type="button" class="qty-btn" data-action="decrease">−</button>
+              <input type="number" value="1" min="1" max="99" readonly>
+              <button type="button" class="qty-btn" data-action="increase">+</button>
+            </div>
+            <div class="cart-item-price">$18.00</div>
+            <button type="button" class="cart-item-remove" aria-label="Remove item">&times;</button>
+          </div>
+          -->
+
+        </div>
+
+        <!-- Cart Summary / Sidebar -->
+        <aside class="cart-summary" aria-label="Order summary">
+          <h2>Order Summary</h2>
+
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="summary-subtotal">$0.00</span>
+          </div>
+          <div class="summary-row">
+            <span>Shipping</span>
+            <span id="summary-shipping">Calculated at checkout</span>
+          </div>
+          <div class="summary-row summary-total">
+            <span>Estimated Total</span>
+            <span id="summary-total">$0.00</span>
+          </div>
+
+          <button type="button" class="btn btn-primary btn-block" id="checkout-btn" disabled>
+            Proceed to Checkout
+          </button>
+
+          <p class="checkout-note">Secure checkout via Stripe. Your payment information is encrypted.</p>
+
+          <a href="products.html" class="btn btn-outline btn-block">Continue Shopping</a>
+        </aside>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <strong>herclaude</strong>
+        <p>Authentic Daoist Talismans · 道符</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="knowledge.html">Knowledge</a></li>
+          <li><a href="about.html#faq">FAQ</a></li>
+          <li><a href="about.html#shipping">Shipping</a></li>
+        </ul>
+      </nav>
+      <p class="footer-copy">&copy; 2025 herclaude. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

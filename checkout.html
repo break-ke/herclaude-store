@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — herclaude</title>
+  <meta name="description" content="Complete your purchase of authentic Daoist talismans. Secure checkout.">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Scripts -->
+  <script src="js/data.js" defer></script>
+  <script src="js/utils.js" defer></script>
+  <script src="js/cart.js" defer></script>
+  <script src="js/router.js" defer></script>
+</head>
+<body>
+
+  <!-- ===== HEADER (minimal for checkout) ===== -->
+  <header class="site-header checkout-header" role="banner">
+    <div class="container header-inner">
+      <a href="/" class="logo" aria-label="herclaude home">
+        <span class="logo-cn">herclaude</span>
+        <span class="logo-sub">符 · Daoist Talismans</span>
+      </a>
+      <div class="checkout-steps" aria-label="Checkout progress">
+        <span class="step active">Cart</span>
+        <span class="step-separator">→</span>
+        <span class="step current">Checkout</span>
+        <span class="step-separator">→</span>
+        <span class="step">Confirmation</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main id="main-content" role="main">
+
+    <!-- Page Header -->
+    <section class="page-header" aria-labelledby="page-title">
+      <div class="container">
+        <h1 id="page-title">Checkout</h1>
+      </div>
+    </section>
+
+    <!-- Checkout Form -->
+    <!-- TODO: Build full checkout form — shipping, billing, payment via Stripe -->
+    <section class="checkout-form-section" aria-label="Checkout form">
+      <div class="container checkout-layout">
+
+        <!-- Form Fields -->
+        <form class="checkout-form" id="checkout-form" novalidate>
+
+          <!-- Contact -->
+          <fieldset class="form-fieldset">
+            <legend>Contact</legend>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required placeholder="your@email.com">
+            </div>
+          </fieldset>
+
+          <!-- Shipping -->
+          <fieldset class="form-fieldset">
+            <legend>Shipping Address</legend>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" name="firstName" required>
+              </div>
+              <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="lastName" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="address">Address</label>
+              <input type="text" id="address" name="address" required placeholder="Street address">
+            </div>
+            <div class="form-group">
+              <label for="address-2">Apartment, suite, etc. (optional)</label>
+              <input type="text" id="address-2" name="address2">
+            </div>
+            <div class="form-row form-row-3">
+              <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" required>
+              </div>
+              <div class="form-group">
+                <label for="state">State / Province</label>
+                <input type="text" id="state" name="state" required>
+              </div>
+              <div class="form-group">
+                <label for="zip">ZIP / Postal Code</label>
+                <input type="text" id="zip" name="zip" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="country">Country</label>
+              <select id="country" name="country" required>
+                <option value="">— Select —</option>
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="GB">United Kingdom</option>
+                <option value="AU">Australia</option>
+                <!-- additional countries added later -->
+              </select>
+            </div>
+          </fieldset>
+
+          <!-- Shipping Method -->
+          <!-- TODO: Radio group with real shipping rates -->
+          <fieldset class="form-fieldset">
+            <legend>Shipping Method</legend>
+            <div class="form-group radio-group">
+              <label class="radio-label">
+                <input type="radio" name="shipping" value="standard" checked>
+                <span>Standard (5–10 business days) — $5.00</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="shipping" value="express">
+                <span>Express (2–3 business days) — $15.00</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <!-- Payment -->
+          <!-- TODO: Replace with Stripe Elements / card form -->
+          <fieldset class="form-fieldset">
+            <legend>Payment</legend>
+            <div class="form-group">
+              <label for="card-number">Card Number</label>
+              <input type="text" id="card-number" name="cardNumber" placeholder="4242 4242 4242 4242" inputmode="numeric">
+            </div>
+            <div class="form-row form-row-3">
+              <div class="form-group">
+                <label for="expiry">Expiry (MM/YY)</label>
+                <input type="text" id="expiry" name="expiry" placeholder="MM/YY">
+              </div>
+              <div class="form-group">
+                <label for="cvc">CVC</label>
+                <input type="text" id="cvc" name="cvc" placeholder="123">
+              </div>
+              <div class="form-group">
+                <label for="zip-code">Billing ZIP</label>
+                <input type="text" id="zip-code" name="billingZip">
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Order Notes -->
+          <fieldset class="form-fieldset">
+            <legend>Order Notes (optional)</legend>
+            <div class="form-group">
+              <textarea id="order-notes" name="notes" rows="3" placeholder="Special instructions, consecration requests, gift message..."></textarea>
+            </div>
+          </fieldset>
+
+          <!-- Place Order -->
+          <button type="submit" class="btn btn-primary btn-block btn-lg" id="place-order">
+            Place Order
+          </button>
+        </form>
+
+        <!-- Order Summary Sidebar -->
+        <aside class="checkout-summary" aria-label="Order summary">
+          <h2>Order Summary</h2>
+          <div class="checkout-summary-items" id="checkout-summary-items">
+            <!-- line items from cart -->
+          </div>
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="checkout-subtotal">$0.00</span>
+          </div>
+          <div class="summary-row">
+            <span>Shipping</span>
+            <span id="checkout-shipping">$0.00</span>
+          </div>
+          <div class="summary-row summary-total">
+            <span>Total</span>
+            <span id="checkout-total">$0.00</span>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER (minimal) ===== -->
+  <footer class="site-footer checkout-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <p class="footer-copy">&copy; 2025 herclaude. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

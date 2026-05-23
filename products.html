@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talismans — herclaude</title>
+  <meta name="description" content="Browse herclaude's collection of authentic hand-crafted Daoist talismans. Filter by purpose, tradition, or collection.">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Scripts -->
+  <script src="js/data.js" defer></script>
+  <script src="js/utils.js" defer></script>
+  <script src="js/cart.js" defer></script>
+  <script src="js/router.js" defer></script>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="/" class="logo" aria-label="herclaude home">
+        <span class="logo-cn">herclaude</span>
+        <span class="logo-sub">符 · Daoist Talismans</span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="products.html" aria-current="page">Talismans</a></li>
+          <li><a href="knowledge.html">Knowledge</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="cart.html" class="cart-link" aria-label="Shopping cart">
+            <span class="cart-icon">🛒</span>
+            <span class="cart-count" id="cart-count">0</span>
+          </a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main id="main-content" role="main">
+
+    <!-- Page Header -->
+    <section class="page-header" aria-labelledby="page-title">
+      <div class="container">
+        <h1 id="page-title">All Talismans</h1>
+        <p class="page-subtitle">Authentic hand-crafted charms from the Daoist tradition.</p>
+      </div>
+    </section>
+
+    <!-- Filter / Collection Sidebar -->
+    <!-- TODO: Build filter UI — collection dropdown, tag pills, sort, search -->
+    <aside class="filter-bar" aria-label="Product filters">
+      <div class="container filter-inner">
+        <div class="filter-group">
+          <label for="collection-filter">Collection</label>
+          <select id="collection-filter" name="collection">
+            <option value="all">All Collections</option>
+            <!-- options injected from collections data -->
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="sort-by">Sort by</label>
+          <select id="sort-by" name="sort">
+            <option value="featured">Featured</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="name">Name (A–Z)</option>
+          </select>
+        </div>
+        <button class="btn btn-outline" id="filter-reset" type="button">Reset</button>
+      </div>
+    </aside>
+
+    <!-- Product Grid -->
+    <!-- TODO: Render all products from data.js, respect filter/sort state -->
+    <section class="product-listing" aria-label="Product grid">
+      <div class="container">
+        <div class="product-grid" id="product-grid">
+          <!-- product cards injected by JS -->
+        </div>
+        <!-- TODO: Empty-state placeholder when no products match -->
+        <div class="empty-state" id="empty-state" hidden>
+          <p>No talismans match your filters. Try a different selection.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pagination -->
+    <!-- TODO: Add pagination controls if needed for many products -->
+    <nav class="pagination" aria-label="Pagination" hidden>
+      <div class="container">
+        <button class="btn btn-outline" disabled>&laquo; Previous</button>
+        <span class="page-info">Page 1 of 1</span>
+        <button class="btn btn-outline" disabled>Next &raquo;</button>
+      </div>
+    </nav>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <strong>herclaude</strong>
+        <p>Authentic Daoist Talismans · 道符</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="knowledge.html">Knowledge</a></li>
+          <li><a href="about.html#faq">FAQ</a></li>
+          <li><a href="about.html#shipping">Shipping</a></li>
+        </ul>
+      </nav>
+      <p class="footer-copy">&copy; 2025 herclaude. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

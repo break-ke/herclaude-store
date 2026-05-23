@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FDF2F4"/>
+      <stop offset="100%" stop-color="#F8F5F0"/>
+    </linearGradient>
+    <linearGradient id="hero" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#C41E3A"/>
+      <stop offset="100%" stop-color="#8B0000"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#C9A96E"/>
+      <stop offset="100%" stop-color="#B08D4B"/>
+    </linearGradient>
+  </defs>
+  
+    <rect width="1200" height="400" fill="#1A1A1A" rx="0"/>
+    <!-- Decorative border -->
+    <rect x="20" y="20" width="1160" height="360" fill="none" stroke="#C9A96E" stroke-width="1" opacity="0.2" rx="4"/>
+    <!-- Cloud patterns -->
+    <path d="M100,100 Q150,80 200,100 Q250,80 300,100" fill="none" stroke="#C9A96E" stroke-width="1.5" opacity="0.2"/>
+    <path d="M900,100 Q950,80 1000,100 Q1050,80 1100,100" fill="none" stroke="#C9A96E" stroke-width="1.5" opacity="0.2"/>
+    <path d="M100,320 Q150,300 200,320 Q250,300 300,320" fill="none" stroke="#C9A96E" stroke-width="1.5" opacity="0.2"/>
+    <path d="M900,320 Q950,300 1000,320 Q1050,300 1100,320" fill="none" stroke="#C9A96E" stroke-width="1.5" opacity="0.2"/>
+    <!-- Center calligraphy -->
+    <text x="600" y="160" font-family="'Playfair Display', serif" font-size="48" fill="#C9A96E" text-anchor="middle" font-weight="600">What is a Talisman?</text>
+    <text x="600" y="210" font-family="Inter, sans-serif" font-size="16" fill="rgba(255,255,255,0.6)" text-anchor="middle">Discover the ancient art of Chinese talisman paper — its history, meaning, and purpose</text>
+    <!-- Decorative line under text -->
+    <line x1="450" y1="240" x2="750" y2="240" stroke="#C9A96E" stroke-width="1" opacity="0.3"/>
+    <text x="600" y="280" font-family="'Noto Serif SC', serif" font-size="18" fill="rgba(255,255,255,0.4)" text-anchor="middle">符箓 · 道法自然</text>
+    
+</svg>
