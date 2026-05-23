@@ -3,13 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>herclaude — Authentic Chinese Talismans</title>
-  <meta name="description" content="Herclaude offers authentic hand-crafted Daoist talismans rooted in Chinese spiritual tradition. Discover wealth, protection, love, and peace talismans.">
+
+  <!-- SEO Primary -->
+  <title>herclaude — Authentic Chinese Daoist Talismans | 符箓 · 道符</title>
+  <meta name="description" content="Herclaude offers authentic hand-crafted Daoist talismans rooted in Chinese spiritual tradition. Discover wealth, protection, love, and peace talismans hand-written by lineage holders on traditional rice paper with mineral inks.">
+  <meta name="keywords" content="Chinese talisman, Daoist talisman, fu talisman, fulu, 符, 符箓, 道符, wealth talisman, protection talisman, love talisman, peace talisman, Maoshan, Longmen, cinnabar talisman">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="herclaude — Authentic Chinese Daoist Talismans">
+  <meta property="og:description" content="Authentic hand-crafted Daoist talismans written by lineage holders. Rooted in centuries-old Chinese spiritual tradition.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://herclaude.com/">
+  <meta property="og:image" content="images/hero-banner.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="500">
+  <meta property="og:locale" content="zh_CN">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="herclaude — Authentic Chinese Daoist Talismans">
+  <meta name="twitter:description" content="Authentic hand-crafted Daoist talismans written by lineage holders. Rooted in centuries-old Chinese spiritual tradition.">
+
+  <!-- Icons -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%238b0000'/><text x='16' y='24' font-size='20' text-anchor='middle' fill='%23ffd700' font-family='serif'>符</text></svg>" type="image/svg+xml">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://herclaude.com/">
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- Scripts (deferred for DOM readiness) -->
+  <!-- Structured Data: Organization + WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Herclaude",
+    "url": "https://herclaude.com/",
+    "description": "Authentic hand-crafted Daoist talismans rooted in Chinese spiritual tradition.",
+    "inLanguage": ["zh-CN", "en"],
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://herclaude.com/products.html?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- Structured Data: ItemList for featured products (injected by JS at load) -->
+  <script type="application/ld+json" id="structured-data-products">
+  {"@context":"https://schema.org","@type":"ItemList","itemListElement":[],"name":"Featured Talismans","url":"https://herclaude.com/"}
+  </script>
+
+  <!-- Scripts -->
   <script src="js/data.js" defer></script>
   <script src="js/utils.js" defer></script>
   <script src="js/cart.js" defer></script>
@@ -29,10 +75,12 @@
           <li><a href="products.html">Talismans</a></li>
           <li><a href="knowledge.html">Knowledge</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="cart.html" class="cart-link" aria-label="Shopping cart">
-            <span class="cart-icon">🛒</span>
-            <span class="cart-count" id="cart-count">0</span>
-          </a></li>
+          <li>
+            <a href="cart.html" class="cart-link" aria-label="Shopping cart">
+              <span class="cart-icon">&#x1F6D2;</span>
+              <span class="cart-count" id="cart-count">0</span>
+            </a>
+          </li>
         </ul>
       </nav>
     </div>
@@ -41,44 +89,59 @@
   <!-- ===== MAIN CONTENT ===== -->
   <main id="main-content" role="main">
 
-    <!-- Hero Banner -->
-    <!-- TODO: Replace with hero-banner.svg background + headline + CTA -->
+    <!-- ===== Hero Banner ===== -->
     <section class="hero" aria-label="Welcome banner">
       <div class="container hero-content">
-        <h1>Authentic Daoist Talismans</h1>
-        <p>Hand-crafted by lineage holders. Rooted in Chinese tradition. Charged with intention.</p>
-        <a href="products.html" class="btn btn-primary">Browse Talismans</a>
+        <h1>Ancient Chinese Talismans</h1>
+        <p class="hero-subtitle">Authentic Blessings from the East &middot; Hand-crafted by Daoist lineage holders on traditional rice paper with mineral inks.</p>
+        <a href="products.html" class="btn btn-primary btn-lg hero-cta">Explore Collection &rarr;</a>
       </div>
     </section>
 
-    <!-- Featured Collections -->
-    <!-- TODO: Render collections from data.js (collections array) -->
-    <section class="featured-collections" aria-labelledby="collections-heading">
+    <!-- ===== Featured Products ===== -->
+    <section class="featured-collections" aria-labelledby="featured-heading">
       <div class="container">
-        <h2 id="collections-heading">Explore by Collection</h2>
-        <div class="collection-grid">
-          <!-- collection cards injected by JS -->
+        <h2 id="featured-heading">Featured Talismans</h2>
+        <p class="section-subtitle">Our most revered charms, hand-written by lineage holders</p>
+        <div class="product-grid" id="featured-products-grid">
+          <!-- product cards rendered by JS -->
         </div>
       </div>
     </section>
 
-    <!-- Bestsellers -->
-    <!-- TODO: Render products tagged 'bestseller' from data.js -->
-    <section class="bestsellers" aria-labelledby="bestsellers-heading">
+    <!-- ===== Collections Categories ===== -->
+    <section class="bestsellers" aria-labelledby="collections-heading-2">
       <div class="container">
-        <h2 id="bestsellers-heading">Bestselling Talismans</h2>
-        <div class="product-grid">
-          <!-- product cards injected by JS -->
+        <h2 id="collections-heading-2">Browse by Collection</h2>
+        <p class="section-subtitle">Explore talismans organized by tradition and purpose</p>
+        <div class="collection-grid" id="collection-grid">
+          <!-- collection cards rendered by JS -->
         </div>
       </div>
     </section>
 
-    <!-- Philosophy / Brand Statement -->
-    <!-- TODO: Replace with polished brand copy -->
+    <!-- ===== Brand Philosophy ===== -->
     <section class="brand-philosophy" aria-labelledby="philosophy-heading">
       <div class="container">
-        <h2 id="philosophy-heading">千年传承 · A Living Tradition</h2>
-        <p>Every herclaude talisman is written by hand following centuries-old Daoist protocols — using traditional papers, mineral inks, and consecration rituals passed down through generations.</p>
+        <h2 id="philosophy-heading">&#x5343;&#x5E74;&#x4F20;&#x627F; &middot; A Living Tradition</h2>
+        <p>Every herclaude talisman is written by hand following centuries-old Daoist protocols &mdash; using traditional papers, mineral inks, and consecration rituals passed down through generations. Each piece carries the blessing of celestial calligraphy (符籙 &mdash; Fúlù), connecting you to a spiritual lineage that has safeguarded this sacred art for over two millennia.</p>
+        <div class="philosophy-values">
+          <div class="value-item">
+            <span class="value-icon">&#x2694;&#xFE0F;</span>
+            <h3>Maoshan Tradition</h3>
+            <p>One of the oldest and most revered schools of Daoist talismanic magic, known for powerful celestial script.</p>
+          </div>
+          <div class="value-item">
+            <span class="value-icon">&#x1FAB6;</span>
+            <h3>Hand-Crafted</h3>
+            <p>Each talisman is individually written in a single unbroken breath, charged with intention and spiritual energy.</p>
+          </div>
+          <div class="value-item">
+            <span class="value-icon">&#x1F3F3;&#xFE0F;</span>
+            <h3>Sacred Materials</h3>
+            <p>Premium rice papers, hand-ground cinnabar ink, gold dust, and natural pigments used in every piece.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -89,7 +152,7 @@
     <div class="container footer-inner">
       <div class="footer-brand">
         <strong>herclaude</strong>
-        <p>Authentic Daoist Talismans · 道符</p>
+        <p>Authentic Daoist Talismans &middot; 道符</p>
       </div>
       <nav class="footer-nav" aria-label="Footer navigation">
         <ul>
@@ -102,6 +165,107 @@
       <p class="footer-copy">&copy; 2025 herclaude. All rights reserved.</p>
     </div>
   </footer>
+
+  <!-- ===== Homepage Rendering Script ===== -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    'use strict';
+
+    // --- Init Cart ---
+    if (typeof Cart !== 'undefined') { Cart.init(); }
+
+    // --- Render Featured Products ---
+    var grid = document.getElementById('featured-products-grid');
+    if (grid && typeof products !== 'undefined') {
+      // Show 4 products: first 4 or filter bestsellers
+      var featured = products.filter(function(p) {
+        return p.tags && p.tags.indexOf('bestseller') !== -1;
+      });
+      if (featured.length < 4) {
+        featured = products.slice(0, 4);
+      } else {
+        featured = featured.slice(0, 4);
+      }
+
+      featured.forEach(function(product, idx) {
+        var card = document.createElement('a');
+        card.className = 'product-card';
+        card.href = 'product-detail.html?id=' + encodeURIComponent(product.id);
+        card.setAttribute('data-product-id', product.id);
+
+        var hasBestseller = product.tags && product.tags.indexOf('bestseller') !== -1;
+        var tagText = hasBestseller ? 'Best Seller' : 'New';
+
+        card.innerHTML =
+          '<div class="product-card-image">' +
+            '<span class="product-card-tag product-card-tag--' + (hasBestseller ? 'bestseller' : 'new') + '">' + tagText + '</span>' +
+            '<img src="' + product.image + '" alt="' + product.title + '" loading="' + (idx < 2 ? 'eager' : 'lazy') + '">' +
+          '</div>' +
+          '<div class="product-card-body">' +
+            '<h3>' + product.title + '</h3>' +
+            '<span class="product-card-collection">' + (product.title_cn || '') + '</span>' +
+            '<div class="product-card-price">$' + Number(product.price).toFixed(2) +
+              (product.compare_at_price ? ' <span class="price-compare">$' + Number(product.compare_at_price).toFixed(2) + '</span>' : '') +
+            '</div>' +
+          '</div>';
+
+        grid.appendChild(card);
+      });
+
+      // Update structured data
+      var sdScript = document.getElementById('structured-data-products');
+      if (sdScript) {
+        var items = featured.map(function(p, i) {
+          return {
+            '@type': 'ListItem',
+            position: i + 1,
+            item: {
+              '@type': 'Product',
+              name: p.title + ' (' + (p.title_cn || '') + ')',
+              description: p.brief || '',
+              image: p.image,
+              offers: {
+                '@type': 'Offer',
+                price: p.price,
+                priceCurrency: 'USD',
+                availability: 'https://schema.org/InStock'
+              },
+              url: 'https://herclaude.com/product-detail.html?id=' + encodeURIComponent(p.id)
+            }
+          };
+        });
+        sdScript.textContent = JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'ItemList',
+          itemListElement: items,
+          name: 'Featured Talismans',
+          url: 'https://herclaude.com/'
+        });
+      }
+    }
+
+    // --- Render Collections ---
+    var collGrid = document.getElementById('collection-grid');
+    if (collGrid && typeof collections !== 'undefined') {
+      collections.forEach(function(coll) {
+        var card = document.createElement('a');
+        card.className = 'collection-card';
+        card.href = 'products.html?collection=' + encodeURIComponent(coll.id);
+
+        var description = coll.description || '';
+        if (description.length > 60) {
+          description = description.substring(0, 57) + '...';
+        }
+
+        card.innerHTML =
+          '<h3>' + coll.name + '</h3>' +
+          '<p>' + description + '</p>';
+
+        collGrid.appendChild(card);
+      });
+    }
+  });
+  </script>
 
 </body>
 </html>

@@ -13,7 +13,6 @@
   <script src="js/data.js" defer></script>
   <script src="js/utils.js" defer></script>
   <script src="js/cart.js" defer></script>
-  <script src="js/router.js" defer></script>
 </head>
 <body>
 
@@ -44,48 +43,27 @@
     <!-- Page Header -->
     <section class="page-header" aria-labelledby="page-title">
       <div class="container">
-        <h1 id="page-title">Your Cart</h1>
+        <h1 id="page-title">Shopping Cart</h1>
         <p class="page-subtitle">Review your selections before checking out.</p>
       </div>
     </section>
 
     <!-- Cart Content -->
-    <!-- TODO: Render cart items from Cart module + data.js lookup -->
     <section class="cart-section" aria-label="Shopping cart contents">
       <div class="container cart-layout">
 
         <!-- Cart Items -->
         <div class="cart-items" id="cart-items">
-
-          <!-- Empty state (shown when cart has 0 items) -->
+          <!-- Empty state -->
           <div class="cart-empty" id="cart-empty">
             <div class="empty-icon">🕊️</div>
             <h2>Your cart is empty</h2>
             <p>Browse our collection of authentic talismans to find the one that calls to you.</p>
             <a href="products.html" class="btn btn-primary">Browse Talismans</a>
           </div>
-
-          <!-- Cart item row template (injected by JS) -->
-          <!--
-          <div class="cart-item" data-product-id="...">
-            <img src="..." alt="..." class="cart-item-image">
-            <div class="cart-item-info">
-              <h3>Product Name</h3>
-              <p class="cart-item-sku">SKU: TAL-XXX-001</p>
-            </div>
-            <div class="cart-item-qty">
-              <button type="button" class="qty-btn" data-action="decrease">−</button>
-              <input type="number" value="1" min="1" max="99" readonly>
-              <button type="button" class="qty-btn" data-action="increase">+</button>
-            </div>
-            <div class="cart-item-price">$18.00</div>
-            <button type="button" class="cart-item-remove" aria-label="Remove item">&times;</button>
-          </div>
-          -->
-
         </div>
 
-        <!-- Cart Summary / Sidebar -->
+        <!-- Cart Summary -->
         <aside class="cart-summary" aria-label="Order summary">
           <h2>Order Summary</h2>
 
@@ -103,7 +81,7 @@
           </div>
 
           <button type="button" class="btn btn-primary btn-block" id="checkout-btn" disabled>
-            Proceed to Checkout
+            Proceed to Checkout →
           </button>
 
           <p class="checkout-note">Secure checkout via Stripe. Your payment information is encrypted.</p>
@@ -134,6 +112,96 @@
       <p class="footer-copy">&copy; 2025 herclaude. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const itemsContainer = document.getElementById('cart-items');
+    const emptyState = document.getElementById('cart-empty');
+    const checkoutBtn = document.getElementById('checkout-btn');
+
+    function render() {
+      Cart.load();
+      const items = Cart.getAll();
+      const hasItems = items.length > 0;
+
+      // Show/hide empty state
+      emptyState.style.display = hasItems ? 'none' : 'flex';
+      checkoutBtn.disabled = !hasItems;
+
+      // Remove old rendered items (but keep the empty-state div)
+      itemsContainer.querySelectorAll('.cart-item').forEach(function(el) { el.remove(); });
+
+      if (!hasItems) return;
+
+      // Render each cart item
+      items.forEach(function(item) {
+        var product = products.find(function(p) { return p.id === item.productId; });
+        if (!product) return;
+
+        var subtotal = product.price * item.quantity;
+        var el = document.createElement('div');
+        el.className = 'cart-item';
+        el.dataset.productId = item.productId;
+
+        el.innerHTML =
+          '<img src="' + product.image + '" alt="' + product.title + '" class="cart-item-image" loading="lazy">' +
+          '<div class="cart-item-info">' +
+            '<h3>' + product.title + ' <span class="cart-item-title-cn">' + product.title_cn + '</span></h3>' +
+            '<p class="cart-item-sku">SKU: ' + product.sku + '</p>' +
+          '</div>' +
+          '<div class="cart-item-qty">' +
+            '<button type="button" class="qty-btn" data-action="decrease">\u2212</button>' +
+            '<input type="number" class="qty-input" value="' + item.quantity + '" min="1" max="99" readonly>' +
+            '<button type="button" class="qty-btn" data-action="increase">+</button>' +
+          '</div>' +
+          '<div class="cart-item-price">' + Utils.formatPrice(product.price) + ' ea</div>' +
+          '<div class="cart-item-subtotal">' + Utils.formatPrice(subtotal) + '</div>' +
+          '<button type="button" class="cart-item-remove" data-action="remove" aria-label="Remove item">&times;</button>';
+
+        // Decrease
+        el.querySelector('[data-action="decrease"]').addEventListener('click', function() {
+          if (item.quantity > 1) {
+            Cart.updateQuantity(item.productId, item.quantity - 1);
+          }
+          render();
+        });
+
+        // Increase
+        el.querySelector('[data-action="increase"]').addEventListener('click', function() {
+          Cart.updateQuantity(item.productId, item.quantity + 1);
+          render();
+        });
+
+        // Remove
+        el.querySelector('[data-action="remove"]').addEventListener('click', function() {
+          Cart.remove(item.productId);
+          render();
+        });
+
+        itemsContainer.appendChild(el);
+      });
+
+      updateSummary();
+    }
+
+    function updateSummary() {
+      var subtotal = Cart.getSubtotal();
+      document.getElementById('summary-subtotal').textContent = Utils.formatPrice(subtotal);
+      document.getElementById('summary-total').textContent = Utils.formatPrice(subtotal);
+    }
+
+    // Checkout button
+    checkoutBtn.addEventListener('click', function() {
+      if (!this.disabled) {
+        window.location.href = 'checkout.html';
+      }
+    });
+
+    // Init
+    Cart.init();
+    render();
+  });
+  </script>
 
 </body>
 </html>

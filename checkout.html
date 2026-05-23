@@ -13,7 +13,6 @@
   <script src="js/data.js" defer></script>
   <script src="js/utils.js" defer></script>
   <script src="js/cart.js" defer></script>
-  <script src="js/router.js" defer></script>
 </head>
 <body>
 
@@ -45,11 +44,10 @@
     </section>
 
     <!-- Checkout Form -->
-    <!-- TODO: Build full checkout form — shipping, billing, payment via Stripe -->
     <section class="checkout-form-section" aria-label="Checkout form">
       <div class="container checkout-layout">
 
-        <!-- Form Fields -->
+        <!-- Form Fields (placeholders — no actual submission) -->
         <form class="checkout-form" id="checkout-form" novalidate>
 
           <!-- Contact -->
@@ -104,29 +102,26 @@
                 <option value="CA">Canada</option>
                 <option value="GB">United Kingdom</option>
                 <option value="AU">Australia</option>
-                <!-- additional countries added later -->
               </select>
             </div>
           </fieldset>
 
           <!-- Shipping Method -->
-          <!-- TODO: Radio group with real shipping rates -->
           <fieldset class="form-fieldset">
             <legend>Shipping Method</legend>
             <div class="form-group radio-group">
               <label class="radio-label">
-                <input type="radio" name="shipping" value="standard" checked>
+                <input type="radio" name="shipping" value="standard" checked data-cost="5">
                 <span>Standard (5–10 business days) — $5.00</span>
               </label>
               <label class="radio-label">
-                <input type="radio" name="shipping" value="express">
+                <input type="radio" name="shipping" value="express" data-cost="15">
                 <span>Express (2–3 business days) — $15.00</span>
               </label>
             </div>
           </fieldset>
 
-          <!-- Payment -->
-          <!-- TODO: Replace with Stripe Elements / card form -->
+          <!-- Payment (placeholder — Stripe coming soon) -->
           <fieldset class="form-fieldset">
             <legend>Payment</legend>
             <div class="form-group">
@@ -157,7 +152,7 @@
             </div>
           </fieldset>
 
-          <!-- Place Order -->
+          <!-- Place Order (disabled — payment not yet implemented) -->
           <button type="submit" class="btn btn-primary btn-block btn-lg" id="place-order">
             Place Order
           </button>
@@ -167,7 +162,7 @@
         <aside class="checkout-summary" aria-label="Order summary">
           <h2>Order Summary</h2>
           <div class="checkout-summary-items" id="checkout-summary-items">
-            <!-- line items from cart -->
+            <!-- line items injected by JS -->
           </div>
           <div class="summary-row">
             <span>Subtotal</span>
@@ -194,6 +189,65 @@
       <p class="footer-copy">&copy; 2025 herclaude. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    Cart.load();
+    var items = Cart.getAll();
+
+    // Empty cart → redirect back to cart page
+    if (items.length === 0) {
+      window.location.href = 'cart.html';
+      return;
+    }
+
+    var summaryItems = document.getElementById('checkout-summary-items');
+    var subtotal = 0;
+
+    // Render each cart line item in the summary sidebar
+    items.forEach(function(item) {
+      var product = products.find(function(p) { return p.id === item.productId; });
+      if (!product) return;
+
+      var lineTotal = product.price * item.quantity;
+      subtotal += lineTotal;
+
+      var el = document.createElement('div');
+      el.className = 'checkout-summary-item';
+
+      el.innerHTML =
+        '<div class="checkout-summary-item-info">' +
+          '<span class="checkout-summary-item-name">' + product.title + '</span>' +
+          '<span class="checkout-summary-item-qty">&times;' + item.quantity + '</span>' +
+        '</div>' +
+        '<span class="checkout-summary-item-price">' + Utils.formatPrice(lineTotal) + '</span>';
+
+      summaryItems.appendChild(el);
+    });
+
+    function updateSummary() {
+      var shippingRadio = document.querySelector('input[name="shipping"]:checked');
+      var shippingCost = shippingRadio ? parseFloat(shippingRadio.dataset.cost || 0) : 0;
+      document.getElementById('checkout-subtotal').textContent = Utils.formatPrice(subtotal);
+      document.getElementById('checkout-shipping').textContent = Utils.formatPrice(shippingCost);
+      document.getElementById('checkout-total').textContent = Utils.formatPrice(subtotal + shippingCost);
+    }
+
+    // Recalculate shipping on selection change
+    document.querySelectorAll('input[name="shipping"]').forEach(function(radio) {
+      radio.addEventListener('change', updateSummary);
+    });
+
+    updateSummary();
+
+    // Place Order — disabled button with friendly prompt
+    var placeOrderBtn = document.getElementById('place-order');
+    placeOrderBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      alert('Payment integration coming soon. Your cart items have been saved.');
+    });
+  });
+  </script>
 
 </body>
 </html>

@@ -158,5 +158,234 @@
     </div>
   </footer>
 
+  <script>
+  'use strict';
+
+  document.addEventListener('DOMContentLoaded', function() {
+
+    // --- Init Cart ---
+    if (typeof Cart !== 'undefined') { Cart.init(); }
+
+    // --- Read URL params ---
+    var urlParams = new URLSearchParams(window.location.search);
+    var productId = urlParams.get('id');
+
+    // --- DOM refs ---
+    var mainContent = document.getElementById('main-content');
+    var pageTitle = document.querySelector('title');
+
+    // --- Find product ---
+    var product = null;
+    if (productId && typeof products !== 'undefined') {
+      product = products.find(function(p) { return p.id === productId; });
+    }
+
+    // --- 404 handling ---
+    if (!product) {
+      if (mainContent) {
+        mainContent.innerHTML =
+          '<section class="page-header" aria-labelledby="page-title">' +
+            '<div class="container">' +
+              '<h1 id="page-title">Product Not Found</h1>' +
+              '<p class="page-subtitle">The talisman you\'re looking for does not exist or has been removed.</p>' +
+              '<a href="products.html" class="btn btn-primary btn-lg" style="margin-top:2rem">Browse All Talismans &rarr;</a>' +
+            '</div>' +
+          '</section>';
+      }
+      if (pageTitle) pageTitle.textContent = 'Product Not Found | herclaude';
+      return;
+    }
+
+    // --- Found product — render it ---
+
+    // Update SEO
+    var seo = product.seo || {};
+    document.title = seo.title || product.title + ' (' + (product.title_cn || '') + ') | herclaude';
+    var metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', seo.description || product.brief || '');
+    var ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', (seo.title || product.title) + ' — herclaude');
+    var ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute('content', seo.description || product.brief || '');
+    var ogImage = document.querySelector('meta[property="og:image"]');
+    if (ogImage) ogImage.setAttribute('content', product.image);
+    var canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.setAttribute('href', 'https://herclaude.com/product-detail.html?id=' + encodeURIComponent(product.id));
+
+    // --- Breadcrumb ---
+    var breadcrumb = document.querySelector('.breadcrumb ol');
+    if (breadcrumb) {
+      var collectionName = 'Talismans';
+      if (typeof collections !== 'undefined') {
+        var foundColl = collections.find(function(c) { return c.id === product.collection; });
+        if (foundColl) collectionName = foundColl.name;
+      }
+      breadcrumb.innerHTML =
+        '<li><a href="index.html">Home</a></li>' +
+        '<li><a href="products.html' + (product.collection ? '?collection=' + encodeURIComponent(product.collection) : '') + '">' + collectionName + '</a></li>' +
+        '<li aria-current="page">' + product.title + '</li>';
+    }
+
+    // --- Product Image ---
+    var mainImage = document.querySelector('.product-image-main img');
+    if (mainImage) {
+      mainImage.src = product.image;
+      mainImage.alt = product.title + ' (' + (product.title_cn || '') + ')';
+    }
+
+    // --- Product Info ---
+    var titleEl = document.getElementById('product-title');
+    if (titleEl) titleEl.textContent = product.title;
+
+    var titleCnEl = document.getElementById('product-title-cn');
+    if (titleCnEl) titleCnEl.textContent = product.title_cn || '';
+
+    // Price
+    var priceEl = document.querySelector('.price-current');
+    if (priceEl) {
+      priceEl.textContent = '$' + Number(product.price).toFixed(2);
+      priceEl.setAttribute('content', product.price);
+    }
+    var compareEl = document.getElementById('compare-price');
+    if (compareEl) {
+      if (product.compare_at_price) {
+        compareEl.textContent = '$' + Number(product.compare_at_price).toFixed(2);
+        compareEl.hidden = false;
+      } else {
+        compareEl.hidden = true;
+      }
+    }
+
+    // SKU
+    var skuEl = document.getElementById('product-sku');
+    if (skuEl) skuEl.textContent = 'SKU: ' + (product.sku || '—');
+
+    // Tags
+    var tagsEl = document.getElementById('product-tags');
+    if (tagsEl && product.tags) {
+      tagsEl.innerHTML = '';
+      product.tags.forEach(function(tag) {
+        var span = document.createElement('span');
+        span.className = 'tag tag--gold';
+        span.textContent = tag;
+        tagsEl.appendChild(span);
+      });
+    }
+
+    // Brief
+    var briefEl = document.getElementById('product-brief');
+    if (briefEl) briefEl.textContent = product.brief || '';
+
+    // Add to Cart button — wire up
+    var addBtn = document.getElementById('add-to-cart');
+    if (addBtn) {
+      addBtn.setAttribute('data-product-id', product.id);
+    }
+
+    // Quantity selector
+    var qtyInput = document.getElementById('qty-input');
+    var qtyDec = document.getElementById('qty-decrease');
+    var qtyInc = document.getElementById('qty-increase');
+    if (qtyInput) {
+      qtyInput.addEventListener('change', function() {
+        var val = parseInt(qtyInput.value, 10);
+        if (isNaN(val) || val < 1) qtyInput.value = 1;
+        if (val > 99) qtyInput.value = 99;
+      });
+    }
+    if (qtyDec) {
+      qtyDec.addEventListener('click', function() {
+        if (qtyInput) {
+          var val = parseInt(qtyInput.value, 10) || 1;
+          if (val > 1) qtyInput.value = val - 1;
+        }
+      });
+    }
+    if (qtyInc) {
+      qtyInc.addEventListener('click', function() {
+        if (qtyInput) {
+          var val = parseInt(qtyInput.value, 10) || 1;
+          if (val < 99) qtyInput.value = val + 1;
+        }
+      });
+    }
+
+    // Add to Cart click
+    if (addBtn) {
+      addBtn.addEventListener('click', function() {
+        if (typeof Cart === 'undefined') return;
+        var pid = addBtn.getAttribute('data-product-id');
+        var qty = qtyInput ? (parseInt(qtyInput.value, 10) || 1) : 1;
+        if (pid) {
+          Cart.add(pid, qty);
+          // Visual feedback
+          var origText = addBtn.textContent;
+          addBtn.textContent = 'Added!';
+          addBtn.disabled = true;
+          setTimeout(function() {
+            addBtn.textContent = origText;
+            addBtn.disabled = false;
+          }, 1500);
+        }
+      });
+    }
+
+    // --- Full Description ---
+    var descEl = document.getElementById('description-content');
+    if (descEl && product.description) {
+      descEl.innerHTML = product.description;
+    }
+
+    // --- Related Products ---
+    var relatedGrid = document.getElementById('related-grid');
+    if (relatedGrid && typeof products !== 'undefined') {
+      var related = products.filter(function(p) {
+        return p.collection === product.collection && p.id !== product.id;
+      });
+      // If not enough related from same collection, add a couple more
+      if (related.length < 4) {
+        var extras = products.filter(function(p) {
+          return p.id !== product.id && !related.some(function(r) { return r.id === p.id; });
+        });
+        related = related.concat(extras).slice(0, 4);
+      } else {
+        related = related.slice(0, 4);
+      }
+
+      if (related.length === 0) {
+        var relatedSection = document.querySelector('.related-products');
+        if (relatedSection) relatedSection.style.display = 'none';
+      } else {
+        related.forEach(function(rp, idx) {
+          var card = document.createElement('a');
+          card.className = 'product-card';
+          card.href = 'product-detail.html?id=' + encodeURIComponent(rp.id);
+          card.style.textDecoration = 'none';
+          card.style.color = 'inherit';
+
+          var hasTag = rp.tags && rp.tags.indexOf('bestseller') !== -1;
+          var tagText = hasTag ? 'Best Seller' : (rp.tags && rp.tags.indexOf('popular') !== -1 ? 'Popular' : '');
+
+          card.innerHTML =
+            '<div class="product-card-image">' +
+              (tagText ? '<span class="product-card-tag product-card-tag--' + (hasTag ? 'bestseller' : 'new') + '">' + tagText + '</span>' : '') +
+              '<img src="' + rp.image + '" alt="' + rp.title + '" loading="lazy">' +
+            '</div>' +
+            '<div class="product-card-body">' +
+              '<h3>' + rp.title + '</h3>' +
+              '<span class="product-card-collection">' + (rp.title_cn || '') + '</span>' +
+              '<div class="product-card-price">$' + Number(rp.price).toFixed(2) +
+                (rp.compare_at_price ? ' <span class="price-compare">$' + Number(rp.compare_at_price).toFixed(2) + '</span>' : '') +
+              '</div>' +
+            '</div>';
+
+          relatedGrid.appendChild(card);
+        });
+      }
+    }
+
+  });
+  </script>
+
 </body>
 </html>
