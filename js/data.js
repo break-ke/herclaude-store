@@ -29,7 +29,7 @@ const products = [
     price: 18.00,
     compare_at_price: null,
     sku: 'TAL-WEALTH-001',
-    image: 'images/product-wealth.svg',
+    image: 'images/wealth-talisman.svg',
     tags: ['bestseller', 'wealth', 'prosperity'],
     collection: 'by-purpose',
     seo: {
@@ -67,7 +67,7 @@ const products = [
     price: 15.00,
     compare_at_price: null,
     sku: 'TAL-PROTECT-001',
-    image: 'images/product-protection.svg',
+    image: 'images/protection-talisman.svg',
     tags: ['popular', 'protection', 'safety'],
     collection: 'by-purpose',
     seo: {
@@ -105,7 +105,7 @@ const products = [
     price: 20.00,
     compare_at_price: null,
     sku: 'TAL-LOVE-001',
-    image: 'images/product-love.svg',
+    image: 'images/love-talisman.svg',
     tags: ['love', 'relationship'],
     collection: 'by-purpose',
     seo: {
@@ -143,7 +143,7 @@ const products = [
     price: 15.00,
     compare_at_price: null,
     sku: 'TAL-PEACE-001',
-    image: 'images/product-peace.svg',
+    image: 'images/peace-talisman.svg',
     tags: ['peace', 'wellness'],
     collection: 'by-purpose',
     seo: {
@@ -181,9 +181,9 @@ const products = [
     price: 22.00,
     compare_at_price: null,
     sku: 'TAL-WARD-001',
-    image: 'images/product-ward.svg',
+    image: 'images/detail-talisman.svg',
     tags: ['protection', 'spiritual', 'exorcism'],
-    collection: 'feng-shui',
+    collection: 'daoist',
     seo: {
       title: 'Evil-Spirit Ward (辟邪符) — Powerful Spiritual Protection | Herclaude',
       description: 'Potent Daoist Evil-Spirit Ward to repel malevolent entities and dark forces. Hand-crafted on crimson paper with pure cinnabar ink. Maoshan tradition.'
@@ -219,9 +219,9 @@ const products = [
     price: 25.00,
     compare_at_price: null,
     sku: 'TAL-HOME-001',
-    image: 'images/product-home.svg',
+    image: 'images/detail-talisman.svg',
     tags: ['home', 'protection', 'feng-shui'],
-    collection: 'feng-shui',
+    collection: 'daoist',
     seo: {
       title: 'Home Guardian Talisman (镇宅符) — Protect Your Home | Herclaude',
       description: 'Authentic Daoist Home Guardian Talisman to stabilize and protect your dwelling. Hand-crafted on golden xuān paper. Traditional Bagua protection.'
@@ -257,9 +257,9 @@ const products = [
     price: 18.00,
     compare_at_price: null,
     sku: 'TAL-TRAVEL-001',
-    image: 'images/product-travel.svg',
+    image: 'images/detail-talisman.svg',
     tags: ['travel', 'protection', 'safety'],
-    collection: 'by-purpose',
+    collection: 'daoist',
     seo: {
       title: 'Travel Safeguard Talisman (出行平安符) — Safe Journeys | Herclaude',
       description: 'Authentic Daoist Travel Safeguard Talisman for safe and harmonious journeys. Compact design for carrying. Traditional Road God blessing.'
@@ -295,9 +295,9 @@ const products = [
     price: 16.00,
     compare_at_price: null,
     sku: 'TAL-DREAM-001',
-    image: 'images/product-dream.svg',
+    image: 'images/detail-talisman.svg',
     tags: ['sleep', 'peace', 'wellness'],
-    collection: 'by-purpose',
+    collection: 'feng-shui',
     seo: {
       title: 'Dream Shield Talisman (安眠符) — Peaceful Sleep | Herclaude',
       description: 'Authentic Daoist Dream Shield Talisman for peaceful, nightmare-free sleep. Hand-crafted on sage-green paper with calming herbal-infused ink.'
@@ -333,9 +333,9 @@ const products = [
     price: 20.00,
     compare_at_price: null,
     sku: 'TAL-WORK-001',
-    image: 'images/product-work.svg',
+    image: 'images/detail-talisman.svg',
     tags: ['work', 'protection', 'career'],
-    collection: 'by-purpose',
+    collection: 'feng-shui',
     seo: {
       title: 'Workplace Guard Talisman (职场护身符) — Career Protection | Herclaude',
       description: 'Modern Daoist Workplace Guard Talisman for professional energy protection. Discreet design for office environments. Traditional protective principles applied to contemporary work life.'
@@ -371,9 +371,9 @@ const products = [
     price: 24.00,
     compare_at_price: null,
     sku: 'TAL-BOUNDARY-001',
-    image: 'images/product-boundary.svg',
+    image: 'images/detail-talisman.svg',
     tags: ['ritual', 'sacred-space', 'daoist'],
-    collection: 'daoist',
+    collection: 'limited',
     seo: {
       title: 'Boundary Talisman (结界符) — Sacred Space Protection | Herclaude',
       description: 'Advanced Daoist Boundary Talisman set for creating sacred, protected meditation and ritual spaces. Five-directional set. Celestial Masters tradition.'
@@ -409,9 +409,9 @@ const products = [
     price: 28.00,
     compare_at_price: null,
     sku: 'TAL-MIRROR-001',
-    image: 'images/product-mirror.svg',
+    image: 'images/detail-talisman.svg',
     tags: ['feng-shui', 'protection', 'bagua'],
-    collection: 'feng-shui',
+    collection: 'limited',
     seo: {
       title: 'Mirror Ward (八卦镜符) — Powerful Feng Shui Protection | Herclaude',
       description: 'Potent Bagua Mirror Talisman combining eight-trigram cosmology with Daoist talismanic protection for deflection of negative sha qi. Hand-crafted with bronze-infused ink.'
@@ -423,37 +423,32 @@ const collections = [
   {
     id: 'by-purpose',
     name: 'Talismans by Purpose',
-    description: 'Discover talismans organized by your specific intention — wealth, love, protection, peace, and more. Each talisman is crafted to address a particular aspect of life.',
-    image: 'images/collection-purpose.svg',
-    product_count: 6
+    description: 'Explore talismans organized by their intended use and spiritual goal',
+    image: 'images/hero-banner.svg'
   },
   {
     id: 'daoist',
     name: 'Daoist Talismans',
-    description: 'Authentic talismans rooted in the formal traditions of Daoist liturgical practice. These pieces follow classical lineages including Maoshan, Longmen, and Celestial Masters.',
-    image: 'images/collection-daoist.svg',
-    product_count: 2
+    description: 'Authentic talismans from正统Daoist traditions, hand-drawn by trained practitioners',
+    image: 'images/knowledge-banner.svg'
   },
   {
     id: 'feng-shui',
     name: 'Feng Shui Talismans',
-    description: 'Talismans specifically designed to harmonize and protect the energy of your living and working spaces. These pieces incorporate Bagua cosmology and geomancy principles.',
-    image: 'images/collection-fengshui.svg',
-    product_count: 3
+    description: 'Talismans designed to harmonize and balance the energy of your living spaces',
+    image: 'images/hero-banner.svg'
   },
   {
     id: 'limited',
     name: 'Limited Edition',
-    description: 'Exclusive, limited-run talismans crafted in small batches with special materials and rituals. Each piece is numbered and comes with a certificate of authenticity.',
-    image: 'images/collection-limited.svg',
-    product_count: 0
+    description: 'Rare and exclusive talismans from specialized traditions and master artisans',
+    image: 'images/knowledge-banner.svg'
   },
   {
     id: 'sets',
     name: 'Talisman Sets',
-    description: 'Curated collections of multiple talismans designed to work together in harmony. Perfect for comprehensive protection, complete home blessing, or as meaningful gifts.',
-    image: 'images/collection-sets.svg',
-    product_count: 0
+    description: 'Curated sets of complementary talismans for comprehensive spiritual coverage',
+    image: 'images/knowledge-banner.svg'
   }
 ];
 
@@ -465,7 +460,7 @@ const articles = [
 
 <h2>A Brief History</h2>
 <p>The earliest recorded talismans date to the Han Dynasty (206 BCE – 220 CE), though their roots extend into the shamanic practices of prehistoric China. The formalization of talismanic practice is attributed to Zhang Daoling (张道陵), the first Celestial Master (天师 — Tiānshī), who received divine instruction on the mountain Hèmíng Shān (鹤鸣山) in 142 CE. From this revelation, the Way of the Celestial Masters (天师道 — Tiānshī Dào) was born, establishing talismans as central liturgical tools in Daoist practice.</p>
-<p>Over subsequent centuries, multiple traditions emerged — the Maoshan (茅山) tradition with its elaborate celestial script, the Longmen (龙门) tradition emphasizing inner cultivation, and the folk traditions that adapted talismanic practice for everyday needs. Despite their differences, all traditions share the fundamental belief that written symbols, when properly charged, can channel spiritual power into the material world.</p>
+<p>The Tang Dynasty (618–907 CE) is considered the golden age of talismanic art. During this period, the imperial court officially recognized Daoist talismans, and masters from various schools competed to create ever more sophisticated celestial scripts. The Maoshan (茅山) and Longmen (龙门) traditions flourished, each developing distinct styles and techniques that have been preserved to the present day. Over subsequent centuries, multiple traditions emerged — the Maoshan tradition with its elaborate celestial script, the Longmen tradition emphasizing inner cultivation, and the folk traditions that adapted talismanic practice for everyday needs. Despite their differences, all traditions share the fundamental belief that written symbols, when properly charged, can channel spiritual power into the material world.</p>
 
 <h2>How a Talisman is Made</h2>
 <p>The creation of an authentic talisman follows a precise ritual protocol that has been preserved for generations:</p>
@@ -478,7 +473,7 @@ const articles = [
   <li><strong>Consecration (开光 — Kāi Guāng):</strong> The talisman is ritually empowered through chanting, mudras, and visualization, "opening its light" and making it spiritually active.</li>
 </ol>
 
-<h2>How to Choose the Right Talisman</h2>
+<h2>How to Choose Your Talisman</h2>
 <p>Selecting a talisman is a personal process that should align with your genuine intention. Consider the following:</p>
 <ul>
   <li><strong>Identify Your Need:</strong> Be clear about what you seek — protection, prosperity, love, peace, or something else. A well-defined intention creates a stronger connection with the talisman.</li>
@@ -486,6 +481,9 @@ const articles = [
   <li><strong>Consider the Tradition:</strong> Different talismanic traditions have different energies. Maoshan talismans are known for their power, Longmen for their gentleness, and folk traditions for their accessibility.</li>
   <li><strong>Respect the Purpose:</strong> Use each talisman for its intended purpose. Using a love talisman for financial gain, for example, dilutes its effectiveness and shows disrespect to the tradition.</li>
 </ul>
+
+<h2>A Note on Cultural Respect</h2>
+<p>Chinese talismans are living sacred objects within an ongoing spiritual tradition. They are not mere decorations or curiosities. When you acquire an authentic talisman, you become a participant in a tradition that stretches back two millennia. Approach your talisman with respect, use it as intended, and honor the lineage of practitioners who have preserved this sacred art through countless generations. By doing so, you not only receive the talisman's benefits but also help sustain a precious cultural heritage.</p>
 
 <h2>Conclusion</h2>
 <p>Chinese talismans are a profound expression of the Daoist understanding that the written word, when infused with spiritual intention and celestial authority, can transcend its mundane function and become a bridge between worlds. Whether you seek protection, prosperity, love, or peace, an authentic talisman offers a tangible connection to this ancient and living tradition.</p>`,
@@ -499,164 +497,86 @@ const articles = [
     body_html: `<p>Receiving your talisman is just the beginning of the journey. To honor the tradition and receive the full benefit of your talisman, proper care, placement, and periodic renewal are essential. This guide covers everything you need to know.</p>
 
 <h2>Receiving Your Talisman</h2>
-<p>When your talisman arrives, it should be treated with respect and intention. Follow these steps upon first receiving it:</p>
-<ol>
-  <li><strong>Choose an Auspicious Time:</strong> Open your talisman for the first time on a morning when you feel calm and centered. Avoid opening it when angry, distressed, or rushed.</li>
-  <li><strong>Cleanse Your Hands:</strong> Wash your hands before handling the talisman. In traditional practice, this is a sign of respect and prevents transferring negative energy to the sacred object.</li>
-  <li><strong>Remove with Care:</strong> Gently remove the talisman from its packaging. Handle it by the edges to avoid smudging the ink or transferring oils from your skin to the paper.</li>
-  <li><strong>Initial Activation:</strong> Hold the talisman with both hands at heart level. Take three deep breaths, and speak or think your intention clearly. Introduce yourself to the talisman as you would to a respected elder.</li>
-</ol>
+<p>When your talisman arrives, it should be treated with respect from the moment you open the package. Find a clean, quiet space where you can be undisturbed. Open the package with clean hands and a calm mind. Hold the talisman gently in both hands and take a moment to connect with its energy. Notice any sensations, thoughts, or feelings that arise — this initial impression is your first communication with the talisman's spiritual presence.</p>
+<p>If the talisman was shipped flat, allow it to rest for a few hours in a peaceful place before activation, especially if it traveled a long distance. This resting period lets the talisman's energy settle after the journey.</p>
 
-<h2>Placement Guidelines</h2>
-<p>Where you place your talisman significantly affects its function:</p>
-<table>
-  <tr>
-    <th>Talisman Type</th>
-    <th>Recommended Placement</th>
-    <th>Avoid</th>
-  </tr>
-  <tr>
-    <td>Wealth (招财符)</td>
-    <td>Southeast corner of home/office, wallet, cash drawer</td>
-    <td>Bathroom, bedroom, cluttered areas</td>
-  </tr>
-  <tr>
-    <td>Protection (护身符)</td>
-    <td>Near the heart, above main entrance, in vehicle</td>
-    <td>Floors, dirty or dusty spaces</td>
-  </tr>
-  <tr>
-    <td>Love (催姻缘符)</td>
-    <td>Bedroom southwest corner, heart pocket</td>
-    <td>Direct sunlight, bathroom</td>
-  </tr>
-  <tr>
-    <td>Peace (平安符)</td>
-    <td>Living room, central hallway, carried in bag</td>
-    <td>Behind furniture, forgotten spaces</td>
-  </tr>
-  <tr>
-    <td>Home Guardian (镇宅符)</td>
-    <td>Central beam or main room wall</td>
-    <td>Low positions, behind doors</td>
-  </tr>
-</table>
-
-<h2>Daily Care</h2>
+<h2>Placement Instructions</h2>
+<p>Each talisman has specific placement recommendations detailed in its product description, but some general principles apply to all:</p>
 <ul>
-  <li><strong>Keep it Clean:</strong> Dust the talisman gently with a soft, dry brush if needed. Never use water or cleaning products.</li>
-  <li><strong>Handle with Respect:</strong> Avoid folding, crumpling, or writing on the talisman. If you need to carry it folded, fold along existing creases only.</li>
-  <li><strong>Mindful Placement:</strong> Keep the talisman in a clean, elevated position. It should never be placed on the floor, in the bathroom, or among dirty items.</li>
-  <li><strong>Energetic Hygiene:</strong> Periodically — especially after intense emotional events — pass the talisman through incense smoke to cleanse its energy.</li>
+  <li><strong>Clean and Respected Spaces:</strong> Place talismans only in clean, respected areas of your home or workplace. Avoid bathrooms, kitchens near cooking surfaces, floors, or cluttered areas where energy stagnates.</li>
+  <li><strong>Eye Level or Above:</strong> Whenever possible, position the talisman at or above eye level. This elevates its status in the space and allows its energy to radiate freely.</li>
+  <li><strong>Avoid Direct Sunlight:</strong> Prolonged direct sunlight can fade the ink and weaken the talisman's energetic charge. Indirect natural light is fine and can even be beneficial for certain talismans.</li>
+  <li><strong>Not a Decoration:</strong> While talismans are beautiful, they are not primarily decorative. Place them with intention, not merely for aesthetic appeal. Their power comes from their purpose, not their appearance.</li>
 </ul>
 
-<h2>Annual Renewal</h2>
-<p>Talismans are traditionally renewed each year to maintain their potency. The Lunar New Year (春节 — Chūnjié) is the most auspicious time for renewal:</p>
-<ol>
-  <li>During the pre-New Year cleaning, respectfully remove the old talisman.</li>
-  <li>Thank the talisman for its service — speak from the heart.</li>
-  <li>Burn the old talisman in a safe container: a dedicated incense burner or metal bowl. As it burns, visualize its energy returning to the cosmos with gratitude.</li>
-  <li>Collect the ashes and scatter them in a flowing body of water or at the base of a living tree.</li>
-  <li>Place the new talisman following the same activation steps described above.</li>
-</ol>
-<p><strong>Note:</strong> Some powerful protective talismans, such as the Evil-Spirit Ward, should be renewed during the Dragon Boat Festival (端午节) rather than the Lunar New Year, as this is when protective energies are at their peak.</p>
+<h2>Activation Rituals</h2>
+<p>While your talisman arrives consecrated and ready to use, personal activation deepens your connection to it. Here are two simple yet powerful activation methods:</p>
+<h3>Incense Activation</h3>
+<p>Light a stick of quality incense — sandalwood is universally appropriate, but you may choose a scent that aligns with your intention (jasmine for love, frankincense for protection, cinnamon for prosperity). Hold the talisman in your non-dominant hand and pass it through the rising smoke three times, moving from left to right. With each pass, state your intention clearly and concisely. Visualize the smoke carrying your intention into the talisman's script.</p>
+<h3>Intention Meditation</h3>
+<p>Sit comfortably with the talisman held at heart level. Close your eyes and take five deep breaths, each time breathing into your heart center. When you feel centered, clearly state your intention aloud three times. Then spend a few minutes in silence, visualizing your intention as already fulfilled. Feel the emotion of that fulfillment — whether it is the safety of protection, the warmth of love, or the ease of prosperity. When you open your eyes, the talisman is personally activated.</p>
 
-<h2>When to Retire a Talisman</h2>
-<p>Besides the annual renewal, a talisman should be retired if:</p>
+<h2>Care and Storage</h2>
 <ul>
-  <li>The paper becomes torn, stained, or significantly faded</li>
-  <li>The ink smudges or the script becomes unclear</li>
-  <li>You have experienced a major life transition and your intentions have changed</li>
-  <li>The talisman has been through an intense spiritual event and feels energetically "spent"</li>
+  <li><strong>Handling:</strong> Handle your talisman with clean hands. Avoid touching the written surface excessively, as oils from your skin can degrade the paper and ink over time.</li>
+  <li><strong>Storage:</strong> When not in use, store the talisman in a clean, dry place. A red cloth or pouch is traditional — red is a protective color that preserves the talisman's energy.</li>
+  <li><strong>Cleaning:</strong> Talismans should not be washed or wiped with water. If dust accumulates, gently blow it off or use a soft, dry brush. For energetic cleansing, pass the talisman through incense smoke.</li>
+  <li><strong>Travel:</strong> When traveling with your talisman, wrap it in a clean cloth and place it in a secure compartment of your bag. Avoid placing heavy objects on top of it.</li>
 </ul>
-<p>Always dispose of talismans with the reverence they deserve — through burning and returning to nature, never in the trash.</p>`,
-    tags: ['guide', 'care', 'placement', 'activation'],
+
+<h2>When to Replace Your Talisman</h2>
+<p>Talismans are not permanent objects. Their physical form and spiritual energy have a natural lifespan. Replace your talisman when:</p>
+<ul>
+  <li><strong>Annual Renewal:</strong> Most talismans should be replaced annually during the Lunar New Year. This is the traditional time for renewal across all Chinese spiritual practices.</li>
+  <li><strong>Physical Damage:</strong> If the talisman becomes torn, significantly faded, or damaged, it has released its energy and should be replaced.</li>
+  <li><strong>Major Life Changes:</strong> After a significant life transition — marriage, moving homes, career change — consider renewing your talisman to align with your new circumstances.</li>
+  <li><strong>Intuitive Sense:</strong> If the talisman's energy feels depleted or "empty" to you, trust your intuition and replace it. You may also notice the paper becoming brittle or the ink losing its luster.</li>
+</ul>
+<p>When replacing a talisman, dispose of the old one respectfully. Burn it in a safe container while offering gratitude for its service. Alternatively, bury it in clean soil in a peaceful location. Never throw a talisman in the trash — this is disrespectful to the tradition and the spiritual energy it carried.</p>`,
+    tags: ['guide', 'how-to', 'care'],
     author: 'herclaude',
     date: '2025-02-01'
   },
   {
     id: 'meaning-of-talisman-colors',
     title: 'The Meaning of Talisman Colors',
-    body_html: `<p>In Chinese talismanic tradition, color is never merely decorative. Each color carries specific energetic properties derived from the Five Elements (五行 — Wǔ Xíng) theory, yin-yang cosmology, and centuries of ritual practice. Understanding these meanings will help you choose the right talisman and deepen your appreciation of this sacred art.</p>
+    body_html: `<p>In Chinese talismanic tradition, color is never arbitrary. Each color used in a talisman — from the paper to the ink — carries specific symbolic meaning and energetic properties rooted in centuries of Daoist cosmology, Five Elements theory (五行 — Wǔ Xíng), and Chinese color symbolism. Understanding these meanings can deepen your appreciation of talismans and help you choose the one that resonates with your intention.</p>
 
-<h2>Red — 红色 (Hóng Sè)</h2>
-<p><strong>Element:</strong> Fire (火 — Huǒ) | <strong>Direction:</strong> South | <strong>Season:</strong> Summer</p>
-<p>Red is the most common and powerful color in Chinese talismans. It represents the fire element — vitality, yang energy, and the power to transform. Red talismans are used for:</p>
+<h2>Red: Vitality, Fire Energy, and Wealth Attraction</h2>
+<p>Red (红色 — Hóngsè) is the most common and powerful color in Chinese talismanic tradition. It represents the fire element (火 — Huǒ), vitality, yang energy, and good fortune. In Chinese culture, red is the color of celebration, prosperity, and protection against evil. Red paper talismans are used for wealth attraction, general good luck, and ceremonial purposes. The red color is believed to be inherently yang and aggressive toward negative spirits, which is why red talismans are often used for exorcism and warding. The Wealth Talisman (招财符) uses red paper with gold ink — the combination of red (fire/vitality) and gold (prosperity/celestial) creates a powerful synergy for attracting abundance.</p>
+
+<h2>Yellow: Earth, Stability, and Protection</h2>
+<p>Yellow (黄色 — Huángsè) corresponds to the earth element (土 — Tǔ) and the center direction in Chinese cosmology. It symbolizes stability, neutrality, balance, and grounded protection. Yellow is the color of the Chinese emperor, representing supreme authority and the center of the universe. In talismanic practice, yellow paper is traditionally used for peace, protection, and grounding talismans. The Peace Talisman (平安符) is written on warm yellow rice paper, whose earth element energy provides the stable foundation needed for lasting peace. Yellow talismans are also preferred for home and family protection, as the earth element relates to nourishment, stability, and the nurturing of household harmony.</p>
+
+<h2>Gold: Prosperity and Celestial Power</h2>
+<p>Gold (金色 — Jīnsè) is not a traditional paper color but is extensively used in talismanic ink, particularly for wealth and prosperity talismans. Gold represents the metal element (金 — Jīn), celestial authority, and the highest spiritual attainment. In Daoist cosmology, gold is the color of the celestial realm and the bodies of immortals. Gold ink is made by blending ground mica, gold dust, or bronze powder with traditional cinnabar or pine-soot ink. The shimmer of gold ink is believed to attract the attention of wealth deities and celestial officials. Talismans written in gold ink are particularly potent for financial matters, as the metal element governs resources, value, and the flow of wealth in Five Elements theory.</p>
+
+<h2>Purple: Spirituality and Romance</h2>
+<p>Purple (紫色 — Zǐsè) is a rare and exalted color in Chinese talismanic tradition. It represents the highest spiritual attainment, the blending of fire (red) and water (blue) elements, and the harmonious union of yin and yang. In Daoist tradition, purple is associated with the Purple Forbidden Enclosure (紫微垣 — Zǐ Wēi Yuán), a celestial palace that governs the emperor's destiny. The Love Attraction Talisman (催姻缘符) uses pink paper (a variation of red/purple energy) to invoke the romantic, harmonious blending of complementary forces. Purple-adjacent colors like pink and lavender are used in love and relationship talismans because they represent the sacred marriage of opposites — the yin-yang union at the heart of romantic partnership.</p>
+
+<h2>Black and Indigo: The Void and Deep Protection</h2>
+<p>Black (黑色 — Hēisè) and deep indigo represent the water element (水 — Shuǐ), the north direction, and the mysterious primordial void (无极 — Wújí) from which all creation emerges. In talismanic practice, black or indigo paper is used for the most powerful protective talismans. The Protection Talisman (护身符) uses deep indigo-black paper because the dark background represents the formless void where protective forces reside before they are called into being. The contrast between dark paper and bright cinnabar ink is intentional — the luminous vermilion script emerging from darkness symbolizes light overcoming shadow, protection emerging from the unknown. Black also represents the depth and mystery of the Dao itself, the unnamable source of all things.</p>
+
+<h2>The Five Elements Connection</h2>
+<p>Talisman colors are intimately connected to Chinese Five Elements (五行 — Wǔ Xíng) theory, which describes the fundamental energies that compose all phenomena:</p>
 <ul>
-  <li>Drawing prosperity and abundance (wealth talismans)</li>
-  <li>Celebratory and auspicious occasions</li>
-  <li>Dispelling negative energy through the active, outward-moving quality of fire</li>
-  <li>Protection against spiritual harm (in combinations with other colors)</li>
+  <li><strong>Red (Fire 火):</strong> Expands upward and outward. Used for attraction, celebration, and aggressive protection. Associated with the south and summer.</li>
+  <li><strong>Yellow (Earth 土):</strong> Grounds and stabilizes. Used for peace, balance, and centered protection. Associated with the center and late summer.</li>
+  <li><strong>Gold/White (Metal 金):</strong> Contracts and refines. Used for wealth, authority, and cutting through obstacles. Associated with the west and autumn.</li>
+  <li><strong>Black/Blue (Water 水):</strong> Flows and adapts. Used for deep protection, mystery, and spiritual depth. Associated with the north and winter.</li>
+  <li><strong>Green (Wood 木):</strong> Grows and expands. Used for healing, new beginnings, and gentle growth. Associated with the east and spring.</li>
 </ul>
-<p>In Chinese culture, red is the color of life itself — the blood that flows through our veins, the fire that cooks our food, and the sun that sustains all living things. A red talisman is a talisman of action, energy, and manifestation. Note that the exact shade matters: bright vermilion red is used for yang purposes (wealth, celebration), while deeper crimson red is reserved for martial protective work.</p>
-<p><strong>Featured Talisman:</strong> The Wealth Talisman (招财符) uses red paper with gold ink to combine fire energy with the metal element of gold, creating a powerful prosperity current.</p>
+<p>When a talisman uses multiple colors or a specific color combination, it is often balancing or combining elemental energies to achieve a particular effect. For example, a talisman that uses red paper (fire) with gold ink (metal) creates a fire-generating-metal cycle according to Five Elements theory, where the fire's vitality fuels the metal's wealth-attracting properties.</p>
 
-<h2>Yellow — 黄色 (Huáng Sè)</h2>
-<p><strong>Element:</strong> Earth (土 — Tǔ) | <strong>Direction:</strong> Center | <strong>Season:</strong> Late Summer / Transition</p>
-<p>Yellow, particularly golden yellow, is the color of the center, stability, and the earth element. It has a special significance in Chinese culture as the imperial color, associated with the Emperor and the mandate of heaven (天命 — Tiānmìng). Yellow talismans are used for:</p>
-<ul>
-  <li>Peace, grounding, and stability</li>
-  <li>Health and long-term well-being</li>
-  <li>Connecting with the earth's stabilizing energy</li>
-  <li>Ritual and ceremonial purposes</li>
-</ul>
-<p>Yellow talismans are considered the "gentlest" of the major talisman colors — their energy is steady, nurturing, and patient rather than forceful. In Daoist temples, yellow talismans are used for blessings and prayers for the deceased, as yellow represents the eternal, unchanging earth that receives all. Yellow is also the traditional color of the Celestial Masters' robes.</p>
-<p><strong>Featured Talisman:</strong> The Peace Talisman (平安符) uses warm yellow paper with natural black ink, embodying the stable, grounding energy that supports tranquility and safety.</p>
-
-<h2>Gold — 金色 (Jīn Sè)</h2>
-<p><strong>Element:</strong> Metal (金 — Jīn) | <strong>Direction:</strong> West | <strong>Season:</strong> Autumn</p>
-<p>Gold is the color of the metal element — precision, clarity, and the ability to cut through obstacles. In talismanic practice, gold ink or gold-flecked paper is used for:</p>
-<ul>
-  <li>Wealth and prosperity invocations (metal governs money in Five Elements theory)</li>
-  <li>High ceremonies and offerings to celestial deities</li>
-  <li>Permanent, unbreakable seals and signatures on talismans</li>
-  <li>Talismans intended for long-term use (gold does not fade or deteriorate)</li>
-</ul>
-<p>Gold carries the energy of the setting sun — brilliant but not harsh, discerning but not destructive. In Daoist alchemy, gold represents the highest attainment, the elixir of immortality. Gold ink is often made by grinding genuine gold leaf with mineral pigments, making it the most expensive and precious talisman medium. Talismans written in gold ink are treated with particular reverence.</p>
-<p><strong>Featured Talisman:</strong> The Wealth Talisman pairs gold ink with red paper — this combination of fire (red) and metal (gold) creates a productive cycle in Five Elements theory, as fire melts and refines metal.</p>
-
-<h2>Purple — 紫色 (Zǐ Sè)</h2>
-<p><strong>Element:</strong> Fire/Water blend | <strong>Direction:</strong> None fixed | <strong>Season:</strong> Transitional</p>
-<p>Purple holds a special place in Chinese spirituality. It is the color of the Purple Forbidden Enclosure (紫微垣 — Zǐ Wēi Yuán), the celestial palace at the center of the heavens where the Jade Emperor resides. Purple talismans are used for:</p>
-<ul>
-  <li>Love and relationship matters (balancing fire's passion with water's depth)</li>
-  <li>Spiritual cultivation and advanced meditation</li>
-  <li>Connecting with the highest celestial authorities</li>
-  <li>Transformation and alchemical inner work</li>
-</ul>
-<p>Purple is the color of the highest spiritual attainment in Daoism — Laozi himself is said to have traveled west on a purple ox, and the "purple qi from the east" (紫气东来 — Zǐ Qì Dōng Lái) is a phrase that heralds the arrival of a sage. Talismans on purple paper are relatively rare and are treated as especially sacred. The color combines the activity of red (fire) with the stillness of blue (water), making it ideal for matters of the heart, which require both passion and depth.</p>
-<p><strong>Featured Talisman:</strong> The Love Attraction Talisman (催姻缘符) uses soft purple-pink paper — the purple element connecting to celestial matchmaking while the pink undertone speaks to earthly affection.</p>
-
-<h2>Other Significant Colors</h2>
-<h3>Black / Indigo — 黑色 / 青色</h3>
-<p><strong>Element:</strong> Water (水 — Shuǐ) | <strong>Direction:</strong> North | <strong>Season:</strong> Winter</p>
-<p>Black represents water — depth, mystery, and the storage of power. Black or dark indigo paper is used for the most powerful protective talismans. The dark background creates a "void" from which protective forces can manifest. Black talismans are not evil; they are simply working with the most profound and hidden levels of spiritual reality. The Protection Talisman and Evil-Spirit Ward traditionally use dark paper.</p>
-
-<h3>White — 白色</h3>
-<p><strong>Element:</strong> Metal (金 — Jīn) | <strong>Direction:</strong> West | <strong>Season:</strong> Autumn</p>
-<p>White represents purity, precision, and the receptive aspect of metal. In talismanic practice, white is used for cleansing rituals, mourning rites (in the Chinese tradition, white is the color of mourning), and talismans that require absolute clarity of intention. White is rarely used alone — it is typically combined with black or red for contrast and balance.</p>
-
-<h3>Green / Teal — 绿色 / 青色</h3>
-<p><strong>Element:</strong> Wood (木 — Mù) | <strong>Direction:</strong> East | <strong>Season:</strong> Spring</p>
-<p>Green represents wood — growth, healing, and the rising energy of spring. Green talismans are used for health, healing, new beginnings, and personal growth. The sage-green of the Dream Shield talisman calms the mind and supports restorative sleep, while brighter greens are used for talismans that promote physical healing and recovery.</p>
-
-<h2>Color Combinations</h2>
-<p>Many talismans use combinations of colors intentionally. The most significant combinations include:</p>
-<ul>
-  <li><strong>Red + Gold:</strong> The most auspicious combination. Fire (red) supports Earth (yellow/gold area), but when gold is literal gold ink (metal), the sequence is Fire → Earth → Metal, a productive cycle for wealth.</li>
-  <li><strong>Red + Black:</strong> The classic protective combination. The yang of red activates the yin power of black, creating a balanced but formidable protective energy.</li>
-  <li><strong>Yellow + Cinnabar Red:</strong> Used for ritual talismans of the highest order. The imperial yellow provides authority while the cinnabar provides spiritual power.</li>
-  <li><strong>Five Colors Together:</strong> A complete set of five talismans in the five elemental colors represents the totality of cosmic energy. The Boundary Talisman set uses this principle with its directional colors.</li>
-</ul>
-
-<h2>Conclusion</h2>
-<p>Color in Chinese talismanic tradition is a language — a precise, symbolic system that communicates with the spiritual world and aligns material talismans with cosmic forces. When you choose a talisman, its color is not just an aesthetic preference but a choice about which energies you wish to work with. Understanding this language deepens your connection with the talisman and honors the sophisticated spiritual technology it represents.</p>`,
-    tags: ['guide', 'colors', 'symbolism', 'feng-shui'],
+<h2>Choosing by Color</h2>
+<p>When selecting a talisman, consider not only its stated purpose but also its colors. Which elemental energy do you most need in your life right now? Do you need the fiery protection of red, the grounding stability of yellow, the refined wealth energy of gold, or the deep mystery of black? Trust your instinct — sometimes the color you are drawn to reveals the energetic need your soul is expressing. The tradition of talismanic color has guided Chinese spiritual practitioners for millennia, and these ancient associations remain powerfully relevant today.</p>`,
+    tags: ['guide', 'colors', 'symbolism', 'culture'],
     author: 'herclaude',
-    date: '2025-02-20'
+    date: '2025-02-15'
   }
 ];
 
+// Node.js exports
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { products, collections, articles };
 }
