@@ -1,31 +1,56 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500">
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="750" viewBox="0 0 600 750">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#FDF2F4"/>
-      <stop offset="100%" stop-color="#F8F5F0"/>
-    </linearGradient>
-    <linearGradient id="hero" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#C41E3A"/>
-      <stop offset="100%" stop-color="#8B0000"/>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FDF5E6"/>
+      <stop offset="100%" stop-color="#F5E6C8"/>
     </linearGradient>
     <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#C9A96E"/>
-      <stop offset="100%" stop-color="#B08D4B"/>
+      <stop offset="0%" stop-color="#FFD700"/>
+      <stop offset="50%" stop-color="#DAA520"/>
+      <stop offset="100%" stop-color="#B8860B"/>
+    </linearGradient>
+    <linearGradient id="cinnabar" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#CC0000"/>
+      <stop offset="100%" stop-color="#8B0000"/>
     </linearGradient>
   </defs>
-  
-    <rect width="400" height="500" fill="url(#bg)" rx="10"/>
-    <rect x="0" y="0" width="400" height="340" fill="#C41E3A" rx="10"/>
-    <!-- Gold coin pattern -->
-    <circle cx="200" cy="170" r="60" fill="none" stroke="#C9A96E" stroke-width="2.5" opacity="0.6"/>
-    <circle cx="200" cy="170" r="45" fill="none" stroke="#C9A96E" stroke-width="1.5" opacity="0.4"/>
-    <rect x="185" y="145" width="30" height="50" rx="3" fill="#C9A96E" opacity="0.8"/>
-    <!-- decorative -->
-    <path d="M80,80 Q200,50 320,80" fill="none" stroke="#C9A96E" stroke-width="1.5" opacity="0.3"/>
-    <path d="M80,260 Q200,290 320,260" fill="none" stroke="#C9A96E" stroke-width="1.5" opacity="0.3"/>
-    <text x="200" y="400" font-family="'Playfair Display', serif" font-size="20" fill="#1A1A1A" text-anchor="middle" font-weight="600">Wealth Talisman</text>
-    <text x="200" y="425" font-family="'Noto Serif SC', serif" font-size="14" fill="#C41E3A" text-anchor="middle">招财符</text>
-    <text x="200" y="450" font-family="Inter, sans-serif" font-size="12" fill="#6B6B6B" text-anchor="middle">Attract prosperity & abundance</text>
-    <text x="200" y="478" font-family="Inter, sans-serif" font-size="16" fill="#C41E3A" text-anchor="middle" font-weight="600">$18.00</text>
-    
+  <!-- Paper background -->
+  <rect width="600" height="750" fill="url(#paper)" rx="4"/>
+  <!-- Aged paper texture lines -->
+  <line x1="0" y1="120" x2="600" y2="120" stroke="#D4C5A0" stroke-width="0.5" opacity="0.4"/>
+  <line x1="0" y1="240" x2="600" y2="240" stroke="#D4C5A0" stroke-width="0.5" opacity="0.3"/>
+  <line x1="0" y1="360" x2="600" y2="360" stroke="#D4C5A0" stroke-width="0.5" opacity="0.4"/>
+  <line x1="0" y1="480" x2="600" y2="480" stroke="#D4C5A0" stroke-width="0.5" opacity="0.3"/>
+  <line x1="0" y1="600" x2="600" y2="600" stroke="#D4C5A0" stroke-width="0.5" opacity="0.4"/>
+  <!-- Decorative border -->
+  <rect x="15" y="15" width="570" height="720" rx="2" fill="none" stroke="url(#cinnabar)" stroke-width="2"/>
+  <rect x="25" y="25" width="550" height="700" rx="2" fill="none" stroke="url(#cinnabar)" stroke-width="1" opacity="0.6"/>
+  <!-- Corner decorations -->
+  <path d="M15,45 L15,15 L45,15" fill="none" stroke="url(#gold)" stroke-width="2"/>
+  <path d="M585,45 L585,15 L555,15" fill="none" stroke="url(#gold)" stroke-width="2"/>
+  <path d="M15,705 L15,735 L45,735" fill="none" stroke="url(#gold)" stroke-width="2"/>
+  <path d="M585,705 L585,735 L555,735" fill="none" stroke="url(#gold)" stroke-width="2"/>
+  <!-- Talisman seal - red square -->
+  <rect x="200" y="60" width="200" height="200" rx="6" fill="url(#cinnabar)"/>
+  <rect x="215" y="75" width="170" height="170" rx="4" fill="none" stroke="#FF4444" stroke-width="1.5" opacity="0.5"/>
+  <!-- Seal script characters (wealth) -->
+  <text x="300" y="145" font-family="serif" font-size="60" fill="#FFD700" text-anchor="middle" font-weight="bold">財</text>
+  <text x="300" y="210" font-family="serif" font-size="40" fill="#FFD700" text-anchor="middle">招財進寶</text>
+  <!-- Daoist talismanic strokes -->
+  <path d="M150,300 Q200,280 250,300 Q300,320 350,300 Q400,280 450,300" fill="none" stroke="#CC0000" stroke-width="2" opacity="0.7"/>
+  <path d="M130,320 Q180,340 230,320 Q280,300 330,320 Q380,340 430,320 Q480,300 500,320" fill="none" stroke="#CC0000" stroke-width="1.5" opacity="0.5"/>
+  <!-- Bagua coin -->
+  <circle cx="300" cy="400" r="45" fill="none" stroke="url(#gold)" stroke-width="3"/>
+  <circle cx="300" cy="400" r="35" fill="none" stroke="url(#gold)" stroke-width="1.5" opacity="0.7"/>
+  <rect x="290" y="380" width="20" height="40" rx="3" fill="url(#gold)"/>
+  <!-- Content area -->
+  <text x="300" y="500" font-family="'Playfair Display', 'Noto Serif SC', serif" font-size="28" fill="#1A1A1A" text-anchor="middle" font-weight="bold" letter-spacing="2">Wealth Talisman</text>
+  <text x="300" y="530" font-family="'Noto Serif SC', 'SimSun', serif" font-size="18" fill="#CC0000" text-anchor="middle">招财符 · 财源广进</text>
+  <text x="300" y="565" font-family="sans-serif" font-size="13" fill="#666" text-anchor="middle">Attract prosperity, abundance & financial success</text>
+  <!-- Taoist thunderbolt -->
+  <path d="M220,600 L250,600 L240,630 L270,620 L250,660" fill="none" stroke="#CC0000" stroke-width="2" opacity="0.6"/>
+  <path d="M380,600 L350,600 L360,630 L330,620 L350,660" fill="none" stroke="#CC0000" stroke-width="2" opacity="0.6"/>
+  <!-- Price -->
+  <rect x="230" y="680" width="140" height="35" rx="17" fill="url(#cinnabar)"/>
+  <text x="300" y="703" font-family="sans-serif" font-size="18" fill="#FFF" text-anchor="middle" font-weight="bold">$29.99</text>
 </svg>

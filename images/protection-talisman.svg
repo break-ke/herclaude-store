@@ -1,30 +1,42 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500">
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="750" viewBox="0 0 600 750">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#FDF2F4"/>
-      <stop offset="100%" stop-color="#F8F5F0"/>
-    </linearGradient>
-    <linearGradient id="hero" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#C41E3A"/>
-      <stop offset="100%" stop-color="#8B0000"/>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFF8F0"/>
+      <stop offset="100%" stop-color="#F5E6C8"/>
     </linearGradient>
     <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#C9A96E"/>
-      <stop offset="100%" stop-color="#B08D4B"/>
+      <stop offset="0%" stop-color="#FFD700"/>
+      <stop offset="50%" stop-color="#DAA520"/>
+      <stop offset="100%" stop-color="#B8860B"/>
+    </linearGradient>
+    <linearGradient id="cinnabar" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#CC0000"/>
+      <stop offset="100%" stop-color="#8B0000"/>
     </linearGradient>
   </defs>
-  
-    <rect width="400" height="500" fill="url(#bg)" rx="10"/>
-    <rect x="0" y="0" width="400" height="340" fill="#1A1A1A" rx="10"/>
-    <!-- Shield motif -->
-    <path d="M200,100 L260,140 L260,220 Q260,260 200,290 Q140,260 140,220 L140,140 Z" fill="none" stroke="#C9A96E" stroke-width="2.5" opacity="0.7"/>
-    <path d="M200,120 L245,150 L245,210 Q245,245 200,270 Q155,245 155,210 L155,150 Z" fill="none" stroke="#C9A96E" stroke-width="1" opacity="0.4"/>
-    <text x="200" y="210" font-family="serif" font-size="36" fill="#C9A96E" text-anchor="middle" opacity="0.8">☰</text>
-    <path d="M80,80 Q200,50 320,80" fill="none" stroke="#C9A96E" stroke-width="1" opacity="0.3"/>
-    <path d="M80,260 Q200,290 320,260" fill="none" stroke="#C9A96E" stroke-width="1" opacity="0.3"/>
-    <text x="200" y="400" font-family="'Playfair Display', serif" font-size="20" fill="#1A1A1A" text-anchor="middle" font-weight="600">Protection Talisman</text>
-    <text x="200" y="425" font-family="'Noto Serif SC', serif" font-size="14" fill="#C41E3A" text-anchor="middle">护身符</text>
-    <text x="200" y="450" font-family="Inter, sans-serif" font-size="12" fill="#6B6B6B" text-anchor="middle">Ward off negative energy</text>
-    <text x="200" y="478" font-family="Inter, sans-serif" font-size="16" fill="#C41E3A" text-anchor="middle" font-weight="600">$22.00</text>
-    
+  <rect width="600" height="750" fill="url(#paper)" rx="4"/>
+  <rect x="15" y="15" width="570" height="720" rx="2" fill="none" stroke="url(#cinnabar)" stroke-width="2"/>
+  <rect x="25" y="25" width="550" height="700" rx="2" fill="none" stroke="url(#cinnabar)" stroke-width="1" opacity="0.6"/>
+  <path d="M15,45 L15,15 L45,15" fill="none" stroke="url(#gold)" stroke-width="2"/>
+  <path d="M585,45 L585,15 L555,15" fill="none" stroke="url(#gold)" stroke-width="2"/>
+  <path d="M15,705 L15,735 L45,735" fill="none" stroke="url(#gold)" stroke-width="2"/>
+  <path d="M585,705 L585,735 L555,735" fill="none" stroke="url(#gold)" stroke-width="2"/>
+  <!-- Protection seal -->
+  <rect x="200" y="60" width="200" height="200" rx="6" fill="url(#cinnabar)"/>
+  <rect x="215" y="75" width="170" height="170" rx="4" fill="none" stroke="#FF4444" stroke-width="1.5" opacity="0.5"/>
+  <text x="300" y="145" font-family="serif" font-size="60" fill="#FFD700" text-anchor="middle" font-weight="bold">護</text>
+  <text x="300" y="210" font-family="serif" font-size="40" fill="#FFD700" text-anchor="middle">辟邪護身</text>
+  <!-- Protection symbols - shield -->
+  <path d="M300,310 L220,350 L220,430 Q220,480 300,510 Q380,480 380,430 L380,350 Z" fill="none" stroke="url(#cinnabar)" stroke-width="3" opacity="0.8"/>
+  <path d="M300,330 L240,360 L240,430 Q240,470 300,495 Q360,470 360,430 L360,360 Z" fill="none" stroke="url(#cinnabar)" stroke-width="1.5" opacity="0.5"/>
+  <text x="300" y="435" font-family="serif" font-size="36" fill="#CC0000" text-anchor="middle" opacity="0.8">☰</text>
+  <!-- Lightning bolts -->
+  <path d="M180,530 L210,530 L200,560 L230,550 L210,590" fill="none" stroke="#CC0000" stroke-width="2" opacity="0.6"/>
+  <path d="M420,530 L390,530 L400,560 L370,550 L390,590" fill="none" stroke="#CC0000" stroke-width="2" opacity="0.6"/>
+  <!-- Content -->
+  <text x="300" y="620" font-family="'Playfair Display', serif" font-size="28" fill="#1A1A1A" text-anchor="middle" font-weight="bold" letter-spacing="2">Protection Talisman</text>
+  <text x="300" y="650" font-family="'Noto Serif SC', serif" font-size="18" fill="#CC0000" text-anchor="middle">护身符 · 辟邪护体</text>
+  <text x="300" y="680" font-family="sans-serif" font-size="13" fill="#666" text-anchor="middle">Shield against negative energies & evil spirits</text>
+  <rect x="230" y="695" width="140" height="35" rx="17" fill="url(#cinnabar)"/>
+  <text x="300" y="718" font-family="sans-serif" font-size="18" fill="#FFF" text-anchor="middle" font-weight="bold">$24.99</text>
 </svg>

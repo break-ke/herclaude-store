@@ -1,34 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="700" viewBox="0 0 600 700">
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#FDF2F4"/>
-      <stop offset="100%" stop-color="#F8F5F0"/>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FDF5E6"/>
+      <stop offset="100%" stop-color="#F0E0C0"/>
     </linearGradient>
-    <linearGradient id="hero" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#C41E3A"/>
+    <linearGradient id="cinnabar" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#CC0000"/>
       <stop offset="100%" stop-color="#8B0000"/>
     </linearGradient>
     <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#C9A96E"/>
-      <stop offset="100%" stop-color="#B08D4B"/>
+      <stop offset="0%" stop-color="#FFD700"/>
+      <stop offset="100%" stop-color="#B8860B"/>
     </linearGradient>
   </defs>
-  
-    <rect width="600" height="700" fill="url(#bg)" rx="8"/>
-    <rect x="30" y="30" width="540" height="450" fill="#C41E3A" rx="8"/>
-    <!-- Talisman detail motif -->
-    <rect x="100" y="80" width="400" height="350" fill="none" stroke="#C9A96E" stroke-width="2" rx="4" opacity="0.5"/>
-    <rect x="130" y="110" width="340" height="290" fill="none" stroke="#C9A96E" stroke-width="1" rx="2" opacity="0.3"/>
-    <path d="M200,200 Q300,150 400,200 Q400,280 300,330 Q200,280 200,200Z" fill="none" stroke="#C9A96E" stroke-width="2" opacity="0.6"/>
-    <text x="300" y="270" font-family="serif" font-size="48" fill="#C9A96E" text-anchor="middle" opacity="0.8">敕令</text>
-    <text x="300" y="320" font-family="serif" font-size="24" fill="#C9A96E" text-anchor="middle" opacity="0.6">护身平安</text>
-    <!-- Decor lines -->
-    <line x1="100" y1="120" x2="500" y2="120" stroke="#C9A96E" stroke-width="1" opacity="0.2"/>
-    <line x1="100" y1="390" x2="500" y2="390" stroke="#C9A96E" stroke-width="1" opacity="0.2"/>
-    <text x="300" y="550" font-family="'Playfair Display', serif" font-size="24" fill="#1A1A1A" text-anchor="middle" font-weight="600">Protection Talisman</text>
-    <text x="300" y="580" font-family="'Noto Serif SC', serif" font-size="16" fill="#C41E3A" text-anchor="middle">护身符 · 平安</text>
-    <text x="300" y="610" font-family="Inter, sans-serif" font-size="14" fill="#6B6B6B" text-anchor="middle">Hand-drawn on authentic red paper with gold cinnabar ink</text>
-    <text x="300" y="650" font-family="Inter, sans-serif" font-size="20" fill="#C41E3A" text-anchor="middle" font-weight="600">$22.00</text>
-    <text x="300" y="678" font-family="Inter, sans-serif" font-size="13" fill="#6B6B6B" text-anchor="middle">★ Free shipping on orders over $50</text>
-    
+  <rect width="600" height="600" fill="url(#paper)" rx="4"/>
+  <rect x="12" y="12" width="576" height="576" rx="2" fill="none" stroke="url(#cinnabar)" stroke-width="2"/>
+  <rect x="20" y="20" width="560" height="560" rx="2" fill="none" stroke="url(#cinnabar)" stroke-width="1" opacity="0.5"/>
+  <!-- Main seal -->
+  <rect x="150" y="50" width="300" height="180" rx="8" fill="url(#cinnabar)"/>
+  <rect x="165" y="65" width="270" height="150" rx="5" fill="none" stroke="#FF6666" stroke-width="1.5" opacity="0.5"/>
+  <text x="300" y="120" font-family="serif" font-size="36" fill="#FFD700" text-anchor="middle">靈符</text>
+  <text x="300" y="175" font-family="serif" font-size="28" fill="#FFD700" text-anchor="middle">HerClaude</text>
+  <text x="300" y="205" font-family="serif" font-size="16" fill="#FFD700" text-anchor="middle" opacity="0.8">Daoist Talismanic Arts</text>
+  <!-- Central bagua / cosmic diagram -->
+  <circle cx="300" cy="340" r="70" fill="none" stroke="url(#cinnabar)" stroke-width="2"/>
+  <circle cx="300" cy="340" r="60" fill="none" stroke="url(#cinnabar)" stroke-width="1.5" opacity="0.6"/>
+  <circle cx="300" cy="340" r="50" fill="none" stroke="url(#gold)" stroke-width="1.5" opacity="0.5"/>
+  <text x="300" y="352" font-family="serif" font-size="48" fill="url(#cinnabar)" text-anchor="middle" opacity="0.8">☯</text>
+  <!-- Decorative thunder lines -->
+  <path d="M100,270 L140,260 L130,290 L160,280 L140,310" fill="none" stroke="url(#cinnabar)" stroke-width="1.5" opacity="0.5"/>
+  <path d="M500,270 L460,260 L470,290 L440,280 L460,310" fill="none" stroke="url(#cinnabar)" stroke-width="1.5" opacity="0.5"/>
+  <path d="M100,410 L140,400 L130,430 L160,420 L140,450" fill="none" stroke="url(#cinnabar)" stroke-width="1.5" opacity="0.5"/>
+  <path d="M500,410 L460,400 L470,430 L440,420 L460,450" fill="none" stroke="url(#cinnabar)" stroke-width="1.5" opacity="0.5"/>
+  <!-- Bottom text -->
+  <text x="300" y="500" font-family="'Playfair Display', serif" font-size="20" fill="#1A1A1A" text-anchor="middle" font-weight="bold">Authentic Daoist Talisman</text>
+  <text x="300" y="530" font-family="'Noto Serif SC', serif" font-size="16" fill="url(#cinnabar)" text-anchor="middle">正宗道家符箓 · 千年传承</text>
+  <text x="300" y="560" font-family="sans-serif" font-size="12" fill="#666" text-anchor="middle">Hand-crafted using traditional Maoshan techniques</text>
+  <!-- Small decorative stamps -->
+  <rect x="80" y="480" width="40" height="40" rx="3" fill="url(#cinnabar)"/>
+  <text x="100" y="505" font-family="serif" font-size="18" fill="#FFD700" text-anchor="middle">正</text>
+  <rect x="480" y="480" width="40" height="40" rx="3" fill="url(#cinnabar)"/>
+  <text x="500" y="505" font-family="serif" font-size="18" fill="#FFD700" text-anchor="middle">宗</text>
 </svg>
