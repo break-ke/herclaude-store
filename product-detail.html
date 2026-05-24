@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,11 @@
   <meta name="description" content="View details for this authentic Daoist talisman. Hand-crafted on traditional paper with consecrated ink.">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/style.css?v=2">
+  <link rel="stylesheet" href="css/style.css?v=3">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
 
   <!-- Scripts -->
   <script src="js/data.js" defer></script>
@@ -17,32 +21,47 @@
 </head>
 <body>
 
-  <!-- ===== HEADER ===== -->
-  <header class="site-header" role="banner">
-    <div class="container header-inner">
-      <a href="/" class="logo" aria-label="herclaude home">
-        <span class="logo-cn">herclaude</span>
-        <span class="logo-sub">符 · Daoist Talismans</span>
-      </a>
-      <nav class="main-nav" aria-label="Main navigation">
-        <ul>
-          <li><a href="products.html">Talismans</a></li>
-          <li><a href="knowledge.html">Knowledge</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="cart.html" class="cart-link" aria-label="Shopping cart">
-            <span class="cart-icon">🛒</span>
-            <span class="cart-count" id="cart-count">0</span>
-          </a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <!-- ===== PROMO BAR ===== -->
+  <div class="top-bar">
+    ✦ Free Shipping on orders $75+ <span>|</span> Authentic Daoist Talismans · Hand-Crafted by Lineage Holders
+  </div>
+
+  <!-- ===== HEADER (v2) ===== -->
+  <div class="nav-wrapper">
+    <nav class="nav">
+      <div class="nav-left">
+        <a href="products.html">Talismans</a>
+        <a href="knowledge.html">Knowledge</a>
+        <a href="about.html">About</a>
+      </div>
+
+      <div class="nav-logo">
+        herclaude
+        <span class="logo-sub">DAOIST TALISMANS</span>
+      </div>
+
+      <div class="nav-right">
+        <a href="cart.html" class="cart-link" aria-label="Shopping cart">
+          <span class="cart-icon">&#x1F6D2;</span>
+          <span class="cart-count" id="cart-count">0</span>
+        </a>
+        <a href="products.html" class="nav-cta">
+          <span>⟡</span> Explore
+        </a>
+      </div>
+
+      <div class="nav-toggle" onclick="this.parentElement.classList.toggle('nav-menu-open')">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </div>
 
   <!-- ===== MAIN CONTENT ===== -->
   <main id="main-content" role="main">
 
     <!-- Breadcrumb -->
-    <!-- TODO: Dynamic breadcrumb based on product collection -->
     <nav class="breadcrumb" aria-label="Breadcrumb">
       <div class="container">
         <ol>
@@ -54,13 +73,11 @@
     </nav>
 
     <!-- Product Detail (PDP) -->
-    <!-- TODO: Render full product data from data.js by URL/product ID -->
     <article class="product-detail" itemscope itemtype="https://schema.org/Product">
       <div class="container product-detail-layout">
 
         <!-- Image Gallery -->
         <div class="product-gallery">
-          <!-- TODO: Main product image + thumbnail gallery -->
           <figure class="product-image-main">
             <img src="images/product-placeholder.svg" alt="Product image" itemprop="image">
           </figure>
@@ -114,7 +131,6 @@
       </div><!-- /.product-detail-layout -->
 
       <!-- Full Description (below fold) -->
-      <!-- TODO: Render long-form product.description from data.js -->
       <section class="product-description" aria-labelledby="desc-heading">
         <div class="container">
           <h2 id="desc-heading">About This Talisman</h2>
@@ -125,7 +141,6 @@
       </section>
 
       <!-- Related / Upsell -->
-      <!-- TODO: Show related products from the same collection -->
       <section class="related-products" aria-labelledby="related-heading">
         <div class="container">
           <h2 id="related-heading">You May Also Like</h2>
@@ -139,22 +154,57 @@
 
   </main>
 
-  <!-- ===== FOOTER ===== -->
+  <!-- ===== FOOTER (v2) ===== -->
   <footer class="site-footer" role="contentinfo">
-    <div class="container footer-inner">
+    <div class="footer-grid">
       <div class="footer-brand">
-        <strong>herclaude</strong>
-        <p>Authentic Daoist Talismans · 道符</p>
+        <h4>herclaude</h4>
+        <p>Authentic Chinese Daoist talismans hand-crafted by lineage holders. Rooted in centuries-old spiritual tradition — brought to the modern world with reverence and care.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram">&#x1F4F7;</a>
+          <a href="#" aria-label="TikTok">&#x1F3B5;</a>
+          <a href="#" aria-label="Pinterest">&#x1F4CC;</a>
+          <a href="#" aria-label="YouTube">&#x25B6;&#xFE0F;</a>
+        </div>
       </div>
-      <nav class="footer-nav" aria-label="Footer navigation">
+      <div class="footer-col">
+        <h4>Shop</h4>
         <ul>
-          <li><a href="about.html">About</a></li>
-          <li><a href="knowledge.html">Knowledge</a></li>
-          <li><a href="about.html#faq">FAQ</a></li>
-          <li><a href="about.html#shipping">Shipping</a></li>
+          <li><a href="products.html">All Talismans</a></li>
+          <li><a href="products.html?collection=wealth">Wealth</a></li>
+          <li><a href="products.html?collection=protection">Protection</a></li>
+          <li><a href="products.html?collection=love">Love</a></li>
+          <li><a href="products.html?collection=peace">Peace</a></li>
+          <li><a href="products.html?collection=sets">Talisman Sets</a></li>
         </ul>
-      </nav>
-      <p class="footer-copy">&copy; 2025 herclaude. All rights reserved.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="knowledge.html">Knowledge Base</a></li>
+          <li><a href="about.html#faq">FAQ</a></li>
+          <li><a href="about.html#shipping">Shipping Info</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="about.html">Contact Us</a></li>
+          <li><a href="cart.html">Track Order</a></li>
+          <li><a href="about.html#shipping">Returns &amp; Exchanges</a></li>
+          <li><a href="about.html#faq">Wholesale</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 herclaude. All rights reserved. Authentic Daoist Talismans &middot; 道符</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Accessibility</a>
+        <a href="#">Sitemap</a>
+      </div>
     </div>
   </footer>
 
@@ -318,7 +368,6 @@
         var qty = qtyInput ? (parseInt(qtyInput.value, 10) || 1) : 1;
         if (pid) {
           Cart.add(pid, qty);
-          // Visual feedback
           var origText = addBtn.textContent;
           addBtn.textContent = 'Added!';
           addBtn.disabled = true;
@@ -342,7 +391,6 @@
       var related = products.filter(function(p) {
         return p.collection === product.collection && p.id !== product.id;
       });
-      // If not enough related from same collection, add a couple more
       if (related.length < 4) {
         var extras = products.filter(function(p) {
           return p.id !== product.id && !related.some(function(r) { return r.id === p.id; });

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,11 @@
   <meta name="description" content="About herclaude — our mission, the Daoist talisman tradition, FAQ, shipping policy, and contact information.">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/style.css?v=2">
+  <link rel="stylesheet" href="css/style.css?v=3">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
 
   <!-- Scripts -->
   <script src="js/data.js" defer></script>
@@ -17,26 +21,42 @@
 </head>
 <body>
 
-  <!-- ===== HEADER ===== -->
-  <header class="site-header" role="banner">
-    <div class="container header-inner">
-      <a href="/" class="logo" aria-label="herclaude home">
-        <span class="logo-cn">herclaude</span>
-        <span class="logo-sub">符 · Daoist Talismans</span>
-      </a>
-      <nav class="main-nav" aria-label="Main navigation">
-        <ul>
-          <li><a href="products.html">Talismans</a></li>
-          <li><a href="knowledge.html">Knowledge</a></li>
-          <li><a href="about.html" aria-current="page">About</a></li>
-          <li><a href="cart.html" class="cart-link" aria-label="Shopping cart">
-            <span class="cart-icon">🛒</span>
-            <span class="cart-count" id="cart-count">0</span>
-          </a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <!-- ===== PROMO BAR ===== -->
+  <div class="top-bar">
+    ✦ Free Shipping on orders $75+ <span>|</span> Authentic Daoist Talismans · Hand-Crafted by Lineage Holders
+  </div>
+
+  <!-- ===== HEADER (v2) ===== -->
+  <div class="nav-wrapper">
+    <nav class="nav">
+      <div class="nav-left">
+        <a href="products.html">Talismans</a>
+        <a href="knowledge.html">Knowledge</a>
+        <a href="about.html" aria-current="page">About</a>
+      </div>
+
+      <div class="nav-logo">
+        herclaude
+        <span class="logo-sub">DAOIST TALISMANS</span>
+      </div>
+
+      <div class="nav-right">
+        <a href="cart.html" class="cart-link" aria-label="Shopping cart">
+          <span class="cart-icon">&#x1F6D2;</span>
+          <span class="cart-count" id="cart-count">0</span>
+        </a>
+        <a href="products.html" class="nav-cta">
+          <span>⟡</span> Explore
+        </a>
+      </div>
+
+      <div class="nav-toggle" onclick="this.parentElement.classList.toggle('nav-menu-open')">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </div>
 
   <!-- ===== MAIN CONTENT ===== -->
   <main id="main-content" role="main">
@@ -50,7 +70,6 @@
     </section>
 
     <!-- Our Story -->
-    <!-- TODO: Replace with final brand narrative copy -->
     <section class="about-story" aria-labelledby="story-heading">
       <div class="container">
         <h2 id="story-heading">Our Story</h2>
@@ -61,7 +80,6 @@
     </section>
 
     <!-- Values / Beliefs -->
-    <!-- TODO: Replace with polished value statements -->
     <section class="about-values" aria-labelledby="values-heading">
       <div class="container">
         <h2 id="values-heading">Our Values</h2>
@@ -87,7 +105,6 @@
     </section>
 
     <!-- FAQ -->
-    <!-- TODO: Populate with real FAQ content -->
     <section class="about-faq" aria-labelledby="faq-heading">
       <div class="container">
         <h2 id="faq-heading">Frequently Asked Questions</h2>
@@ -126,7 +143,6 @@
     </section>
 
     <!-- Shipping & Returns -->
-    <!-- TODO: Replace with finalized policy text -->
     <section class="about-shipping" aria-labelledby="shipping-heading">
       <div class="container">
         <h2 id="shipping-heading">Shipping Policy</h2>
@@ -166,7 +182,6 @@
     </section>
 
     <!-- Contact -->
-    <!-- TODO: Add contact form or email -->
     <section class="about-contact" aria-labelledby="contact-heading">
       <div class="container">
         <h2 id="contact-heading">Contact</h2>
@@ -176,22 +191,57 @@
 
   </main>
 
-  <!-- ===== FOOTER ===== -->
+  <!-- ===== FOOTER (v2) ===== -->
   <footer class="site-footer" role="contentinfo">
-    <div class="container footer-inner">
+    <div class="footer-grid">
       <div class="footer-brand">
-        <strong>herclaude</strong>
-        <p>Authentic Daoist Talismans · 道符</p>
+        <h4>herclaude</h4>
+        <p>Authentic Chinese Daoist talismans hand-crafted by lineage holders. Rooted in centuries-old spiritual tradition — brought to the modern world with reverence and care.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram">&#x1F4F7;</a>
+          <a href="#" aria-label="TikTok">&#x1F3B5;</a>
+          <a href="#" aria-label="Pinterest">&#x1F4CC;</a>
+          <a href="#" aria-label="YouTube">&#x25B6;&#xFE0F;</a>
+        </div>
       </div>
-      <nav class="footer-nav" aria-label="Footer navigation">
+      <div class="footer-col">
+        <h4>Shop</h4>
         <ul>
-          <li><a href="about.html">About</a></li>
-          <li><a href="knowledge.html">Knowledge</a></li>
-          <li><a href="about.html#faq">FAQ</a></li>
-          <li><a href="about.html#shipping">Shipping</a></li>
+          <li><a href="products.html">All Talismans</a></li>
+          <li><a href="products.html?collection=wealth">Wealth</a></li>
+          <li><a href="products.html?collection=protection">Protection</a></li>
+          <li><a href="products.html?collection=love">Love</a></li>
+          <li><a href="products.html?collection=peace">Peace</a></li>
+          <li><a href="products.html?collection=sets">Talisman Sets</a></li>
         </ul>
-      </nav>
-      <p class="footer-copy">&copy; 2025 herclaude. All rights reserved.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="knowledge.html">Knowledge Base</a></li>
+          <li><a href="about.html#faq">FAQ</a></li>
+          <li><a href="about.html#shipping">Shipping Info</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="about.html">Contact Us</a></li>
+          <li><a href="cart.html">Track Order</a></li>
+          <li><a href="about.html#shipping">Returns &amp; Exchanges</a></li>
+          <li><a href="about.html#faq">Wholesale</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 herclaude. All rights reserved. Authentic Daoist Talismans &middot; 道符</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Accessibility</a>
+        <a href="#">Sitemap</a>
+      </div>
     </div>
   </footer>
 

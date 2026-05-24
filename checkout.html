@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,11 @@
   <meta name="description" content="Complete your purchase of authentic Daoist talismans. Secure checkout.">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/style.css?v=2">
+  <link rel="stylesheet" href="css/style.css?v=3">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
 
   <!-- Scripts -->
   <script src="js/data.js" defer></script>
@@ -16,22 +20,45 @@
 </head>
 <body>
 
+  <!-- ===== PROMO BAR ===== -->
+  <div class="top-bar">
+    ✦ Free Shipping on orders $75+ <span>|</span> Authentic Daoist Talismans · Hand-Crafted by Lineage Holders
+  </div>
+
   <!-- ===== HEADER (minimal for checkout) ===== -->
-  <header class="site-header checkout-header" role="banner">
-    <div class="container header-inner">
-      <a href="/" class="logo" aria-label="herclaude home">
-        <span class="logo-cn">herclaude</span>
-        <span class="logo-sub">符 · Daoist Talismans</span>
-      </a>
-      <div class="checkout-steps" aria-label="Checkout progress">
-        <span class="step active">Cart</span>
-        <span class="step-separator">→</span>
-        <span class="step current">Checkout</span>
-        <span class="step-separator">→</span>
-        <span class="step">Confirmation</span>
+  <div class="nav-wrapper">
+    <nav class="nav">
+      <div class="nav-left">
+        <a href="products.html">Talismans</a>
+        <a href="knowledge.html">Knowledge</a>
+        <a href="about.html">About</a>
       </div>
-    </div>
-  </header>
+
+      <div class="nav-logo">
+        herclaude
+        <span class="logo-sub">DAOIST TALISMANS</span>
+      </div>
+
+      <div class="nav-right">
+        <div class="checkout-steps" aria-label="Checkout progress">
+          <span class="step active">Cart</span>
+          <span class="step-separator">→</span>
+          <span class="step current">Checkout</span>
+          <span class="step-separator">→</span>
+          <span class="step">Confirmation</span>
+        </div>
+        <a href="cart.html" class="cart-link" aria-label="Shopping cart">
+          <span class="cart-count" id="cart-count">0</span>
+        </a>
+      </div>
+
+      <div class="nav-toggle" onclick="this.parentElement.classList.toggle('nav-menu-open')">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </div>
 
   <!-- ===== MAIN CONTENT ===== -->
   <main id="main-content" role="main">
@@ -47,7 +74,7 @@
     <section class="checkout-form-section" aria-label="Checkout form">
       <div class="container checkout-layout">
 
-        <!-- Form Fields (placeholders — no actual submission) -->
+        <!-- Form Fields -->
         <form class="checkout-form" id="checkout-form" novalidate>
 
           <!-- Contact -->
@@ -121,7 +148,7 @@
             </div>
           </fieldset>
 
-          <!-- Payment (placeholder — Stripe coming soon) -->
+          <!-- Payment (placeholder) -->
           <fieldset class="form-fieldset">
             <legend>Payment</legend>
             <div class="form-group">
@@ -152,7 +179,7 @@
             </div>
           </fieldset>
 
-          <!-- Place Order (disabled — payment not yet implemented) -->
+          <!-- Place Order -->
           <button type="submit" class="btn btn-primary btn-block btn-lg" id="place-order">
             Place Order
           </button>
@@ -185,8 +212,8 @@
 
   <!-- ===== FOOTER (minimal) ===== -->
   <footer class="site-footer checkout-footer" role="contentinfo">
-    <div class="container footer-inner">
-      <p class="footer-copy">&copy; 2025 herclaude. All rights reserved.</p>
+    <div class="footer-inner">
+      <p class="footer-copy">&copy; 2026 herclaude. All rights reserved.</p>
     </div>
   </footer>
 
@@ -195,7 +222,6 @@
     Cart.load();
     var items = Cart.getAll();
 
-    // Empty cart → redirect back to cart page
     if (items.length === 0) {
       window.location.href = 'cart.html';
       return;
@@ -204,7 +230,6 @@
     var summaryItems = document.getElementById('checkout-summary-items');
     var subtotal = 0;
 
-    // Render each cart line item in the summary sidebar
     items.forEach(function(item) {
       var product = products.find(function(p) { return p.id === item.productId; });
       if (!product) return;
@@ -233,14 +258,12 @@
       document.getElementById('checkout-total').textContent = Utils.formatPrice(subtotal + shippingCost);
     }
 
-    // Recalculate shipping on selection change
     document.querySelectorAll('input[name="shipping"]').forEach(function(radio) {
       radio.addEventListener('change', updateSummary);
     });
 
     updateSummary();
 
-    // Place Order — disabled button with friendly prompt
     var placeOrderBtn = document.getElementById('place-order');
     placeOrderBtn.addEventListener('click', function(e) {
       e.preventDefault();
