@@ -1,0 +1,300 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+  <defs>
+    <!-- Deep azure/indigo paper gradient -->
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1A1A3D"/>
+      <stop offset="50%" stop-color="#14142E"/>
+      <stop offset="100%" stop-color="#0D0D2D"/>
+    </linearGradient>
+    <!-- Cinnabar ink gradient -->
+    <linearGradient id="cinnabar" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#CC0000"/>
+      <stop offset="100%" stop-color="#8B0000"/>
+    </linearGradient>
+    <!-- Gold character color -->
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFD700"/>
+      <stop offset="50%" stop-color="#FFC107"/>
+      <stop offset="100%" stop-color="#B8860B"/>
+    </linearGradient>
+    <!-- Silver/white accent -->
+    <linearGradient id="silver" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E0E0E0"/>
+      <stop offset="100%" stop-color="#C0C0C0"/>
+    </linearGradient>
+    <!-- Seal red -->
+    <linearGradient id="sealRed" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#DC143C"/>
+      <stop offset="100%" stop-color="#8B0000"/>
+    </linearGradient>
+    <!-- Aged paper texture pattern -->
+    <filter id="texture">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" result="noise"/>
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise"/>
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="textured"/>
+      <feComponentTransfer in="textured">
+        <feFuncA type="linear" slope="1"/>
+      </feComponentTransfer>
+    </filter>
+    <!-- Glow filter for celestial dots -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background paper -->
+  <rect width="600" height="600" fill="url(#paper)" rx="2"/>
+
+  <!-- Aged paper texture lines (horizontal) -->
+  <g opacity="0.04" stroke="#8888CC">
+    <line x1="0" y1="30" x2="600" y2="30" stroke-width="0.5"/>
+    <line x1="0" y1="60" x2="600" y2="60" stroke-width="0.3"/>
+    <line x1="0" y1="95" x2="600" y2="95" stroke-width="0.4"/>
+    <line x1="0" y1="130" x2="600" y2="130" stroke-width="0.3"/>
+    <line x1="0" y1="170" x2="600" y2="170" stroke-width="0.5"/>
+    <line x1="0" y1="210" x2="600" y2="210" stroke-width="0.2"/>
+    <line x1="0" y1="255" x2="600" y2="255" stroke-width="0.4"/>
+    <line x1="0" y1="300" x2="600" y2="300" stroke-width="0.3"/>
+    <line x1="0" y1="350" x2="600" y2="350" stroke-width="0.5"/>
+    <line x1="0" y1="395" x2="600" y2="395" stroke-width="0.2"/>
+    <line x1="0" y1="440" x2="600" y2="440" stroke-width="0.4"/>
+    <line x1="0" y1="480" x2="600" y2="480" stroke-width="0.3"/>
+    <line x1="0" y1="520" x2="600" y2="520" stroke-width="0.5"/>
+    <line x1="0" y1="560" x2="600" y2="560" stroke-width="0.3"/>
+  </g>
+
+  <!-- Aged paper texture lines (vertical) -->
+  <g opacity="0.03" stroke="#8888CC">
+    <line x1="45" y1="0" x2="45" y2="600" stroke-width="0.4"/>
+    <line x1="120" y1="0" x2="120" y2="600" stroke-width="0.3"/>
+    <line x1="200" y1="0" x2="200" y2="600" stroke-width="0.5"/>
+    <line x1="300" y1="0" x2="300" y2="600" stroke-width="0.2"/>
+    <line x1="400" y1="0" x2="400" y2="600" stroke-width="0.4"/>
+    <line x1="480" y1="0" x2="480" y2="600" stroke-width="0.3"/>
+    <line x1="555" y1="0" x2="555" y2="600" stroke-width="0.5"/>
+  </g>
+
+  <!-- Double cinnabar border with gap (boundary) -->
+  <!-- Outer border -->
+  <rect x="12" y="12" width="576" height="576" rx="4" fill="none" stroke="url(#cinnabar)" stroke-width="3"/>
+  <rect x="16" y="16" width="568" height="568" rx="3" fill="none" stroke="url(#cinnabar)" stroke-width="0.5" opacity="0.4"/>
+  
+  <!-- Gap zone with faint boundary lines -->
+  <rect x="30" y="30" width="540" height="540" rx="2" fill="none" stroke="url(#silver)" stroke-width="0.3" opacity="0.15"/>
+  
+  <!-- Inner border -->
+  <rect x="36" y="36" width="528" height="528" rx="3" fill="none" stroke="url(#cinnabar)" stroke-width="0.5" opacity="0.4"/>
+  <rect x="40" y="40" width="520" height="520" rx="4" fill="none" stroke="url(#cinnabar)" stroke-width="2.5"/>
+
+  <!-- N/S/E/W directional markers in the gap zone -->
+  <!-- North -->
+  <g>
+    <line x1="300" y1="18" x2="300" y2="32" stroke="url(#cinnabar)" stroke-width="2"/>
+    <polygon points="300,14 294,24 306,24" fill="url(#cinnabar)"/>
+    <text x="300" y="12" font-family="'Noto Serif SC', 'SimSun', serif" font-size="10" fill="url(#silver)" text-anchor="middle" opacity="0.8">N</text>
+  </g>
+  <!-- South -->
+  <g>
+    <line x1="300" y1="568" x2="300" y2="582" stroke="url(#cinnabar)" stroke-width="2"/>
+    <polygon points="300,586 294,576 306,576" fill="url(#cinnabar)"/>
+    <text x="300" y="592" font-family="'Noto Serif SC', 'SimSun', serif" font-size="10" fill="url(#silver)" text-anchor="middle" opacity="0.8">S</text>
+  </g>
+  <!-- East -->
+  <g>
+    <line x1="568" y1="300" x2="582" y2="300" stroke="url(#cinnabar)" stroke-width="2"/>
+    <polygon points="586,300 576,294 576,306" fill="url(#cinnabar)"/>
+    <text x="590" y="304" font-family="'Noto Serif SC', 'SimSun', serif" font-size="10" fill="url(#silver)" text-anchor="middle" opacity="0.8">E</text>
+  </g>
+  <!-- West -->
+  <g>
+    <line x1="18" y1="300" x2="32" y2="300" stroke="url(#cinnabar)" stroke-width="2"/>
+    <polygon points="14,300 24,294 24,306" fill="url(#cinnabar)"/>
+    <text x="10" y="304" font-family="'Noto Serif SC', 'SimSun', serif" font-size="10" fill="url(#silver)" text-anchor="middle" opacity="0.8">W</text>
+  </g>
+
+  <!-- Corner boundary markers -->
+  <g opacity="0.6">
+    <!-- Top-left corner -->
+    <path d="M32,32 L44,32 L44,44" fill="none" stroke="url(#silver)" stroke-width="1"/>
+    <path d="M36,32 L36,36 L32,36" fill="none" stroke="url(#cinnabar)" stroke-width="1.5"/>
+    <!-- Top-right corner -->
+    <path d="M568,32 L556,32 L556,44" fill="none" stroke="url(#silver)" stroke-width="1"/>
+    <path d="M564,32 L564,36 L568,36" fill="none" stroke="url(#cinnabar)" stroke-width="1.5"/>
+    <!-- Bottom-left corner -->
+    <path d="M32,568 L44,568 L44,556" fill="none" stroke="url(#silver)" stroke-width="1"/>
+    <path d="M36,568 L36,564 L32,564" fill="none" stroke="url(#cinnabar)" stroke-width="1.5"/>
+    <!-- Bottom-right corner -->
+    <path d="M568,568 L556,568 L556,556" fill="none" stroke="url(#silver)" stroke-width="1"/>
+    <path d="M564,568 L564,564 L568,564" fill="none" stroke="url(#cinnabar)" stroke-width="1.5"/>
+  </g>
+
+  <!-- Main seal: gold character 界 on red -->
+  <rect x="175" y="60" width="250" height="160" rx="10" fill="url(#sealRed)" filter="url(#texture)"/>
+  <rect x="190" y="75" width="220" height="130" rx="6" fill="none" stroke="#FF6666" stroke-width="1.5" opacity="0.4"/>
+  <!-- Small decorative corner marks in seal -->
+  <circle cx="195" cy="80" r="2" fill="#FFD700" opacity="0.5"/>
+  <circle cx="405" cy="80" r="2" fill="#FFD700" opacity="0.5"/>
+  <circle cx="195" cy="200" r="2" fill="#FFD700" opacity="0.5"/>
+  <circle cx="405" cy="200" r="2" fill="#FFD700" opacity="0.5"/>
+  <!-- Gold character 界 -->
+  <text x="300" y="155" font-family="'Noto Serif SC', 'KaiTi', 'STKaiti', serif" font-size="72" fill="url(#gold)" text-anchor="middle" font-weight="bold">界</text>
+  <!-- Subtitle under seal character -->
+  <text x="300" y="200" font-family="'Noto Serif SC', 'SimSun', serif" font-size="14" fill="url(#gold)" text-anchor="middle" opacity="0.7">Jie — Boundary</text>
+
+  <!-- Central mandala-like concentric ring pattern -->
+  <g transform="translate(300, 360)">
+    <!-- Outermost ring -->
+    <circle cx="0" cy="0" r="85" fill="none" stroke="url(#cinnabar)" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="78" fill="none" stroke="url(#silver)" stroke-width="0.8" opacity="0.3"/>
+    <!-- Decorative outer ring with dashes -->
+    <circle cx="0" cy="0" r="82" fill="none" stroke="url(#cinnabar)" stroke-width="1" stroke-dasharray="4,5" opacity="0.6"/>
+    
+    <!-- Second ring -->
+    <circle cx="0" cy="0" r="68" fill="none" stroke="url(#cinnabar)" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="62" fill="none" stroke="url(#silver)" stroke-width="0.8" opacity="0.25"/>
+    
+    <!-- Inner ring with dashes -->
+    <circle cx="0" cy="0" r="55" fill="none" stroke="url(#cinnabar)" stroke-width="1.2" stroke-dasharray="3,4" opacity="0.7"/>
+    
+    <!-- Third ring -->
+    <circle cx="0" cy="0" r="48" fill="none" stroke="url(#cinnabar)" stroke-width="1"/>
+    <circle cx="0" cy="0" r="42" fill="none" stroke="url(#silver)" stroke-width="0.6" opacity="0.2"/>
+    
+    <!-- Fourth ring -->
+    <circle cx="0" cy="0" r="35" fill="none" stroke="url(#cinnabar)" stroke-width="1"/>
+    
+    <!-- Inner dotted ring -->
+    <circle cx="0" cy="0" r="28" fill="none" stroke="url(#silver)" stroke-width="0.8" stroke-dasharray="2,6" opacity="0.5"/>
+    
+    <!-- Innermost ring -->
+    <circle cx="0" cy="0" r="20" fill="none" stroke="url(#cinnabar)" stroke-width="1.5"/>
+    
+    <!-- Center dot -->
+    <circle cx="0" cy="0" r="4" fill="url(#cinnabar)"/>
+    <circle cx="0" cy="0" r="2" fill="url(#silver)" opacity="0.6"/>
+
+    <!-- Four directional spokes within mandala -->
+    <line x1="0" y1="-82" x2="0" y2="-35" stroke="url(#cinnabar)" stroke-width="0.8" opacity="0.5"/>
+    <line x1="0" y1="35" x2="0" y2="82" stroke="url(#cinnabar)" stroke-width="0.8" opacity="0.5"/>
+    <line x1="-82" y1="0" x2="-35" y2="0" stroke="url(#cinnabar)" stroke-width="0.8" opacity="0.5"/>
+    <line x1="35" y1="0" x2="82" y2="0" stroke="url(#cinnabar)" stroke-width="0.8" opacity="0.5"/>
+
+    <!-- Diagonal spokes -->
+    <line x1="-58" y1="-58" x2="-25" y2="-25" stroke="url(#cinnabar)" stroke-width="0.8" opacity="0.4"/>
+    <line x1="58" y1="-58" x2="25" y2="-25" stroke="url(#cinnabar)" stroke-width="0.8" opacity="0.4"/>
+    <line x1="-58" y1="58" x2="-25" y2="25" stroke="url(#cinnabar)" stroke-width="0.8" opacity="0.4"/>
+    <line x1="58" y1="58" x2="25" y2="25" stroke="url(#cinnabar)" stroke-width="0.8" opacity="0.4"/>
+  </g>
+
+  <!-- Boundary line markers (small cinnabar blocks flanking mandala) -->
+  <g>
+    <rect x="110" y="345" width="30" height="4" rx="1" fill="url(#cinnabar)" opacity="0.7"/>
+    <rect x="110" y="355" width="30" height="4" rx="1" fill="url(#cinnabar)" opacity="0.7"/>
+    <rect x="110" y="365" width="30" height="4" rx="1" fill="url(#cinnabar)" opacity="0.7"/>
+    <rect x="110" y="375" width="30" height="4" rx="1" fill="url(#cinnabar)" opacity="0.7"/>
+    
+    <rect x="460" y="345" width="30" height="4" rx="1" fill="url(#cinnabar)" opacity="0.7"/>
+    <rect x="460" y="355" width="30" height="4" rx="1" fill="url(#cinnabar)" opacity="0.7"/>
+    <rect x="460" y="365" width="30" height="4" rx="1" fill="url(#cinnabar)" opacity="0.7"/>
+    <rect x="460" y="375" width="30" height="4" rx="1" fill="url(#cinnabar)" opacity="0.7"/>
+  </g>
+
+  <!-- Celestial dot patterns around edges -->
+  <g fill="url(#silver)" filter="url(#glow)" opacity="0.7">
+    <!-- Top edge dots (7 dots representing Big Dipper reference) -->
+    <circle cx="100" cy="50" r="2"/>
+    <circle cx="160" cy="46" r="1.8"/>
+    <circle cx="220" cy="52" r="2.2"/>
+    <circle cx="280" cy="48" r="1.5"/>
+    <circle cx="340" cy="50" r="2"/>
+    <circle cx="400" cy="47" r="1.8"/>
+    <circle cx="460" cy="51" r="2.2"/>
+    <circle cx="520" cy="49" r="1.5"/>
+
+    <!-- Bottom edge dots -->
+    <circle cx="100" cy="550" r="2"/>
+    <circle cx="160" cy="554" r="1.8"/>
+    <circle cx="220" cy="548" r="2.2"/>
+    <circle cx="280" cy="552" r="1.5"/>
+    <circle cx="340" cy="550" r="2"/>
+    <circle cx="400" cy="553" r="1.8"/>
+    <circle cx="460" cy="549" r="2.2"/>
+    <circle cx="520" cy="551" r="1.5"/>
+
+    <!-- Left edge dots -->
+    <circle cx="50" cy="110" r="1.8"/>
+    <circle cx="54" cy="170" r="2"/>
+    <circle cx="48" cy="230" r="1.5"/>
+    <circle cx="52" cy="440" r="2"/>
+    <circle cx="49" cy="500" r="1.8"/>
+
+    <!-- Right edge dots -->
+    <circle cx="550" cy="110" r="1.8"/>
+    <circle cx="546" cy="170" r="2"/>
+    <circle cx="552" cy="230" r="1.5"/>
+    <circle cx="548" cy="440" r="2"/>
+    <circle cx="551" cy="500" r="1.8"/>
+  </g>
+
+  <!-- Corner constellation clusters -->
+  <g fill="url(#silver)" filter="url(#glow)" opacity="0.5">
+    <!-- Top-left cluster -->
+    <circle cx="65" cy="65" r="1"/>
+    <circle cx="75" cy="60" r="1.2"/>
+    <circle cx="60" cy="78" r="0.8"/>
+    <circle cx="80" cy="72" r="1"/>
+    
+    <!-- Top-right cluster -->
+    <circle cx="535" cy="65" r="1"/>
+    <circle cx="525" cy="60" r="1.2"/>
+    <circle cx="540" cy="78" r="0.8"/>
+    <circle cx="520" cy="72" r="1"/>
+
+    <!-- Bottom-left cluster -->
+    <circle cx="65" cy="535" r="1"/>
+    <circle cx="75" cy="540" r="1.2"/>
+    <circle cx="60" cy="522" r="0.8"/>
+    <circle cx="80" cy="528" r="1"/>
+
+    <!-- Bottom-right cluster -->
+    <circle cx="535" cy="535" r="1"/>
+    <circle cx="525" cy="540" r="1.2"/>
+    <circle cx="540" cy="522" r="0.8"/>
+    <circle cx="520" cy="528" r="1"/>
+  </g>
+
+  <!-- Connecting lines between celestial dots (subtle constellation lines) -->
+  <g stroke="url(#silver)" stroke-width="0.3" opacity="0.15">
+    <line x1="100" y1="50" x2="160" y2="46"/>
+    <line x1="160" y1="46" x2="220" y2="52"/>
+    <line x1="220" y1="52" x2="280" y2="48"/>
+    <line x1="280" y1="48" x2="340" y2="50"/>
+    <line x1="340" y1="50" x2="400" y2="47"/>
+    <line x1="400" y1="47" x2="460" y2="51"/>
+    <line x1="460" y1="51" x2="520" y2="49"/>
+
+    <line x1="100" y1="550" x2="160" y2="554"/>
+    <line x1="160" y1="554" x2="220" y2="548"/>
+    <line x1="220" y1="548" x2="280" y2="552"/>
+    <line x1="280" y1="552" x2="340" y2="550"/>
+    <line x1="340" y1="550" x2="400" y2="553"/>
+    <line x1="400" y1="553" x2="460" y2="549"/>
+    <line x1="460" y1="549" x2="520" y2="551"/>
+  </g>
+
+  <!-- Bottom text section -->
+  <text x="300" y="490" font-family="'Noto Serif SC', 'SimSun', serif" font-size="18" fill="url(#cinnabar)" text-anchor="middle" font-weight="bold" letter-spacing="3">Boundary Talisman</text>
+  <text x="300" y="518" font-family="'Noto Serif SC', 'KaiTi', 'STKaiti', serif" font-size="15" fill="url(#silver)" text-anchor="middle" opacity="0.8">结界符 · 净界护法</text>
+  <text x="300" y="545" font-family="sans-serif" font-size="11" fill="url(#silver)" text-anchor="middle" opacity="0.5" letter-spacing="1">Create sacred boundaries and purified spaces</text>
+
+  <!-- Small decorative seals at bottom -->
+  <rect x="90" y="470" width="36" height="36" rx="3" fill="url(#sealRed)" opacity="0.8"/>
+  <text x="108" y="493" font-family="'Noto Serif SC', serif" font-size="16" fill="url(#gold)" text-anchor="middle">净</text>
+
+  <rect x="474" y="470" width="36" height="36" rx="3" fill="url(#sealRed)" opacity="0.8"/>
+  <text x="492" y="493" font-family="'Noto Serif SC', serif" font-size="16" fill="url(#gold)" text-anchor="middle">界</text>
+</svg>

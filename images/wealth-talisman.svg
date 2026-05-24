@@ -46,7 +46,7 @@
   <!-- Content area -->
   <text x="300" y="500" font-family="'Playfair Display', 'Noto Serif SC', serif" font-size="28" fill="#1A1A1A" text-anchor="middle" font-weight="bold" letter-spacing="2">Wealth Talisman</text>
   <text x="300" y="530" font-family="'Noto Serif SC', 'SimSun', serif" font-size="18" fill="#CC0000" text-anchor="middle">招财符 · 财源广进</text>
-  <text x="300" y="565" font-family="sans-serif" font-size="13" fill="#666" text-anchor="middle">Attract prosperity, abundance & financial success</text>
+  <text x="300" y="565" font-family="sans-serif" font-size="13" fill="#666" text-anchor="middle">Attract prosperity, abundance &amp; financial success</text>
   <!-- Taoist thunderbolt -->
   <path d="M220,600 L250,600 L240,630 L270,620 L250,660" fill="none" stroke="#CC0000" stroke-width="2" opacity="0.6"/>
   <path d="M380,600 L350,600 L360,630 L330,620 L350,660" fill="none" stroke="#CC0000" stroke-width="2" opacity="0.6"/>

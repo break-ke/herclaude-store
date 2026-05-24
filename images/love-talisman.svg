@@ -36,7 +36,7 @@
   <!-- Content -->
   <text x="300" y="530" font-family="'Playfair Display', serif" font-size="28" fill="#1A1A1A" text-anchor="middle" font-weight="bold" letter-spacing="2">Love Talisman</text>
   <text x="300" y="560" font-family="'Noto Serif SC', serif" font-size="18" fill="#E91E63" text-anchor="middle">姻缘符 · 情定终身</text>
-  <text x="300" y="590" font-family="sans-serif" font-size="13" fill="#666" text-anchor="middle">Attract true love & strengthen relationships</text>
+  <text x="300" y="590" font-family="sans-serif" font-size="13" fill="#666" text-anchor="middle">Attract true love &amp; strengthen relationships</text>
   <rect x="230" y="625" width="140" height="35" rx="17" fill="url(#cinnabar)"/>
   <text x="300" y="648" font-family="sans-serif" font-size="18" fill="#FFF" text-anchor="middle" font-weight="bold">$27.99</text>
 </svg>

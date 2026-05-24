@@ -36,7 +36,7 @@
   <!-- Content -->
   <text x="300" y="620" font-family="'Playfair Display', serif" font-size="28" fill="#1A1A1A" text-anchor="middle" font-weight="bold" letter-spacing="2">Protection Talisman</text>
   <text x="300" y="650" font-family="'Noto Serif SC', serif" font-size="18" fill="#CC0000" text-anchor="middle">护身符 · 辟邪护体</text>
-  <text x="300" y="680" font-family="sans-serif" font-size="13" fill="#666" text-anchor="middle">Shield against negative energies & evil spirits</text>
+  <text x="300" y="680" font-family="sans-serif" font-size="13" fill="#666" text-anchor="middle">Shield against negative energies &amp; evil spirits</text>
   <rect x="230" y="695" width="140" height="35" rx="17" fill="url(#cinnabar)"/>
   <text x="300" y="718" font-family="sans-serif" font-size="18" fill="#FFF" text-anchor="middle" font-weight="bold">$24.99</text>
 </svg>

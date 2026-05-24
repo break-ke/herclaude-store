@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F0F5EC"/>
+      <stop offset="100%" stop-color="#E0EDD0"/>
+    </linearGradient>
+    <linearGradient id="cinnabar" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#CC3333"/>
+      <stop offset="100%" stop-color="#992222"/>
+    </linearGradient>
+    <linearGradient id="cinnabarLight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#DD6666"/>
+      <stop offset="100%" stop-color="#BB4444"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E8C84A"/>
+      <stop offset="100%" stop-color="#C4A22A"/>
+    </linearGradient>
+    <linearGradient id="goldLight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F0D860"/>
+      <stop offset="100%" stop-color="#D4B032"/>
+    </linearGradient>
+    <!-- Aged paper texture filter -->
+    <filter id="paperTexture">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" seed="2" result="noise"/>
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise"/>
+      <feComponentTransfer in="grayNoise" result="fadedNoise">
+        <feFuncA type="linear" slope="0.08"/>
+      </feComponentTransfer>
+      <feComposite in="SourceGraphic" in2="fadedNoise" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
+    </filter>
+  </defs>
+
+  <!-- Paper background -->
+  <rect width="600" height="600" fill="url(#paper)" rx="4" filter="url(#paperTexture)"/>
+
+  <!-- Aged paper texture lines (subtle horizontal strokes) -->
+  <line x1="0" y1="80" x2="600" y2="80" stroke="#000" stroke-width="0.3" opacity="0.03"/>
+  <line x1="0" y1="160" x2="600" y2="160" stroke="#000" stroke-width="0.3" opacity="0.02"/>
+  <line x1="0" y1="240" x2="600" y2="240" stroke="#000" stroke-width="0.3" opacity="0.03"/>
+  <line x1="0" y1="320" x2="600" y2="320" stroke="#000" stroke-width="0.3" opacity="0.02"/>
+  <line x1="0" y1="400" x2="600" y2="400" stroke="#000" stroke-width="0.3" opacity="0.03"/>
+  <line x1="0" y1="480" x2="600" y2="480" stroke="#000" stroke-width="0.3" opacity="0.02"/>
+  <line x1="0" y1="560" x2="600" y2="560" stroke="#000" stroke-width="0.3" opacity="0.03"/>
+
+  <!-- Subtle vertical texture -->
+  <line x1="100" y1="0" x2="100" y2="600" stroke="#000" stroke-width="0.2" opacity="0.02"/>
+  <line x1="300" y1="0" x2="300" y2="600" stroke="#000" stroke-width="0.2" opacity="0.02"/>
+  <line x1="500" y1="0" x2="500" y2="600" stroke="#000" stroke-width="0.2" opacity="0.02"/>
+
+  <!-- Soft cinnabar outer border with rounded corners -->
+  <rect x="12" y="12" width="576" height="576" rx="12" fill="none" stroke="url(#cinnabar)" stroke-width="2" opacity="0.8"/>
+  <rect x="20" y="20" width="560" height="560" rx="10" fill="none" stroke="url(#cinnabarLight)" stroke-width="1" opacity="0.4"/>
+
+  <!-- Decorative inner border frame -->
+  <rect x="28" y="28" width="544" height="544" rx="8" fill="none" stroke="url(#cinnabar)" stroke-width="0.5" opacity="0.25"/>
+
+  <!-- Moon crescent decorative elements (gold) - top left -->
+  <g opacity="0.5">
+    <path d="M70,70 Q80,55 95,60 Q85,75 70,70Z" fill="url(#gold)"/>
+    <path d="M75,78 Q82,68 92,70 Q85,80 75,78Z" fill="url(#gold)" opacity="0.3"/>
+  </g>
+
+  <!-- Moon crescent - top right -->
+  <g opacity="0.5">
+    <path d="M530,70 Q520,55 505,60 Q515,75 530,70Z" fill="url(#gold)"/>
+    <path d="M525,78 Q518,68 508,70 Q515,80 525,78Z" fill="url(#gold)" opacity="0.3"/>
+  </g>
+
+  <!-- Moon crescent - bottom left -->
+  <g opacity="0.5">
+    <path d="M70,530 Q80,545 95,540 Q85,525 70,530Z" fill="url(#gold)"/>
+    <path d="M75,522 Q82,532 92,530 Q85,520 75,522Z" fill="url(#gold)" opacity="0.3"/>
+  </g>
+
+  <!-- Moon crescent - bottom right -->
+  <g opacity="0.5">
+    <path d="M530,530 Q520,545 505,540 Q515,525 530,530Z" fill="url(#gold)"/>
+    <path d="M525,522 Q518,532 508,530 Q515,520 525,522Z" fill="url(#gold)" opacity="0.3"/>
+  </g>
+
+  <!-- Small moon crescent - top center decorative -->
+  <g opacity="0.35">
+    <path d="M290,48 Q300,38 310,42 Q305,52 290,48Z" fill="url(#goldLight)"/>
+  </g>
+  <g opacity="0.35">
+    <path d="M310,48 Q300,38 290,42 Q295,52 310,48Z" fill="url(#goldLight)"/>
+  </g>
+
+  <!-- Main seal box with gold character 眠 -->
+  <rect x="185" y="55" width="230" height="190" rx="10" fill="url(#cinnabar)"/>
+  <rect x="200" y="70" width="200" height="160" rx="6" fill="none" stroke="url(#cinnabarLight)" stroke-width="1.5" opacity="0.4"/>
+  <text x="300" y="195" font-family="'Noto Serif SC', 'KaiTi', 'STKaiti', serif" font-size="90" fill="url(#gold)" text-anchor="middle" font-weight="bold">眠</text>
+
+  <!-- Gentle flowing curved decorative strokes (left side) -->
+  <path d="M55,250 Q90,240 110,260 Q130,280 105,295 Q80,310 55,300" fill="none" stroke="url(#cinnabar)" stroke-width="1.2" opacity="0.35"/>
+  <path d="M55,310 Q80,305 95,320 Q110,335 90,345 Q70,355 55,348" fill="none" stroke="url(#cinnabar)" stroke-width="1.2" opacity="0.3"/>
+  <path d="M55,370 Q75,365 88,375 Q100,385 85,395 Q70,405 55,398" fill="none" stroke="url(#cinnabar)" stroke-width="1" opacity="0.25"/>
+
+  <!-- Gentle flowing curved decorative strokes (right side) -->
+  <path d="M545,250 Q510,240 490,260 Q470,280 495,295 Q520,310 545,300" fill="none" stroke="url(#cinnabar)" stroke-width="1.2" opacity="0.35"/>
+  <path d="M545,310 Q520,305 505,320 Q490,335 510,345 Q530,355 545,348" fill="none" stroke="url(#cinnabar)" stroke-width="1.2" opacity="0.3"/>
+  <path d="M545,370 Q525,365 512,375 Q500,385 515,395 Q530,405 545,398" fill="none" stroke="url(#cinnabar)" stroke-width="1" opacity="0.25"/>
+
+  <!-- Gentle flowing strokes below seal -->
+  <path d="M240,260 Q270,255 300,262 Q330,269 360,260" fill="none" stroke="url(#cinnabar)" stroke-width="1" opacity="0.25"/>
+  <path d="M250,275 Q280,270 300,276 Q320,282 350,275" fill="none" stroke="url(#cinnabar)" stroke-width="0.8" opacity="0.2"/>
+
+  <!-- Small decorative crescent moon near center-bottom -->
+  <g opacity="0.25">
+    <path d="M280,285 Q300,275 320,285 Q310,295 280,285Z" fill="url(#gold)"/>
+  </g>
+
+  <!-- Central calming circle emblem -->
+  <circle cx="300" cy="385" r="45" fill="none" stroke="url(#cinnabar)" stroke-width="1.5" opacity="0.3"/>
+  <circle cx="300" cy="385" r="36" fill="none" stroke="url(#cinnabar)" stroke-width="1" opacity="0.2"/>
+  <circle cx="300" cy="385" r="27" fill="none" stroke="url(#gold)" stroke-width="1" opacity="0.25"/>
+
+  <!-- Gentle crescent inside circle -->
+  <path d="M282,380 Q300,368 318,380 Q300,390 282,380Z" fill="url(#goldLight)" opacity="0.3"/>
+
+  <!-- Bottom flowing decorative line -->
+  <path d="M100,460 Q200,452 300,458 Q400,464 500,460" fill="none" stroke="url(#cinnabar)" stroke-width="0.8" opacity="0.2"/>
+
+  <!-- Bottom text -->
+  <text x="300" y="492" font-family="'Playfair Display', 'Georgia', serif" font-size="22" fill="url(#cinnabar)" text-anchor="middle" font-weight="bold" letter-spacing="2">Dream Shield</text>
+  <text x="300" y="527" font-family="'Noto Serif SC', 'KaiTi', 'STKaiti', serif" font-size="17" fill="url(#cinnabar)" text-anchor="middle" letter-spacing="1">安眠符 · 好梦安眠</text>
+  <text x="300" y="560" font-family="'Raleway', 'Helvetica Neue', sans-serif" font-size="13" fill="#5A6B52" text-anchor="middle" letter-spacing="1.5">Protect your sleep and invite peaceful rest</text>
+
+  <!-- Small gold decorative stamps at bottom -->
+  <rect x="80" y="485" width="36" height="36" rx="4" fill="url(#cinnabar)" opacity="0.7"/>
+  <text x="98" y="509" font-family="'Noto Serif SC', serif" font-size="18" fill="url(#goldLight)" text-anchor="middle">安</text>
+
+  <rect x="484" y="485" width="36" height="36" rx="4" fill="url(#cinnabar)" opacity="0.7"/>
+  <text x="502" y="509" font-family="'Noto Serif SC', serif" font-size="18" fill="url(#goldLight)" text-anchor="middle">宁</text>
+</svg>

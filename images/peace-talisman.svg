@@ -40,7 +40,7 @@
   <!-- Content -->
   <text x="300" y="530" font-family="'Playfair Display', serif" font-size="28" fill="#1A1A1A" text-anchor="middle" font-weight="bold" letter-spacing="2">Peace Talisman</text>
   <text x="300" y="560" font-family="'Noto Serif SC', serif" font-size="18" fill="#1A5276" text-anchor="middle">平安符 · 诸事顺遂</text>
-  <text x="300" y="590" font-family="sans-serif" font-size="13" fill="#666" text-anchor="middle">Bring harmony, tranquility & spiritual calm</text>
+  <text x="300" y="590" font-family="sans-serif" font-size="13" fill="#666" text-anchor="middle">Bring harmony, tranquility &amp; spiritual calm</text>
   <rect x="230" y="625" width="140" height="35" rx="17" fill="url(#blue)"/>
   <text x="300" y="648" font-family="sans-serif" font-size="18" fill="#FFF" text-anchor="middle" font-weight="bold">$22.99</text>
 </svg>

@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1A0000"/>
+      <stop offset="50%" stop-color="#240303"/>
+      <stop offset="100%" stop-color="#2D0505"/>
+    </linearGradient>
+    <linearGradient id="cinnabar" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#CC0000"/>
+      <stop offset="100%" stop-color="#8B0000"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFD700"/>
+      <stop offset="50%" stop-color="#DAA520"/>
+      <stop offset="100%" stop-color="#B8860B"/>
+    </linearGradient>
+    <linearGradient id="sealFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3A0000"/>
+      <stop offset="100%" stop-color="#1A0000"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Deep crimson paper background -->
+  <rect width="600" height="600" fill="url(#paper)" rx="4"/>
+
+  <!-- Aged paper texture lines -->
+  <line x1="0" y1="47" x2="600" y2="47" stroke="#3A0808" stroke-width="0.5" opacity="0.4"/>
+  <line x1="0" y1="95" x2="600" y2="95" stroke="#3A0808" stroke-width="0.3" opacity="0.3"/>
+  <line x1="0" y1="143" x2="600" y2="143" stroke="#3A0808" stroke-width="0.5" opacity="0.35"/>
+  <line x1="0" y1="191" x2="600" y2="191" stroke="#3A0808" stroke-width="0.3" opacity="0.25"/>
+  <line x1="0" y1="239" x2="600" y2="239" stroke="#3A0808" stroke-width="0.5" opacity="0.3"/>
+  <line x1="0" y1="287" x2="600" y2="287" stroke="#3A0808" stroke-width="0.3" opacity="0.35"/>
+  <line x1="0" y1="335" x2="600" y2="335" stroke="#3A0808" stroke-width="0.5" opacity="0.25"/>
+  <line x1="0" y1="383" x2="600" y2="383" stroke="#3A0808" stroke-width="0.3" opacity="0.3"/>
+  <line x1="0" y1="431" x2="600" y2="431" stroke="#3A0808" stroke-width="0.5" opacity="0.35"/>
+  <line x1="0" y1="479" x2="600" y2="479" stroke="#3A0808" stroke-width="0.3" opacity="0.25"/>
+  <line x1="0" y1="527" x2="600" y2="527" stroke="#3A0808" stroke-width="0.5" opacity="0.3"/>
+  <line x1="0" y1="575" x2="600" y2="575" stroke="#3A0808" stroke-width="0.3" opacity="0.35"/>
+
+  <!-- Decorative cinnabar double border -->
+  <rect x="12" y="12" width="576" height="576" rx="3" fill="none" stroke="url(#cinnabar)" stroke-width="2.5"/>
+  <rect x="22" y="22" width="556" height="556" rx="2" fill="none" stroke="url(#cinnabar)" stroke-width="1.5" opacity="0.6"/>
+  <rect x="8" y="8" width="584" height="584" rx="4" fill="none" stroke="#8B0000" stroke-width="1" opacity="0.4"/>
+
+  <!-- Gold corner ornaments -->
+  <!-- Top-Left -->
+  <path d="M12,40 L12,12 L40,12" fill="none" stroke="url(#gold)" stroke-width="2.5"/>
+  <circle cx="18" cy="18" r="3" fill="#FFD700" opacity="0.8"/>
+  <!-- Top-Right -->
+  <path d="M588,40 L588,12 L560,12" fill="none" stroke="url(#gold)" stroke-width="2.5"/>
+  <circle cx="582" cy="18" r="3" fill="#FFD700" opacity="0.8"/>
+  <!-- Bottom-Left -->
+  <path d="M12,560 L12,588 L40,588" fill="none" stroke="url(#gold)" stroke-width="2.5"/>
+  <circle cx="18" cy="582" r="3" fill="#FFD700" opacity="0.8"/>
+  <!-- Bottom-Right -->
+  <path d="M588,560 L588,588 L560,588" fill="none" stroke="url(#gold)" stroke-width="2.5"/>
+  <circle cx="582" cy="582" r="3" fill="#FFD700" opacity="0.8"/>
+
+  <!-- Inner gold corner accent lines -->
+  <path d="M22,50 L22,22 L50,22" fill="none" stroke="url(#gold)" stroke-width="1" opacity="0.5"/>
+  <path d="M578,50 L578,22 L550,22" fill="none" stroke="url(#gold)" stroke-width="1" opacity="0.5"/>
+  <path d="M22,550 L22,578 L50,578" fill="none" stroke="url(#gold)" stroke-width="1" opacity="0.5"/>
+  <path d="M578,550 L578,578 L550,578" fill="none" stroke="url(#gold)" stroke-width="1" opacity="0.5"/>
+
+  <!-- Main seal box: dark red rect with gold character 敕 (Chi) -->
+  <rect x="175" y="45" width="250" height="220" rx="8" fill="url(#sealFill)" stroke="url(#cinnabar)" stroke-width="2"/>
+  <rect x="190" y="60" width="220" height="190" rx="5" fill="none" stroke="url(#gold)" stroke-width="1.5" opacity="0.7"/>
+  <rect x="198" y="68" width="204" height="174" rx="3" fill="none" stroke="#FF4444" stroke-width="0.8" opacity="0.3"/>
+
+  <!-- Gold decorative lines top and bottom of seal -->
+  <line x1="210" y1="75" x2="390" y2="75" stroke="url(#gold)" stroke-width="1" opacity="0.4"/>
+  <line x1="210" y1="233" x2="390" y2="233" stroke="url(#gold)" stroke-width="1" opacity="0.4"/>
+
+  <!-- Character 敕 (Chi - Imperial Command) -->
+  <text x="300" y="175" font-family="serif" font-size="110" fill="url(#gold)" text-anchor="middle" font-weight="bold" letter-spacing="8">敕</text>
+
+  <!-- Small cinnabar stamp dots around seal -->
+  <circle cx="178" cy="48" r="4" fill="#CC0000" opacity="0.7"/>
+  <circle cx="422" cy="48" r="4" fill="#CC0000" opacity="0.7"/>
+  <circle cx="178" cy="262" r="4" fill="#CC0000" opacity="0.7"/>
+  <circle cx="422" cy="262" r="4" fill="#CC0000" opacity="0.7"/>
+
+  <!-- Martial thunderbolt zigzag strokes - Left side -->
+  <!-- Bold thunderbolt left upper -->
+  <path d="M98,85 L140,95 L125,125 L158,110 L138,150 L170,135 L148,175" fill="none" stroke="url(#cinnabar)" stroke-width="3" stroke-linejoin="miter" stroke-linecap="round"/>
+  <path d="M98,85 L140,95 L125,125 L158,110 L138,150 L170,135 L148,175" fill="none" stroke="#FF4444" stroke-width="1" opacity="0.4" stroke-linejoin="miter" stroke-linecap="round"/>
+
+  <!-- Thunderbolt left lower -->
+  <path d="M85,195 L130,205 L115,235 L150,220 L130,258 L162,243 L140,280" fill="none" stroke="url(#cinnabar)" stroke-width="3" stroke-linejoin="miter" stroke-linecap="round"/>
+  <path d="M85,195 L130,205 L115,235 L150,220 L130,258 L162,243 L140,280" fill="none" stroke="#FF4444" stroke-width="1" opacity="0.4" stroke-linejoin="miter" stroke-linecap="round"/>
+
+  <!-- Small zigzag accent left center -->
+  <path d="M78,140 L110,148 L100,168 L128,160" fill="none" stroke="#CC0000" stroke-width="2" opacity="0.6" stroke-linejoin="miter" stroke-linecap="round"/>
+
+  <!-- Martial thunderbolt zigzag strokes - Right side -->
+  <!-- Bold thunderbolt right upper -->
+  <path d="M502,85 L460,95 L475,125 L442,110 L462,150 L430,135 L452,175" fill="none" stroke="url(#cinnabar)" stroke-width="3" stroke-linejoin="miter" stroke-linecap="round"/>
+  <path d="M502,85 L460,95 L475,125 L442,110 L462,150 L430,135 L452,175" fill="none" stroke="#FF4444" stroke-width="1" opacity="0.4" stroke-linejoin="miter" stroke-linecap="round"/>
+
+  <!-- Thunderbolt right lower -->
+  <path d="M515,195 L470,205 L485,235 L450,220 L470,258 L438,243 L460,280" fill="none" stroke="url(#cinnabar)" stroke-width="3" stroke-linejoin="miter" stroke-linecap="round"/>
+  <path d="M515,195 L470,205 L485,235 L450,220 L470,258 L438,243 L460,280" fill="none" stroke="#FF4444" stroke-width="1" opacity="0.4" stroke-linejoin="miter" stroke-linecap="round"/>
+
+  <!-- Small zigzag accent right center -->
+  <path d="M522,140 L490,148 L500,168 L472,160" fill="none" stroke="#CC0000" stroke-width="2" opacity="0.6" stroke-linejoin="miter" stroke-linecap="round"/>
+
+  <!-- Central spirit-warding symbol - thematic array -->
+  <!-- Outer ring -->
+  <circle cx="300" cy="390" r="55" fill="none" stroke="url(#cinnabar)" stroke-width="2" opacity="0.7"/>
+  <circle cx="300" cy="390" r="47" fill="none" stroke="url(#gold)" stroke-width="1" opacity="0.4"/>
+  <circle cx="300" cy="390" r="38" fill="none" stroke="#8B0000" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- Central sword/ward symbol -->
+  <path d="M300,355 L300,425" fill="none" stroke="url(#cinnabar)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M285,365 L315,365" fill="none" stroke="#CC0000" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+  <path d="M280,375 L320,375" fill="none" stroke="#CC0000" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <path d="M288,410 L312,410" fill="none" stroke="#CC0000" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+  <circle cx="300" cy="390" r="6" fill="url(#gold)" opacity="0.6"/>
+
+  <!-- Small ward trigram accents around circle -->
+  <text x="300" y="340" font-family="serif" font-size="14" fill="#CC0000" text-anchor="middle" opacity="0.6">⚊</text>
+  <text x="300" y="448" font-family="serif" font-size="14" fill="#CC0000" text-anchor="middle" opacity="0.6">⚋</text>
+  <text x="250" y="395" font-family="serif" font-size="14" fill="#CC0000" text-anchor="middle" opacity="0.6">⚊</text>
+  <text x="350" y="395" font-family="serif" font-size="14" fill="#CC0000" text-anchor="middle" opacity="0.6">⚋</text>
+
+  <!-- Small decorative ward dots -->
+  <circle cx="248" cy="388" r="2" fill="#FFD700" opacity="0.5"/>
+  <circle cx="352" cy="388" r="2" fill="#FFD700" opacity="0.5"/>
+  <circle cx="300" cy="338" r="2" fill="#FFD700" opacity="0.5"/>
+  <circle cx="300" cy="442" r="2" fill="#FFD700" opacity="0.5"/>
+
+  <!-- Bottom cinnabar seal stamps -->
+  <rect x="80" y="480" width="44" height="44" rx="4" fill="url(#cinnabar)"/>
+  <rect x="83" y="483" width="38" height="38" rx="2" fill="none" stroke="#FF6666" stroke-width="0.8" opacity="0.4"/>
+  <text x="102" y="508" font-family="serif" font-size="22" fill="#FFD700" text-anchor="middle" font-weight="bold">煞</text>
+
+  <rect x="476" y="480" width="44" height="44" rx="4" fill="url(#cinnabar)"/>
+  <rect x="479" y="483" width="38" height="38" rx="2" fill="none" stroke="#FF6666" stroke-width="0.8" opacity="0.4"/>
+  <text x="498" y="508" font-family="serif" font-size="22" fill="#FFD700" text-anchor="middle" font-weight="bold">驱</text>
+
+  <!-- Bottom text -->
+  <text x="300" y="548" font-family="'Playfair Display', 'Times New Roman', serif" font-size="24" fill="#FFD700" text-anchor="middle" font-weight="bold" letter-spacing="3">Evil-Spirit Ward</text>
+  <text x="300" y="572" font-family="'Noto Serif SC', 'SimSun', serif" font-size="17" fill="#CC0000" text-anchor="middle" letter-spacing="2">辟邪符 · 驱魔镇煞</text>
+  <text x="300" y="591" font-family="sans-serif" font-size="11" fill="#AA6666" text-anchor="middle">Powerful protection against malevolent spirits</text>
+</svg>

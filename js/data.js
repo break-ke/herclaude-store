@@ -181,7 +181,7 @@ const products = [
     price: 22.00,
     compare_at_price: null,
     sku: 'TAL-WARD-001',
-    image: 'images/detail-talisman.svg',
+    image: 'images/evil-spirit-ward.svg',
     tags: ['protection', 'spiritual', 'exorcism'],
     collection: 'daoist',
     seo: {
@@ -219,7 +219,7 @@ const products = [
     price: 25.00,
     compare_at_price: null,
     sku: 'TAL-HOME-001',
-    image: 'images/detail-talisman.svg',
+    image: 'images/home-guardian.svg',
     tags: ['home', 'protection', 'feng-shui'],
     collection: 'daoist',
     seo: {
@@ -257,7 +257,7 @@ const products = [
     price: 18.00,
     compare_at_price: null,
     sku: 'TAL-TRAVEL-001',
-    image: 'images/detail-talisman.svg',
+    image: 'images/travel-safeguard.svg',
     tags: ['travel', 'protection', 'safety'],
     collection: 'daoist',
     seo: {
@@ -295,7 +295,7 @@ const products = [
     price: 16.00,
     compare_at_price: null,
     sku: 'TAL-DREAM-001',
-    image: 'images/detail-talisman.svg',
+    image: 'images/dream-shield.svg',
     tags: ['sleep', 'peace', 'wellness'],
     collection: 'feng-shui',
     seo: {
@@ -333,7 +333,7 @@ const products = [
     price: 20.00,
     compare_at_price: null,
     sku: 'TAL-WORK-001',
-    image: 'images/detail-talisman.svg',
+    image: 'images/workplace-guard.svg',
     tags: ['work', 'protection', 'career'],
     collection: 'feng-shui',
     seo: {
@@ -371,7 +371,7 @@ const products = [
     price: 24.00,
     compare_at_price: null,
     sku: 'TAL-BOUNDARY-001',
-    image: 'images/detail-talisman.svg',
+    image: 'images/boundary-talisman.svg',
     tags: ['ritual', 'sacred-space', 'daoist'],
     collection: 'limited',
     seo: {
@@ -409,7 +409,7 @@ const products = [
     price: 28.00,
     compare_at_price: null,
     sku: 'TAL-MIRROR-001',
-    image: 'images/detail-talisman.svg',
+    image: 'images/mirror-ward.svg',
     tags: ['feng-shui', 'protection', 'bagua'],
     collection: 'limited',
     seo: {

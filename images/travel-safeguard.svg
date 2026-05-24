@@ -1,0 +1,293 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <defs>
+    <!-- Aged paper gradient -->
+    <radialGradient id="paperBg" cx="50%" cy="50%" r="60%" fx="40%" fy="35%">
+      <stop offset="0%" stop-color="#FFFFF0"/>
+      <stop offset="60%" stop-color="#FCF8E0"/>
+      <stop offset="100%" stop-color="#F5F0DC"/>
+    </radialGradient>
+
+    <!-- Aged texture filter -->
+    <filter id="agedPaper" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" seed="3" result="noise"/>
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise"/>
+      <feBlend mode="multiply" in="SourceGraphic" in2="grayNoise" result="aged"/>
+      <feComponentTransfer in="aged">
+        <feFuncA type="linear" slope="0.08"/>
+      </feComponentTransfer>
+      <feBlend mode="normal" in="SourceGraphic" in2="aged"/>
+    </filter>
+
+    <!-- Subtle noise for border aging -->
+    <filter id="borderAged" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="1.2" numOctaves="3" seed="7" result="noise"/>
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise"/>
+      <feComponentTransfer in="grayNoise">
+        <feFuncA type="linear" slope="0.12"/>
+      </feComponentTransfer>
+      <feBlend mode="multiply" in="SourceGraphic" in2="grayNoise"/>
+    </filter>
+
+    <!-- Gold metallic sheen -->
+    <linearGradient id="goldShine" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37"/>
+      <stop offset="30%" stop-color="#FFD700"/>
+      <stop offset="50%" stop-color="#FFF8DC"/>
+      <stop offset="70%" stop-color="#FFD700"/>
+      <stop offset="100%" stop-color="#B8860B"/>
+    </linearGradient>
+
+    <!-- Cinnabar red -->
+    <linearGradient id="cinnabar" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C04030"/>
+      <stop offset="50%" stop-color="#B22222"/>
+      <stop offset="100%" stop-color="#8B0000"/>
+    </linearGradient>
+
+    <!-- Soft cinnabar for border -->
+    <linearGradient id="borderRed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C04030"/>
+      <stop offset="100%" stop-color="#A52A2A"/>
+    </linearGradient>
+
+    <!-- Gold gradient for seal character -->
+    <radialGradient id="sealGold" cx="45%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#FFF8DC"/>
+      <stop offset="25%" stop-color="#FFD700"/>
+      <stop offset="60%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#996515"/>
+    </radialGradient>
+
+    <!-- Glow for seal -->
+    <filter id="sealGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <!-- Faint aging spotches -->
+    <filter id="spots">
+      <feTurbulence type="fractalNoise" baseFrequency="0.3" numOctaves="2" seed="11"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="discrete" tableValues="0 0 0 0 0 0 0 0.03 0.05"/>
+      </feComponentTransfer>
+    </filter>
+
+    <!-- Ink bleed filter -->
+    <filter id="inkBleed" x="-3%" y="-3%" width="106%" height="106%">
+      <feTurbulence type="fractalNoise" baseFrequency="2.5" numOctaves="2" seed="5" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.5" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+
+    <!-- Corner ornament symbol - simplified double-looped knot -->
+    <g id="cornerOrnament">
+      <!-- Outer ring -->
+      <ellipse cx="0" cy="0" rx="22" ry="22" fill="none" stroke="url(#goldShine)" stroke-width="2"/>
+      <!-- Inner swirl -->
+      <path d="M0,-16 C12,-16 16,-8 16,0 C16,8 8,16 0,16 C-8,16 -16,8 -16,0 C-16,-8 -8,-16 0,-16 Z"
+            fill="none" stroke="url(#goldShine)" stroke-width="1.2"/>
+      <!-- Center dot -->
+      <circle cx="0" cy="0" r="3" fill="url(#goldShine)"/>
+      <!-- Decorative arcs -->
+      <path d="M-16,-16 C-12,-20 -4,-22 0,-22" fill="none" stroke="url(#goldShine)" stroke-width="1"/>
+      <path d="M16,-16 C20,-12 22,-4 22,0" fill="none" stroke="url(#goldShine)" stroke-width="1"/>
+      <path d="M16,16 C12,20 4,22 0,22" fill="none" stroke="url(#goldShine)" stroke-width="1"/>
+      <path d="M-16,16 C-20,12 -22,4 -22,0" fill="none" stroke="url(#goldShine)" stroke-width="1"/>
+    </g>
+
+    <!-- Small decorative seal style -->
+    <g id="smallSeal">
+      <rect x="-14" y="-14" width="28" height="28" rx="4" ry="4" fill="none" stroke="url(#cinnabar)" stroke-width="1.5"/>
+      <line x1="-8" y1="-8" x2="8" y2="-8" stroke="url(#cinnabar)" stroke-width="1"/>
+      <line x1="-8" y1="0" x2="8" y2="0" stroke="url(#cinnabar)" stroke-width="1"/>
+      <line x1="-8" y1="8" x2="8" y2="8" stroke="url(#cinnabar)" stroke-width="1"/>
+    </g>
+  </defs>
+
+  <!-- ====== BACKGROUND ====== -->
+  <!-- Base aged paper -->
+  <rect width="600" height="600" fill="url(#paperBg)" filter="url(#agedPaper)"/>
+
+  <!-- Age spots overlay -->
+  <rect width="600" height="600" fill="none" filter="url(#spots)" opacity="0.6"/>
+
+  <!-- ====== OUTER BORDER ====== -->
+  <!-- Double border: outer -->
+  <rect x="18" y="18" width="564" height="564" rx="6" ry="6"
+        fill="none" stroke="url(#borderRed)" stroke-width="2.5" filter="url(#borderAged)" opacity="0.85"/>
+
+  <!-- Double border: inner -->
+  <rect x="28" y="28" width="544" height="544" rx="3" ry="3"
+        fill="none" stroke="url(#borderRed)" stroke-width="1.2" opacity="0.7"/>
+
+  <!-- Decorative inner border line -->
+  <rect x="34" y="34" width="532" height="532" rx="2" ry="2"
+        fill="none" stroke="url(#borderRed)" stroke-width="0.5" opacity="0.4" stroke-dasharray="3,4"/>
+
+  <!-- ====== CORNER ORNAMENTS ====== -->
+  <use href="#cornerOrnament" x="38" y="38"/>
+  <use href="#cornerOrnament" x="562" y="38"/>
+  <use href="#cornerOrnament" x="38" y="562"/>
+  <use href="#cornerOrnament" x="562" y="562"/>
+
+  <!-- ====== TOP BORDER DECORATION ====== -->
+  <!-- Horizontal cinnabar line -->
+  <line x1="45" y1="72" x2="555" y2="72" stroke="url(#borderRed)" stroke-width="0.8" opacity="0.5"/>
+
+  <!-- Small decorative triangles along top -->
+  <path d="M60,72 L64,68 L68,72 Z" fill="url(#cinnabar)" opacity="0.4"/>
+  <path d="M200,72 L204,68 L208,72 Z" fill="url(#cinnabar)" opacity="0.4"/>
+  <path d="M300,72 L304,68 L308,72 Z" fill="url(#cinnabar)" opacity="0.4"/>
+  <path d="M400,72 L404,68 L408,72 Z" fill="url(#cinnabar)" opacity="0.4"/>
+  <path d="M500,72 L504,68 L508,72 Z" fill="url(#cinnabar)" opacity="0.4"/>
+
+  <!-- ====== BOTTOM BORDER DECORATION ====== -->
+  <line x1="45" y1="530" x2="555" y2="530" stroke="url(#borderRed)" stroke-width="0.8" opacity="0.5"/>
+
+  <path d="M60,530 L64,534 L68,530 Z" fill="url(#cinnabar)" opacity="0.4"/>
+  <path d="M200,530 L204,534 L208,530 Z" fill="url(#cinnabar)" opacity="0.4"/>
+  <path d="M300,530 L304,534 L308,530 Z" fill="url(#cinnabar)" opacity="0.4"/>
+  <path d="M400,530 L404,534 L408,530 Z" fill="url(#cinnabar)" opacity="0.4"/>
+  <path d="M500,530 L504,534 L508,530 Z" fill="url(#cinnabar)" opacity="0.4"/>
+
+  <!-- ====== FLOWING HORIZONTAL PATH/ROAD MOTIFS (background decorative) ====== -->
+
+  <!-- Upper path motif - flowing lines -->
+  <g opacity="0.15" fill="none" stroke="#B22222" stroke-width="0.8">
+    <path d="M60,100 C130,95 180,105 230,98 C280,91 330,108 380,100 C430,92 480,105 540,98"/>
+    <path d="M60,108 C130,103 180,113 230,106 C280,99 330,116 380,108 C430,100 480,113 540,106"/>
+    <path d="M80,130 C140,125 190,135 250,128 C310,121 370,138 430,130 C490,122 520,132 540,127"/>
+    <path d="M80,138 C140,133 190,143 250,136 C310,129 370,146 430,138 C490,130 520,140 540,135"/>
+  </g>
+
+  <!-- Lower path motif - flowing lines -->
+  <g opacity="0.15" fill="none" stroke="#B22222" stroke-width="0.8">
+    <path d="M60,480 C130,475 180,485 230,478 C280,471 330,488 380,480 C430,472 480,485 540,478"/>
+    <path d="M60,488 C130,483 180,493 230,486 C280,479 330,496 380,488 C430,480 480,493 540,486"/>
+    <path d="M80,462 C140,457 190,467 250,460 C310,453 370,470 430,462 C490,454 520,464 540,459"/>
+    <path d="M80,470 C140,465 190,475 250,468 C310,461 370,478 430,470 C490,462 520,472 540,467"/>
+  </g>
+
+  <!-- ====== MAIN SEAL BOX ====== -->
+  <!-- Outer seal box -->
+  <rect x="195" y="160" width="210" height="210" rx="8" ry="8"
+        fill="none" stroke="url(#cinnabar)" stroke-width="2.5" filter="url(#borderAged)" opacity="0.8"/>
+
+  <!-- Inner seal box -->
+  <rect x="205" y="170" width="190" height="190" rx="4" ry="4"
+        fill="none" stroke="url(#cinnabar)" stroke-width="1" opacity="0.6"/>
+
+  <!-- Subtle ink wash inside seal area -->
+  <rect x="200" y="165" width="200" height="200" rx="6" ry="6"
+        fill="#B22222" opacity="0.04"/>
+
+  <!-- Main character box -->
+  <rect x="220" y="185" width="160" height="160" rx="3" ry="3"
+        fill="none" stroke="url(#cinnabar)" stroke-width="1" opacity="0.5"/>
+
+  <!-- ====== THE MAIN CHARACTER: 行 (Xing) ====== -->
+  <g filter="url(#sealGlow)" transform="translate(300,265)">
+    <!-- Left radical: 彳 (double step) -->
+    <path d="M-50,-40 L-30,-60 L-30,60"
+          fill="none" stroke="url(#sealGold)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M-50,0 L-15,5 L-15,0"
+          fill="none" stroke="url(#sealGold)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Right radical: 亍 (step) -->
+    <path d="M-5,-60 L-5,60"
+          fill="none" stroke="url(#sealGold)" stroke-width="6" stroke-linecap="round"/>
+    <path d="M-5,0 L35,-20"
+          fill="none" stroke="url(#sealGold)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M35,-20 L35,20"
+          fill="none" stroke="url(#sealGold)" stroke-width="5" stroke-linecap="round"/>
+    <path d="M-5,15 L35,35"
+          fill="none" stroke="url(#sealGold)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Horizontal connecting stroke -->
+    <path d="M-10,-25 L40,-25"
+          fill="none" stroke="url(#sealGold)" stroke-width="5" stroke-linecap="round" opacity="0.6"/>
+  </g>
+
+  <!-- ====== SMALL SEAL STAMPS AROUND MAIN ====== -->
+
+  <!-- Upper left -->
+  <use href="#smallSeal" x="160" y="145"/>
+
+  <!-- Upper right -->
+  <use href="#smallSeal" x="425" y="145"/>
+
+  <!-- Lower left -->
+  <use href="#smallSeal" x="160" y="420"/>
+
+  <!-- Lower right -->
+  <use href="#smallSeal" x="425" y="420"/>
+
+  <!-- ====== DECORATIVE CLOUD/ROAD MOTIFS ====== -->
+
+  <!-- Left side flowing motifs -->
+  <g fill="none" stroke="url(#cinnabar)" stroke-width="0.7" opacity="0.3">
+    <!-- Road/cloud scrolls left -->
+    <path d="M100,200 C110,195 120,200 115,210 C110,220 95,215 100,200"/>
+    <path d="M105,230 C115,225 125,230 120,240 C115,250 100,245 105,230"/>
+    <path d="M100,350 C110,345 120,350 115,360 C110,370 95,365 100,350"/>
+    <path d="M105,380 C115,375 125,380 120,390 C115,400 100,395 105,380"/>
+  </g>
+
+  <!-- Right side flowing motifs -->
+  <g fill="none" stroke="url(#cinnabar)" stroke-width="0.7" opacity="0.3">
+    <path d="M490,200 C480,195 470,200 475,210 C480,220 495,215 490,200"/>
+    <path d="M485,230 C475,225 465,230 470,240 C475,250 490,245 485,230"/>
+    <path d="M490,350 C480,345 470,350 475,360 C480,370 495,365 490,350"/>
+    <path d="M485,380 C475,375 465,380 470,390 C475,400 490,395 485,380"/>
+  </g>
+
+  <!-- ====== FLOWING ROAD MOTIFS BELOW SEAL ====== -->
+  <g fill="none" stroke="url(#cinnabar)" stroke-width="0.8" opacity="0.25">
+    <path d="M150,430 C200,425 250,435 300,430 C350,425 400,435 450,430"/>
+    <path d="M150,440 C200,435 250,445 300,440 C350,435 400,445 450,440"/>
+    <path d="M150,450 C200,445 250,455 300,450 C350,445 400,455 450,450"/>
+  </g>
+
+  <!-- ====== DIVIDER LINE ====== -->
+  <line x1="120" y1="478" x2="480" y2="478"
+        stroke="url(#borderRed)" stroke-width="0.8" opacity="0.4" stroke-dasharray="8,3,2,3"/>
+
+  <!-- ====== BOTTOM TEXT ====== -->
+
+  <!-- English: Travel Safeguard -->
+  <text x="300" y="502" text-anchor="middle" font-family="'Times New Roman', Georgia, serif"
+        font-size="18" fill="#8B0000" font-style="italic" opacity="0.85" letter-spacing="2">
+    Travel Safeguard
+  </text>
+
+  <!-- Chinese: 出行平安符 · 一路平安 -->
+  <text x="300" y="535" text-anchor="middle" font-family="'SimSun', 'STSong', 'Noto Serif SC', serif"
+        font-size="20" fill="#8B0000" opacity="0.9" letter-spacing="4">
+    出行平安符 · 一路平安
+  </text>
+
+  <!-- English subtitle -->
+  <text x="300" y="558" text-anchor="middle" font-family="'Times New Roman', Georgia, serif"
+        font-size="12" fill="#8B0000" font-style="italic" opacity="0.7" letter-spacing="1.5">
+    Ensure safe journeys and protection
+  </text>
+
+  <!-- ====== SUBTLE AGING OVERLAY ====== -->
+  <rect width="600" height="600" fill="none" stroke="none">
+    <animate attributeName="opacity" values="0" dur="0s"/>
+  </rect>
+
+  <!-- Vertical aging lines -->
+  <g opacity="0.03" fill="none" stroke="#8B4513" stroke-width="0.5">
+    <line x1="120" y1="0" x2="120" y2="600"/>
+    <line x1="310" y1="0" x2="310" y2="600"/>
+    <line x1="480" y1="0" x2="480" y2="600"/>
+  </g>
+
+  <!-- Horizontal aging lines -->
+  <g opacity="0.03" fill="none" stroke="#8B4513" stroke-width="0.5">
+    <line x1="0" y1="140" x2="600" y2="140"/>
+    <line x1="0" y1="390" x2="600" y2="390"/>
+  </g>
+
+</svg>
