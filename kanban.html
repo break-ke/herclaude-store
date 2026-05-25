@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>herclaude 项目看板</title>
+<style>
+:root {
+  --bg: #0f0f13;
+  --surface: #1a1a24;
+  --surface2: #23233a;
+  --border: #2a2a44;
+  --text: #e8e8f0;
+  --text2: #8888aa;
+  --accent: #C9A96E;
+  --accent2: #C41E3A;
+  --green: #34d399;
+  --yellow: #fbbf24;
+  --red: #ef4444;
+  --blue: #60a5fa;
+  --purple: #a78bfa;
+  --orange: #fb923c;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* Header */
+.header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header h1 {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.header h1 span {
+  color: var(--accent);
+}
+
+.header-badge {
+  background: var(--surface2);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  color: var(--text2);
+  border: 1px solid var(--border);
+}
+
+.stats {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text2);
+}
+
+.stat-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Filter bar */
+.filter-bar {
+  padding: 12px 32px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filter-bar label {
+  font-size: 12px;
+  color: var(--text2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filter-btn {
+  padding: 5px 14px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text2);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  color: #1a1a1a;
+  border-color: var(--accent);
+  font-weight: 600;
+}
+
+/* Board */
+.board {
+  padding: 24px 32px;
+  overflow-x: auto;
+}
+
+.columns {
+  display: flex;
+  gap: 20px;
+  min-height: 70vh;
+  align-items: flex-start;
+}
+
+.column {
+  min-width: 280px;
+  max-width: 320px;
+  flex-shrink: 0;
+  background: var(--surface);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.column-header {
+  padding: 16px 18px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+}
+
+.column-header h2 {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.column-count {
+  font-size: 11px;
+  color: var(--text2);
+  background: var(--surface2);
+  padding: 2px 10px;
+  border-radius: 12px;
+}
+
+.column-body {
+  padding: 12px;
+  min-height: 100px;
+}
+
+/* Cards */
+.card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 10px;
+  cursor: default;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.card:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.card-badges {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.badge-priority-high { background: rgba(239,68,68,0.15); color: var(--red); }
+.badge-priority-med { background: rgba(251,191,36,0.15); color: var(--yellow); }
+.badge-priority-low { background: rgba(96,165,250,0.1); color: var(--blue); }
+
+.badge-dev { background: rgba(96,165,250,0.12); color: var(--blue); }
+.badge-pm { background: rgba(167,139,250,0.12); color: var(--purple); }
+.badge-ui { background: rgba(251,146,60,0.12); color: var(--orange); }
+.badge-qa { background: rgba(52,211,153,0.12); color: var(--green); }
+
+.card-title {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text2);
+}
+
+.card-assignee {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.assignee-avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.card-date {
+  font-size: 11px;
+  color: var(--text2);
+}
+
+.card-deps {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  font-size: 11px;
+  color: var(--text2);
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.dep-link {
+  padding: 1px 6px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 10px;
+}
+
+/* Timeline section */
+.timeline-section {
+  margin: 40px 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.timeline-header {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.timeline-header h2 {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.timeline-body {
+  padding: 24px;
+  overflow-x: auto;
+}
+
+.timeline-chart {
+  min-width: 700px;
+  position: relative;
+  padding: 16px 0;
+}
+
+.timeline-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  height: 36px;
+  position: relative;
+}
+
+.timeline-label {
+  width: 160px;
+  font-size: 12px;
+  color: var(--text2);
+  flex-shrink: 0;
+  padding-right: 12px;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.timeline-track {
+  flex: 1;
+  height: 100%;
+  position: relative;
+  background: rgba(255,255,255,0.02);
+  border-radius: 4px;
+}
+
+.timeline-bar {
+  position: absolute;
+  height: 24px;
+  top: 6px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  font-size: 10px;
+  color: rgba(255,255,255,0.9);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: default;
+  transition: opacity 0.2s;
+}
+
+.timeline-bar:hover {
+  opacity: 0.85;
+}
+
+.timeline-bar.dev { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+.timeline-bar.pm { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+.timeline-bar.ui-designer { background: linear-gradient(135deg, #fb923c, #f97316); }
+.timeline-bar.qa { background: linear-gradient(135deg, #22c55e, #16a34a); }
+.timeline-bar.cio { background: linear-gradient(135deg, #C9A96E, #b89450); }
+.timeline-bar.done { opacity: 0.6; }
+
+.timeline-labels {
+  position: relative;
+  height: 24px;
+  margin-left: 160px;
+  border-top: 1px solid var(--border);
+  margin-top: 4px;
+}
+
+.timeline-labels span {
+  position: absolute;
+  font-size: 10px;
+  color: var(--text2);
+  transform: translateX(-50%);
+  top: 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header { flex-direction: column; gap: 12px; align-items: flex-start; }
+  .stats { width: 100%; flex-wrap: wrap; }
+  .columns { flex-direction: column; align-items: stretch; }
+  .column { max-width: none; min-width: 0; }
+  .board { padding: 16px; }
+  .filter-bar { padding: 12px 16px; }
+  .timeline-section { margin: 24px 16px; }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card { animation: fadeIn 0.3s ease-out; }
+.card:nth-child(2) { animation-delay: 0.05s; }
+.card:nth-child(3) { animation-delay: 0.1s; }
+
+/* Scrollbar */
+::-webkit-scrollbar { height: 6px; width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3a3a5a; }
+
+/* Empty state */
+.empty-col {
+  text-align: center;
+  padding: 32px 16px;
+  color: var(--text2);
+  font-size: 13px;
+}
+
+.empty-col svg {
+  margin-bottom: 10px;
+  opacity: 0.3;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>herclaude <span>Kanban</span></h1>
+    <span class="header-badge" id="taskCount">0 个任务</span>
+  </div>
+  <div class="stats">
+    <div class="stat-item"><span class="stat-dot" style="background:var(--green)"></span>已完成 <span id="doneCount">0</span></div>
+    <div class="stat-item"><span class="stat-dot" style="background:var(--yellow)"></span>进行中 <span id="runningCount">0</span></div>
+    <div class="stat-item"><span class="stat-dot" style="background:var(--red)"></span>阻塞 <span id="blockedCount">0</span></div>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <label>显示：</label>
+  <button class="filter-btn active" data-filter="all">全部</button>
+  <button class="filter-btn" data-filter="active">活跃任务</button>
+  <button class="filter-btn" data-filter="dev">Dev</button>
+  <button class="filter-btn" data-filter="pm">PM</button>
+  <button class="filter-btn" data-filter="ui-designer">UI</button>
+  <button class="filter-btn" data-filter="qa">QA</button>
+</div>
+
+<div class="board">
+  <div class="columns" id="columns"></div>
+</div>
+
+<div class="timeline-section">
+  <div class="timeline-header">
+    <h2>项目时间线</h2>
+    <span style="font-size:12px;color:var(--text2)">按完成时间排序</span>
+  </div>
+  <div class="timeline-body">
+    <div class="timeline-chart" id="timelineChart">
+      <div style="text-align:center;color:var(--text2);padding:40px;font-size:14px">加载中...</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const tasks = [];
+const COLUMNS = [
+  { key: 'todo', label: '待办', color: 'var(--blue)' },
+  { key: 'ready', label: '就绪', color: 'var(--accent)' },
+  { key: 'running', label: '进行中', color: 'var(--yellow)' },
+  { key: 'blocked', label: '阻塞', color: 'var(--red)' },
+  { key: 'done', label: '已完成', color: 'var(--green)' }
+];
+
+const ASSIGNEE_COLORS = {
+  dev: '#3b82f6',
+  pm: '#8b5cf6',
+  'ui-designer': '#fb923c',
+  qa: '#22c55e',
+  cio: '#C9A96E'
+};
+
+const ASSIGNEE_LABELS = {
+  dev: 'Dev',
+  pm: 'PM',
+  'ui-designer': 'UI',
+  qa: 'QA',
+  cio: 'CIO'
+};
+
+const PRIORITY_LABELS = { 0: '普通', 1: '高', 2: '紧急' };
+const PRIORITY_CLASSES = { 0: 'badge-priority-low', 1: 'badge-priority-med', 2: 'badge-priority-high' };
+
+function formatDate(ts) {
+  if (!ts) return '-';
+  const d = new Date(ts * 1000);
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${month}-${day}`;
+}
+
+function timeAgo(ts) {
+  if (!ts) return '';
+  const now = Date.now();
+  const diff = now - ts * 1000;
+  const mins = Math.floor(diff / 60000);
+  if (mins < 60) return `${mins}m ago`;
+  const hours = Math.floor(mins / 60);
+  if (hours < 24) return `${hours}h ago`;
+  const days = Math.floor(hours / 24);
+  return `${days}d ago`;
+}
+
+function getBadgeHtml(assignee) {
+  const cls = `badge badge-${assignee}`;
+  return `<span class="${cls}">${ASSIGNEE_LABELS[assignee] || assignee}</span>`;
+}
+
+function getPriorityBadge(p) {
+  if (p === undefined || p === null) return '';
+  const cls = PRIORITY_CLASSES[p] || '';
+  return `<span class="badge ${cls}">${PRIORITY_LABELS[p] || p}</span>`;
+}
+
+function renderCard(task) {
+  const initials = (ASSIGNEE_LABELS[task.assignee] || task.assignee || '?').substring(0, 2).toUpperCase();
+  const color = ASSIGNEE_COLORS[task.assignee] || '#666';
+
+  let depsHtml = '';
+  if (task.parents && task.parents.length) {
+    depsHtml = `<div class="card-deps">依赖: ${task.parents.map(p => `<span class="dep-link">${p.substring(0,8)}</span>`).join('')}</div>`;
+  }
+
+  const completed = task.completed_at || task.status === 'done';
+  const dateStr = completed ? formatDate(task.completed_at) : formatDate(task.created_at);
+
+  return `
+    <div class="card" data-assignee="${task.assignee || ''}" data-status="${task.status}">
+      <div class="card-badges">
+        ${getBadgeHtml(task.assignee)}
+        ${getPriorityBadge(task.priority)}
+      </div>
+      <div class="card-title">${task.title}</div>
+      <div class="card-meta">
+        <div class="card-assignee">
+          <div class="assignee-avatar" style="background:${color}">${initials}</div>
+          <span>${ASSIGNEE_LABELS[task.assignee] || task.assignee || '未分配'}</span>
+        </div>
+        <span class="card-date">${dateStr}</span>
+      </div>
+      ${depsHtml}
+    </div>
+  `;
+}
+
+function renderBoard(filter) {
+  const container = document.getElementById('columns');
+  let total = 0, done = 0, running = 0, blocked = 0;
+
+  const filtered = filter === 'all' ? tasks : tasks.filter(t => {
+    if (filter === 'active') return t.status !== 'done' && t.status !== 'archived';
+    return t.assignee === filter;
+  });
+
+  const html = COLUMNS.map(col => {
+    const colTasks = filtered.filter(t => t.status === col.key);
+    total += colTasks.length;
+    if (col.key === 'done') done = colTasks.length;
+    if (col.key === 'running') running = colTasks.length;
+    if (col.key === 'blocked') blocked = colTasks.length;
+
+    return `
+      <div class="column">
+        <div class="column-header">
+          <h2>
+            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${col.color}"></span>
+            ${col.label}
+          </h2>
+          <span class="column-count">${colTasks.length}</span>
+        </div>
+        <div class="column-body">
+          ${colTasks.length ? colTasks.map(renderCard).join('') : `
+            <div class="empty-col">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+              <div>暂无任务</div>
+            </div>
+          `}
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  container.innerHTML = html;
+  document.getElementById('taskCount').textContent = `${total} 个任务`;
+  document.getElementById('doneCount').textContent = done;
+  document.getElementById('runningCount').textContent = running;
+  document.getElementById('blockedCount').textContent = blocked;
+}
+
+function renderTimeline() {
+  const doneTasks = tasks.filter(t => t.status === 'done' && t.completed_at)
+    .sort((a, b) => a.completed_at - b.completed_at);
+
+  if (!doneTasks.length) {
+    document.querySelector('#timelineChart').innerHTML = '<div style="text-align:center;color:var(--text2);padding:20px;font-size:13px">暂无已完成任务</div>';
+    return;
+  }
+
+  const minTime = doneTasks[0].completed_at;
+  const maxTime = doneTasks[doneTasks.length - 1].completed_at;
+  const range = maxTime - minTime || 1;
+
+  // Generate date labels
+  const labels = [];
+  const labelCount = Math.min(8, Math.ceil(range / 86400) + 1);
+  for (let i = 0; i <= labelCount; i++) {
+    const ts = minTime + (range / labelCount) * i;
+    labels.push(ts);
+  }
+
+  let html = '';
+  doneTasks.forEach(t => {
+    const start = ((t.started_at || (t.completed_at - 3600)) - minTime) / range * 100;
+    const end = (t.completed_at - minTime) / range * 100;
+    const width = Math.max(2, end - start);
+    const label = t.title.length > 22 ? t.title.substring(0, 22) + '…' : t.title;
+
+    html += `
+      <div class="timeline-row">
+        <div class="timeline-label">${ASSIGNEE_LABELS[t.assignee] || t.assignee}</div>
+        <div class="timeline-track">
+          <div class="timeline-bar ${t.assignee} done" style="left:${start}%;width:${width}%" title="${t.title}">${label}</div>
+        </div>
+      </div>
+    `;
+  });
+
+  // Date labels
+  html += `<div class="timeline-labels">`;
+  labels.forEach(ts => {
+    const pct = ((ts - minTime) / range) * 100;
+    html += `<span style="left:${pct}%">${formatDate(ts)}</span>`;
+  });
+  html += `</div>`;
+
+  document.querySelector('#timelineChart').innerHTML = html;
+}
+
+// Filter buttons
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    renderBoard(this.dataset.filter);
+  });
+});
+
+// Load data from inline JSON
+window.loadTasks = function(data) {
+  tasks.length = 0;
+  data.forEach(d => {
+    if (d.status !== 'archived') tasks.push(d);
+  });
+  renderBoard('all');
+  renderTimeline();
+};
+</script>
+
+<script>
+// Embed kanban data as JSON
+window.loadTasks([
+  {
+    "id": "t_6adf90db",
+    "title": "修复 QA-3 发现的 P0 问题（Values 图标 + 知识页内容）",
+    "assignee": "dev",
+    "status": "blocked",
+    "priority": 2,
+    "created_at": 1779557661,
+    "started_at": 1779557691,
+    "completed_at": null,
+    "parents": []
+  },
+  {
+    "id": "t_405d699a",
+    "title": "全站补图方案 — Hero轮播 + 各页面缺失图片补齐",
+    "assignee": "dev",
+    "status": "done",
+    "priority": 2,
+    "created_at": 1779690173,
+    "started_at": 1779690187,
+    "completed_at": 1779691032,
+    "parents": []
+  },
+  {
+    "id": "t_a1f80682",
+    "title": "搭建 herclaude 符纸独立站 — Shoplazza REST API",
+    "assignee": "dev",
+    "status": "done",
+    "priority": 1,
+    "created_at": 1779549503,
+    "started_at": 1779549519,
+    "completed_at": 1779555256,
+    "parents": ["t_197bc622", "t_606a0441"]
+  },
+  {
+    "id": "t_9d8c85cc",
+    "title": "QA-1 首页 + 产品列表页测试（重试）",
+    "assignee": "qa",
+    "status": "done",
+    "priority": 1,
+    "created_at": 1779557655,
+    "started_at": 1779557932,
+    "completed_at": 1779558089,
+    "parents": []
+  },
+  {
+    "id": "t_bb109a1c",
+    "title": "QA-2 详情页 + 购物车 + 结算页测试（重试）",
+    "assignee": "qa",
+    "status": "done",
+    "priority": 1,
+    "created_at": 1779557656,
+    "started_at": 1779558112,
+    "completed_at": 1779558275,
+    "parents": []
+  },
+  {
+    "id": "t_0458489e",
+    "title": "修复 QA-3 发现的 P1 问题（路由 + SEO meta）",
+    "assignee": "dev",
+    "status": "done",
+    "priority": 1,
+    "created_at": 1779557662,
+    "started_at": 1779558292,
+    "completed_at": 1779558419,
+    "parents": []
+  },
+  {
+    "id": "t_606a0441",
+    "title": "产出需求文档 — 中国元素符纸独立站",
+    "assignee": "pm",
+    "status": "done",
+    "priority": 0,
+    "created_at": 1779542588,
+    "started_at": 1779542611,
+    "completed_at": 1779542821,
+    "parents": []
+  },
+  {
+    "id": "t_197bc622",
+    "title": "出设计稿 — herclaude 符纸独立站",
+    "assignee": "ui-designer",
+    "status": "done",
+    "priority": 0,
+    "created_at": 1779543157,
+    "started_at": 1779543212,
+    "completed_at": 1779543436,
+    "parents": []
+  },
+  {
+    "id": "t_3591e9c7",
+    "title": "搭建 herclaude 符纸独立站 — Shoplazza 店铺配置",
+    "assignee": "dev",
+    "status": "done",
+    "priority": 0,
+    "created_at": 1779545746,
+    "started_at": 1779545794,
+    "completed_at": 1779555257,
+    "parents": ["t_197bc622", "t_606a0441"]
+  },
+  {
+    "id": "t_09216c05",
+    "title": "QA 测试 — herclaude 符纸独立站全面验收",
+    "assignee": "qa",
+    "status": "done",
+    "priority": 0,
+    "created_at": 1779545756,
+    "started_at": null,
+    "completed_at": 1779555258,
+    "parents": ["t_3591e9c7", "t_a1f80682"]
+  },
+  {
+    "id": "t_312d7c90",
+    "title": "搭建 Shoplazza 站点 — herclaude 符纸独立站",
+    "assignee": "dev",
+    "status": "done",
+    "priority": 0,
+    "created_at": 1779546248,
+    "started_at": 1779546275,
+    "completed_at": 1779549636,
+    "parents": []
+  },
+  {
+    "id": "t_df53cb2e",
+    "title": "测试方案 — herclaude 独立站",
+    "assignee": "qa",
+    "status": "done",
+    "priority": 0,
+    "created_at": 1779546254,
+    "started_at": 1779546575,
+    "completed_at": 1779546714,
+    "parents": []
+  },
+  {
+    "id": "t_9dc207cc",
+    "title": "项目初始化 — 创建站点骨架和数据结构",
+    "assignee": "dev",
+    "status": "done",
+    "priority": 0,
+    "created_at": 1779551034,
+    "started_at": 1779551084,
+    "completed_at": 1779551718,
+    "parents": []
+  },
+  {
+    "id": "t_e5af1f2a",
+    "title": "CSS 样式实现 — 红金黑中国风水墨主题",
+    "assignee": "dev",
+    "status": "done",
+    "priority": 0,
+    "created_at": 1779551042,
+    "started_at": 1779551745,
+    "completed_at": 1779551896,
+    "parents": []
+  },
+  {
+    "id": "t_26fb778d",
+    "title": "首页开发 — index.html",
+    "assignee": "dev",
+    "status": "done",
+    "priority": 0,
+    "created_at": 1779551051,
+    "started_at": 1779551925,
+    "completed_at": 1779552034,
+    "parents": ["t_9dc207cc", "t_e5af1f2a"]
+  },
+  {
+    "id": "t_4a78d9ec",
+    "title": "产品列表页 + 产品详情页开发",
+    "assignee": "dev",
+    "status": "done",
+    "priority": 0,
+    "created_at": 1779551059,
+    "started_at": 1779552045,
+    "completed_at": 1779552237,
+    "parents": ["t_9dc207cc", "t_e5af1f2a"]
+  },
+  {
+    "id": "t_7f7d5eef",
+    "title": "购物车 + 结算页开发",
+    "assignee": "dev",
+    "status": "done",
+    "priority": 0,
+    "created_at": 1779551069,
+    "started_at": 1779552286,
+    "completed_at": 1779552292,
+    "parents": ["t_9dc207cc", "t_e5af1f2a"]
+  },
+  {
+    "id": "t_2bcae17e",
+    "title": "知识百科页 + 关于我们页开发",
+    "assignee": "dev",
+    "status": "done",
+    "priority": 0,
+    "created_at": 1779551077,
+    "started_at": null,
+    "completed_at": 1779552293,
+    "parents": ["t_9dc207cc", "t_e5af1f2a"]
+  },
+  {
+    "id": "t_4ad8b3cf",
+    "title": "QA 全面测试 — herclaude 符纸独立站验收",
+    "assignee": "qa",
+    "status": "done",
+    "priority": 0,
+    "created_at": 1779554677,
+    "started_at": 1779554688,
+    "completed_at": 1779556629,
+    "parents": []
+  },
+  {
+    "id": "t_736e2773",
+    "title": "QA-1 首页 + 产品列表页测试",
+    "assignee": "qa",
+    "status": "blocked",
+    "priority": 0,
+    "created_at": 1779556638,
+    "started_at": 1779556670,
+    "completed_at": null,
+    "parents": []
+  },
+  {
+    "id": "t_50510c77",
+    "title": "QA-2 详情页 + 购物车 + 结算页测试",
+    "assignee": "qa",
+    "status": "blocked",
+    "priority": 0,
+    "created_at": 1779556639,
+    "started_at": 1779556911,
+    "completed_at": null,
+    "parents": []
+  },
+  {
+    "id": "t_8a4015ce",
+    "title": "QA-3 知识页 + 关于我们 + 全局验收",
+    "assignee": "qa",
+    "status": "done",
+    "priority": 0,
+    "created_at": 1779556640,
+    "started_at": 1779557151,
+    "completed_at": 1779557312,
+    "parents": []
+  },
+  {
+    "id": "t_8a4450b4",
+    "title": "修复网站图片缺失 + Browse by Collection 5框排一行",
+    "assignee": "dev",
+    "status": "done",
+    "priority": 0,
+    "created_at": 1779582885,
+    "started_at": 1779582918,
+    "completed_at": 1779586761,
+    "parents": []
+  },
+  {
+    "id": "t_bcce18aa",
+    "title": "首页改版设计稿 — 参考 Energy Muse + Rock Paradise 优点",
+    "assignee": "ui-designer",
+    "status": "done",
+    "priority": 0,
+    "created_at": 1779615218,
+    "started_at": 1779615236,
+    "completed_at": 1779615633,
+    "parents": []
+  },
+  {
+    "id": "t_41f95424",
+    "title": "首页改版实现 — 按UI-designer设计稿集成8个模块",
+    "assignee": "dev",
+    "status": "done",
+    "priority": 0,
+    "created_at": 1779622654,
+    "started_at": 1779622674,
+    "completed_at": 1779622847,
+    "parents": []
+  },
+  {
+    "id": "t_b013458b",
+    "title": "首页重新设计 v2 — 大图视觉 + 高级暖色调 (参考Energy Muse)",
+    "assignee": "ui-designer",
+    "status": "done",
+    "priority": 0,
+    "created_at": 1779626542,
+    "started_at": 1779626579,
+    "completed_at": 1779626713,
+    "parents": []
+  }
+]);
+</script>
+</body>
+</html>
