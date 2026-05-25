@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="500" viewBox="0 0 1200 500">
+  <defs>
+    <linearGradient id="bgScene" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A0800"/>
+      <stop offset="40%" stop-color="#2A1000"/>
+      <stop offset="70%" stop-color="#1A0A00"/>
+      <stop offset="100%" stop-color="#0D0500"/>
+    </linearGradient>
+    <linearGradient id="goldGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DAA520"/>
+      <stop offset="30%" stop-color="#FFD700"/>
+      <stop offset="60%" stop-color="#FFF8DC"/>
+      <stop offset="100%" stop-color="#B8860B"/>
+    </linearGradient>
+    <linearGradient id="cinnabarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#CC0000"/>
+      <stop offset="50%" stop-color="#8B0000"/>
+      <stop offset="100%" stop-color="#4A0000"/>
+    </linearGradient>
+    <linearGradient id="paperGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF8E7"/>
+      <stop offset="50%" stop-color="#F5E6C8"/>
+      <stop offset="100%" stop-color="#E8D5A8"/>
+    </linearGradient>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="candleGlow">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+    <filter id="smokeFilter">
+      <feGaussianBlur stdDeviation="6"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="500" fill="url(#bgScene)"/>
+
+  <!-- Decorative border -->
+  <rect x="15" y="15" width="1170" height="470" rx="8" fill="none" stroke="#DAA520" stroke-width="1" opacity="0.3"/>
+  <rect x="25" y="25" width="1150" height="450" rx="6" fill="none" stroke="#DAA520" stroke-width="0.5" opacity="0.2"/>
+
+  <!-- Corner ornaments -->
+  <path d="M15,50 L15,15 L50,15" fill="none" stroke="#DAA520" stroke-width="2" opacity="0.5"/>
+  <path d="M1185,50 L1185,15 L1150,15" fill="none" stroke="#DAA520" stroke-width="2" opacity="0.5"/>
+  <path d="M15,450 L15,485 L50,485" fill="none" stroke="#DAA520" stroke-width="2" opacity="0.5"/>
+  <path d="M1185,450 L1185,485 L1150,485" fill="none" stroke="#DAA520" stroke-width="2" opacity="0.5"/>
+
+  <!-- Subtle ambient glow center -->
+  <ellipse cx="600" cy="250" rx="350" ry="200" fill="#DAA520" opacity="0.04" filter="url(#candleGlow)"/>
+
+  <!-- ===== WOODEN TABLE / SURFACE ===== -->
+  <rect x="100" y="340" width="1000" height="120" rx="4" fill="#2A1A0A" opacity="0.6"/>
+  <rect x="100" y="340" width="1000" height="3" rx="1.5" fill="#4A3020" opacity="0.5"/>
+
+  <!-- ===== Ink Stone (砚台) on the left ===== -->
+  <ellipse cx="300" cy="330" rx="50" ry="12" fill="#1A1A1A"/>
+  <ellipse cx="300" cy="325" rx="45" ry="10" fill="#2A2A2A"/>
+  <ellipse cx="300" cy="322" rx="40" ry="8" fill="#333"/>
+  <!-- Cinnabar powder on ink stone -->
+  <ellipse cx="295" cy="320" rx="10" ry="3" fill="#CC0000" opacity="0.8"/>
+  <ellipse cx="305" cy="318" rx="6" ry="2" fill="#DD1111" opacity="0.6"/>
+
+  <!-- ===== CINNABAR POT (朱砂瓶) ===== -->
+  <rect x="385" y="280" width="40" height="60" rx="8" fill="#8B0000"/>
+  <rect x="385" y="280" width="40" height="12" rx="6" fill="#CC0000"/>
+  <rect x="383" y="290" width="44" height="6" rx="3" fill="#AA0000" opacity="0.5"/>
+  <ellipse cx="405" cy="280" rx="20" ry="6" fill="#DD2222"/>
+  <ellipse cx="405" cy="280" rx="10" ry="3" fill="#CC0000" opacity="0.5"/>
+  <!-- Decorative band -->
+  <rect x="385" y="310" width="40" height="3" fill="#DAA520" opacity="0.6"/>
+  <rect x="385" y="330" width="40" height="3" fill="#DAA520" opacity="0.6"/>
+
+  <!-- ===== BRUSH (毛笔) ===== -->
+  <!-- Brush handle -->
+  <line x1="510" y1="200" x2="490" y2="320" stroke="#8B6914" stroke-width="6" stroke-linecap="round"/>
+  <line x1="510" y1="200" x2="490" y2="320" stroke="#A07830" stroke-width="4" stroke-linecap="round"/>
+  <!-- Brush tip (cinnabar red) -->
+  <path d="M490,320 Q485,330 488,340 Q490,348 492,340 Q495,330 490,320" fill="#CC0000"/>
+  <path d="M490,320 Q486,330 490,340" stroke="#DD2222" stroke-width="1.5" fill="none" opacity="0.6"/>
+  <!-- Brush ferrule -->
+  <rect x="487" y="305" width="8" height="10" rx="2" fill="#DAA520" stroke="#B8860B" stroke-width="0.5"/>
+
+  <!-- ===== TALISMAN PAPER (符纸) on the table ===== -->
+  <!-- Paper shadow -->
+  <rect x="520" y="305" width="280" height="40" rx="2" fill="#1A0A00" opacity="0.3" transform="rotate(-3, 660, 325)"/>
+  <!-- Paper -->
+  <rect x="510" y="295" width="280" height="40" rx="2" fill="url(#paperGrad)" transform="rotate(-3, 650, 315)" opacity="0.95"/>
+  <!-- Talisman script strokes on the paper -->
+  <g transform="rotate(-3, 650, 315)" opacity="0.7">
+    <!-- Main talisman character strokes -->
+    <path d="M540,300 L560,298 L575,305 L555,330 L555,310 L570,332" stroke="#CC0000" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M580,298 L600,295 L615,305 L595,330 L595,310 L610,332" stroke="#8B0000" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M660,300 L680,298 L690,308 L670,328 L670,310 L685,328" stroke="#CC0000" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M700,298 L720,295 L735,305 L715,330 L715,310 L730,332" stroke="#8B0000" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <!-- Red seal stamp -->
+    <rect x="740" y="298" width="18" height="18" fill="#CC0000" opacity="0.6" rx="2"/>
+    <rect x="743" y="301" width="12" height="12" fill="#8B0000" opacity="0.4" rx="1"/>
+  </g>
+
+  <!-- ===== GOLD INK POT on the right ===== -->
+  <ellipse cx="910" cy="335" rx="22" ry="6" fill="#5A3A10"/>
+  <rect x="888" y="295" width="44" height="40" rx="6" fill="#6A4A20"/>
+  <ellipse cx="910" cy="295" rx="22" ry="7" fill="#8B6914"/>
+  <!-- Gold ink surface -->
+  <ellipse cx="910" cy="295" rx="16" ry="5" fill="#DAA520" opacity="0.8"/>
+  <ellipse cx="908" cy="294" rx="6" ry="2" fill="#FFD700" opacity="0.6"/>
+  <!-- Decorative band -->
+  <rect x="888" y="318" width="44" height="3" fill="#DAA520" opacity="0.5"/>
+
+  <!-- ===== CANDLE (蜡烛) for atmosphere ===== -->
+  <rect x="1050" y="250" width="18" height="80" rx="4" fill="#F5E6C8"/>
+  <rect x="1050" y="250" width="18" height="80" rx="4" fill="#E8D5A8" opacity="0.5"/>
+  <!-- Candle drip -->
+  <path d="M1050,275 Q1045,280 1046,290 Q1047,295 1050,290" fill="#F5E6C8"/>
+  <path d="M1068,300 Q1073,305 1072,315 Q1071,320 1068,315" fill="#F5E6C8"/>
+  <!-- Flame -->
+  <ellipse cx="1059" cy="240" rx="6" ry="10" fill="#FF6600" filter="url(#softGlow)"/>
+  <ellipse cx="1059" cy="238" rx="4" ry="7" fill="#FFAA00"/>
+  <ellipse cx="1059" cy="237" rx="2" ry="4" fill="#FFEE88"/>
+  <!-- Flame glow -->
+  <ellipse cx="1059" cy="240" rx="20" ry="25" fill="#FF6600" opacity="0.08" filter="url(#candleGlow)"/>
+
+  <!-- ===== AMBIENT SMOKE from incense ===== -->
+  <path d="M1100,310 Q1105,290 1095,270 Q1085,250 1095,230 Q1105,210 1095,190 Q1085,170 1095,155" stroke="#FFD700" stroke-width="8" fill="none" opacity="0.06" filter="url(#smokeFilter)"/>
+  <path d="M1110,310 Q1115,285 1108,265 Q1100,245 1110,225 Q1120,205 1110,185" stroke="#FFD700" stroke-width="6" fill="none" opacity="0.05" filter="url(#smokeFilter)"/>
+
+  <!-- ===== Subtle Chinese text watermark ===== -->
+  <text x="600" y="260" font-size="180" fill="#DAA520" opacity="0.03" text-anchor="middle" font-family="serif">符</text>
+
+  <!-- ===== Decorative stars / sparkles ===== -->
+  <text x="150" y="100" font-size="16" fill="#DAA520" opacity="0.15">✦</text>
+  <text x="800" y="80" font-size="12" fill="#DAA520" opacity="0.12">✦</text>
+  <text x="500" y="120" font-size="10" fill="#DAA520" opacity="0.1">✦</text>
+  <text x="1000" y="140" font-size="14" fill="#DAA520" opacity="0.08">✦</text>
+</svg>

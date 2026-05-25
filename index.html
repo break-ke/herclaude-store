@@ -31,7 +31,7 @@
   <link rel="canonical" href="https://herclaude.com/">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <link rel="stylesheet" href="css/style.css?v=4">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -104,31 +104,93 @@
     </nav>
   </div>
 
-  <!-- ===== MODULE 3: HERO (v2 — Warm paper gradient) ===== -->
-  <section class="hero" aria-label="Welcome banner">
-    <div class="hero-pattern"></div>
-    <div class="hero-decoration left">符</div>
-    <div class="hero-decoration right">箓</div>
+  <!-- ===== MODULE 3: HERO CAROUSEL (v3 — 3-slide auto-rotating) ===== -->
+  <section class="hero hero-carousel" aria-label="Featured talismans carousel">
+    <!-- Slide 1: Brand banner -->
+    <div class="hero-slide active" data-index="0">
+      <img src="images/hero-banner.svg" alt="" class="hero-slide-bg" aria-hidden="true" loading="eager">
+      <div class="hero-slide-overlay"></div>
+      <div class="hero-decoration left">符</div>
+      <div class="hero-decoration right">箓</div>
+      <div class="hero-content">
+        <div class="hero-tag">
+          <span class="dot"></span>
+          Maoshan Lineage
+        </div>
+        <h1>
+          Ancient Chinese <span class="gold">Talismans</span>
+        </h1>
+        <p class="hero-subtitle">
+          Hand-crafted by lineage holders on traditional rice paper with mineral cinnabar inks. Each talisman consecrated through sacred ritual — carrying the spiritual authority of generations.
+        </p>
+        <div class="hero-actions">
+          <a href="products.html" class="btn-primary btn-lg">
+            Explore Collection <span>→</span>
+          </a>
+          <a href="about.html" class="btn-ghost">
+            Learn About Our Tradition
+          </a>
+        </div>
+      </div>
+    </div>
 
-    <div class="hero-content">
-      <div class="hero-tag">
-        <span class="dot"></span>
-        Maoshan Lineage
+    <!-- Slide 2: Wealth Talisman Bestseller -->
+    <div class="hero-slide" data-index="1">
+      <img src="images/wealth-talisman.svg" alt="" class="hero-slide-bg" aria-hidden="true" loading="lazy">
+      <div class="hero-slide-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-tag">
+          <span class="dot"></span>
+          America's #1 Best Seller
+        </div>
+        <h1>
+          <span class="gold">Wealth</span> Talisman
+        </h1>
+        <p class="hero-subtitle">
+          Our most popular talisman — hand-written on red rice paper with gold ink. Used for centuries to attract prosperity, open financial pathways, and invite abundance into your life.
+        </p>
+        <div class="hero-actions">
+          <a href="product-detail.html?id=wealth-talisman" class="btn-primary btn-lg">
+            Shop Now <span>→</span>
+          </a>
+          <a href="products.html?collection=wealth" class="btn-ghost">
+            View Wealth Collection
+          </a>
+        </div>
       </div>
-      <h1>
-        Ancient Chinese <span class="gold">Talismans</span>
-      </h1>
-      <p class="hero-subtitle">
-        Hand-crafted by Daoist lineage holders on traditional rice paper with mineral cinnabar inks. Each talisman consecrated through sacred ritual — carrying the spiritual authority of generations.
-      </p>
-      <div class="hero-actions">
-        <a href="products.html" class="btn-primary btn-lg">
-          Explore Collection <span>→</span>
-        </a>
-        <a href="about.html" class="btn-ghost">
-          Learn About Our Tradition
-        </a>
+    </div>
+
+    <!-- Slide 3: Hand-Crafted Scene -->
+    <div class="hero-slide" data-index="2">
+      <img src="images/craft-scene.svg" alt="" class="hero-slide-bg" aria-hidden="true" loading="lazy">
+      <div class="hero-slide-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-tag">
+          <span class="dot"></span>
+          Artisan Craftsmanship
+        </div>
+        <h1>
+          Hand-Crafted with <span class="gold">1,500 Years</span> of Tradition
+        </h1>
+        <p class="hero-subtitle">
+          Every talisman is written by hand on traditional rice paper with mineral cinnabar inks — following techniques passed down through generations of Daoist lineage holders since the Han Dynasty.
+        </p>
+        <div class="hero-actions">
+          <a href="products.html" class="btn-primary btn-lg">
+            Browse Our Collection <span>→</span>
+          </a>
+          <a href="about.html" class="btn-ghost">
+            Learn About Our Craft
+          </a>
+        </div>
       </div>
+    </div>
+
+    <!-- Carousel dot indicators -->
+    <div class="hero-dots" aria-label="Carousel navigation">
+      <button class="hero-dot active" data-slide="0" aria-label="Slide 1: Brand banner"></button>
+      <button class="hero-dot" data-slide="1" aria-label="Slide 2: Wealth Talisman"></button>
+      <button class="hero-dot" data-slide="2" aria-label="Slide 3: Hand-Crafted Scene"></button>
     </div>
   </section>
 
@@ -377,6 +439,43 @@
   document.addEventListener('DOMContentLoaded', function() {
     'use strict';
 
+    // --- Hero Carousel Init ---
+    (function initCarousel() {
+      var slides = document.querySelectorAll('.hero-slide');
+      var dots = document.querySelectorAll('.hero-dot');
+      if (!slides.length || slides.length < 2) return;
+
+      var current = 0;
+      var interval;
+
+      function goTo(index) {
+        slides.forEach(function(s) { s.classList.remove('active'); });
+        dots.forEach(function(d) { d.classList.remove('active'); });
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+        current = index;
+      }
+
+      function nextSlide() {
+        goTo((current + 1) % slides.length);
+      }
+
+      function startAuto() {
+        if (interval) clearInterval(interval);
+        interval = setInterval(nextSlide, 4000);
+      }
+
+      // Dot click navigation
+      dots.forEach(function(dot) {
+        dot.addEventListener('click', function() {
+          goTo(parseInt(this.getAttribute('data-slide'), 10));
+          startAuto(); // reset timer on manual click
+        });
+      });
+
+      startAuto();
+    })();
+
     // --- Init Cart ---
     if (typeof Cart !== 'undefined') { Cart.init(); }
 
@@ -475,7 +574,9 @@
         }
 
         card.innerHTML =
-          '<div class="card-bg" style="background:linear-gradient(135deg,' + (coll.color || '#3d3020') + ',' + (coll.color2 || '#5c4a34') + ')"></div>' +
+          '<div class="card-bg" style="background:linear-gradient(135deg,' + (coll.color || '#3d3020') + ',' + (coll.color2 || '#5c4a34') + ');' +
+            (coll.image ? ' background-image:url(' + coll.image + '); background-blend-mode:overlay; background-size:cover; background-position:center;' : '') +
+          '"></div>' +
           '<div class="card-overlay"></div>' +
           '<div class="card-content">' +
             '<h3>' + coll.name + '</h3>' +
